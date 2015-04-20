@@ -1,0 +1,16 @@
+{# src/Bdtln/AxeBundle/Resources/views/layout_axe.html.twig #}
+{# layout_axe extends the global index #}
+{% extends "::index.html.twig" %}
+
+{% block title %} Axe - {{ parent() }} {% endblock %}
+
+{# body can be edit by this layout #}
+{% block body %}
+   
+    {# user_body can be edit by pages #}
+    {% block axe_body %}
+        
+        
+    {% endblock %}
+    
+{% endblock %}

@@ -1,0 +1,4 @@
+services:
+#    bdtln_publication.example:
+#        class: Bdtln\PublicationBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

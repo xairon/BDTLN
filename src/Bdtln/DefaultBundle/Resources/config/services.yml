@@ -1,0 +1,4 @@
+services:
+#    bdtln_default.example:
+#        class: Bdtln\DefaultBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

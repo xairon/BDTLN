@@ -1,0 +1,3 @@
+bdtln_default_homepage:
+    path:     /
+    defaults: { _controller: BdtlnDefaultBundle:Default:index }

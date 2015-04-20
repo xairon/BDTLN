@@ -1,0 +1,16 @@
+{# src/Bdtln/ProjectBundle/Resources/views/layout_project.html.twig #}
+{# layout_publication extends the global index #}
+{% extends "::index.html.twig" %}
+
+{% block title %} Project - {{ parent() }} {% endblock %}
+
+{# body can be edit by this layout #}
+{% block body %}
+
+    {# project_body can be edit by pages #}
+    {% block project_body %}
+        
+        
+    {% endblock %}
+    
+{% endblock %}

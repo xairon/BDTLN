@@ -1,0 +1,27 @@
+#The dashboard
+bdtln_administration_homepage:
+    path:     /
+    defaults: { _controller: BdtlnAdministrationBundle:Administration:index }
+
+#Add a project
+bdtln_administration_add_project:
+    path: /add_project
+    defaults: { _controller: BdtlnAdministrationBundle:Administration:add_project }
+
+
+#Add user to project
+bdtln_administration_add_user_to_project:
+    path: /add_user_to_project
+    defaults: { _controller: BdtlnAdministrationBundle:Administration:add_user_to_project }
+    
+    
+#Add a user
+bdtln_administration_add_user:
+    path: /add_user
+    defaults: { _controller: BdtlnAdministrationBundle:Administration:add_user }
+    
+    
+#Update a user
+bdtln_administration_update_user:
+    path: /update_user
+    defaults: { _controller: BdtlnAdministrationBundle:Administration:update_user }

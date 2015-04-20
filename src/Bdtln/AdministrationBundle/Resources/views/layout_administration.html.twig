@@ -1,0 +1,16 @@
+{# src/Bdtln/AdministrationBundle/Resources/views/layout_administration.html.twig #}
+{# layout_administration extends the global index #}
+{% extends "::index.html.twig" %}
+
+{% block title %} Administration - {{ parent() }} {% endblock %}
+
+{# body can be edit by this layout #}
+{% block body %}
+
+    {# user_body can be edit by pages #}
+    {% block administration_body %}
+        
+        
+    {% endblock %}
+    
+{% endblock %}

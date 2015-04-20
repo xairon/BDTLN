@@ -1,0 +1,45 @@
+{# app/Resources/view/header/header.html.twig #}
+{#
+    There is a header, it will display the header and the login page
+#}
+
+<div class="row clearfix">
+    <div class="col-md-12 column" id="en_tete">
+    	<div class="row clearfix">
+            <div class="col-md-8 column">
+		<h3>
+                    Bienvenue sur le site De l'équipe BDTLN
+		</h3>
+            </div>
+            <div class="col-md-1 column">
+            </div>
+            <div class="col-md-2 column" id="module_connection">
+		{% include ":menus:login.html.twig" %}
+            </div>
+            <div class="col-md-1 column">
+            </div>
+	</div>
+    </div>
+</div>
+            <div class="row clearfix">
+		<div class="col-md-12 column">	
+				<nav class="navbar navbar-default" role="navigation" id ="barre_de_menu">
+				<div class="navbar-header">
+					 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="{{ path('bdtln_default_homepage') }}">Accueil</a>
+				</div>
+				
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li>
+							<a  class="navbar-brand" href="{{ path('bdtln_axe_homepage') }}">Axes/Projets</a>
+						</li>
+
+						<li>
+							<a  class="navbar-brand" href="#">Fiches Personnelles</a>
+						</li>
+					</ul>
+				</div>	
+			</nav>
+		</div>
+	</div>
+

@@ -1,0 +1,4 @@
+#It will display the list of all axes
+bdtln_axe_homepage:
+    path:     /
+    defaults: { _controller: BdtlnAxeBundle:Axe:index }

@@ -1,0 +1,12 @@
+#The .gitignore will list all file we should ignore in Git
+#Temporary files and saved files created by the editor
+*.*~
+
+#The cache
+app/cache/*
+
+#The logs
+#app/logs/*
+
+#parameters.yml is already on the repo, not need of update
+app/config/parameters.yml
