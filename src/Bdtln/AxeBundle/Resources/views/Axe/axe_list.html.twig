@@ -12,13 +12,13 @@
             <div class="row clearfix" >
             
                 <div class="col-md-10 column" id="axe">
-                    <h3>{{ axe.englishTitle }}</h3>
+                    <h3>{{ axe.frenchTitle }}</h3>
                     <hr>
                     <ul>
                         {% set projects = axe.projects %}
                         {% if projects is not null %}
                             {% for project in projects %}
-                                <li><a href="{{path('bdtln_project_display', {'slug': project.slug})}}">{{ project.getEnglishTitle }}</a></li>
+                                <li><a href="{{path('bdtln_project_display', {'slug': project.slug})}}">{{ project.frenchTitle }}</a></li>
                             {% endfor%}
                         {% endif %}
                     </ul>

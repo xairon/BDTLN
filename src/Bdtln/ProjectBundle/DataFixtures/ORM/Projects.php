@@ -29,19 +29,19 @@ class Projects implements FixtureInterface {
             $projectWithoutFiles = new Project();
             $projectWithoutFiles->setEnglishDescription("This project is about databases, it is a research . . . .");
             $projectWithoutFiles->setEnglishSummary("This is a project.");
-            $projectWithoutFiles->setEnglishTitle("An amazing project");
+            $projectWithoutFiles->setEnglishTitle("A first project");
             $projectWithoutFiles->setFrenchDescription("C'est un projet qui concerne les bases de données, c'est une recherche . . . .");
             $projectWithoutFiles->setFrenchSummary("C'est un projet.");
-            $projectWithoutFiles->setFrenchTitle("Un projet incroyable");
+            $projectWithoutFiles->setFrenchTitle("Un premier projet");
   
 
             $projectWithFiles = new Project();
             $projectWithFiles->setEnglishDescription("This project is about language, it is a research . . . .");
             $projectWithFiles->setEnglishSummary("This is a second project.");
-            $projectWithFiles->setEnglishTitle("Not an amazing project");
+            $projectWithFiles->setEnglishTitle("A second project");
             $projectWithFiles->setFrenchDescription("C'est un projet qui concerne le langage, c'est une recherche . . . .");
             $projectWithFiles->setFrenchSummary("C'est un deuxième projet");
-            $projectWithFiles->setFrenchTitle("Ça n'est pas un projet incroyable");
+            $projectWithFiles->setFrenchTitle("Un second projet");
            
             $file1 = new File();
             $file1->setPath("pictures/my_first_file.zip");
@@ -57,17 +57,17 @@ class Projects implements FixtureInterface {
             $axe1 = new Axe();
             $axe1->setEnglishDescription("This axe is about databases . . . .");
             $axe1->setEnglishSummary("It's an axe");
-            $axe1->setEnglishTitle("My Axe");
+            $axe1->setEnglishTitle("Mon premier Axe");
             $axe1->setFrenchDescription("Cet axe concerne les bases de données");
             $axe1->setFrenchSummary("C'est un axe");
-            $axe1->setFrenchTitle("Mon Axe");
+            $axe1->setFrenchTitle("Mon Second Axe");
             $axe1->addProject($projectWithFiles);
             
             
             $axe2 = new Axe();
             $axe2->setEnglishDescription("This axe is about languages . . . .");
             $axe2->setEnglishSummary("It's an other axe");
-            $axe2->setEnglishTitle("My Second Axe");
+            $axe2->setEnglishTitle("Mon Second Axe");
             $axe2->setFrenchDescription("Cet axe concerne le langage");
             $axe2->setFrenchSummary("C'est un autre axe");
             $axe2->setFrenchTitle("Mon Deuxième Axe");
