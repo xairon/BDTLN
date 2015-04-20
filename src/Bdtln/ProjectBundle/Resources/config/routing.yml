@@ -1,0 +1,13 @@
+#The displaying of a project.
+#@param project_slug the slug of the project we want to see
+bdtln_project_display:
+    path:     /{slug}
+    defaults: { _controller: BdtlnProjectBundle:Project:index}
+    requirements:
+        project_slug:   ([a-zA-Z0-9-_])+
+
+
+
+
+
+

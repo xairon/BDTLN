@@ -1,0 +1,16 @@
+{# src/Bdtln/PublicationBundle/Resources/views/layout_publication.html.twig #}
+{# layout_publication extends the global index #}
+{% extends "::index.html.twig" %}
+
+{% block title %} Publication - {{ parent() }} {% endblock %}
+
+{# body can be edit by this layout #}
+{% block body %}
+    
+    {# publication_body can be edit by pages #}
+    {% block publication_body %}
+        
+        
+    {% endblock %}
+    
+{% endblock %}

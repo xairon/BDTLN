@@ -1,0 +1,57 @@
+#module_connection
+{
+	background-color: #3dacac;
+	border-radius: 5% ;
+	padding: 10px ;
+	margin-bottom: 10px ;
+	margin-top: 10px ;
+}
+#barre_de_menu
+{
+	background-color: #3dacac;
+	color: #FFFFFF;
+	border-color: #FFFFFF;
+}
+#en_tete
+{
+	background-color: #8fe5e6;
+	margin-bottom: 10px;
+	color: #FFFFFF ;
+}
+#pied_de_page
+{
+	background-color: #8fe5e6;
+}
+#flux
+{
+	background-color: #8fe5e6;
+	margin-bottom: 15px;
+	border-radius: 7%;
+	color: #FFFFFF;
+	box-shadow: 5px 5px 0px 0px #787878;
+	padding-top: 3px;
+}
+#flux h4
+{
+	text-align: center;
+}
+#axe
+{
+ 	background-color: #FAFAFA;
+ 	border-radius: 3%;
+ 	margin-bottom: 10px;
+}
+#article 
+{
+	background-color: #FAFAFA;
+ 	border-radius: 3%;
+ 	margin-bottom: 10px;
+}
+#article h3
+{
+	text-decoration: underline;
+}
+#article img 
+{
+	margin-top: 5px;
+}

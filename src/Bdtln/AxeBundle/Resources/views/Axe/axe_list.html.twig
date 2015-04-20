@@ -1,0 +1,32 @@
+{# src/BdtlnAxeBundle/Resources/views/Axe/axe_list.html.twig #}
+{#
+    Here everybody will can see a list with all axes
+#}
+
+{% extends "BdtlnAxeBundle::layout_axe.html.twig" %}
+
+{% block axe_body %}
+    {# if the controlle has given the axes to us, we display all axes with all project in#}
+    {% if axes is not null %}
+        {% for axe in axes %}
+            <div class="row clearfix" >
+            
+                <div class="col-md-10 column" id="axe">
+                    <h3>{{ axe.englishTitle }}</h3>
+                    <hr>
+                    <ul>
+                        {% set projects = axe.projects %}
+                        {% if projects is not null %}
+                            {% for project in projects %}
+                                <li><a href="{{path('bdtln_project_display', {'slug': project.slug})}}">{{ project.getEnglishTitle }}</a></li>
+                            {% endfor%}
+                        {% endif %}
+                    </ul>
+                </div>
+                
+		<div class="col-md-2 column">
+		</div>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

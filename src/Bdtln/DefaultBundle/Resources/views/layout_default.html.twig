@@ -1,0 +1,16 @@
+{# src/Bdtln/DefaultBundle/Resources/views/layout_default.html.twig #}
+{# layout_default extends the global index #}
+{% extends "::index.html.twig" %}
+
+{% block title %}{{ parent() }} {% endblock %}
+
+{# body can be edit by this layout #}
+{% block body %}
+
+    {# default_body can be edit by pages #}
+    {% block default_body %}
+        
+        
+    {% endblock %}
+    
+{% endblock %}
