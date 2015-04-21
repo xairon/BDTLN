@@ -3,11 +3,6 @@ bdtln_administration_homepage:
     path:     /
     defaults: { _controller: BdtlnAdministrationBundle:Administration:index }
 
-#Add a project
-bdtln_administration_add_project:
-    path: /add_project
-    defaults: { _controller: BdtlnAdministrationBundle:Administration:add_project }
-
 
 #Add user to project
 bdtln_administration_add_user_to_project:

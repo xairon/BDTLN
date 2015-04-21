@@ -15,13 +15,7 @@ class AdministrationController extends Controller
         return $this->render('BdtlnAdministrationBundle:Default:dashboard.html.twig');
     }
     
-    /**
-     * add_projectAction will display a form and allow to create a project
-     * @return Response Project/add_project.html.twig
-     */
-    public function  add_projectAction() {
-        return $this->render('BdtlnAdministrationBundle:Project:add_project.html.twig');
-    }
+   
     
     /**
      * add_user_to_projectAction will display a form and allow to add users on a project
