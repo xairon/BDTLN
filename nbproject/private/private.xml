@@ -3,17 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/var/www/html/autres/BDTLN/src/Bdtln/ProjectBundle/Entity/ProjectRepository.php</file>
-            <file>file:/var/www/html/autres/BDTLN/src/Bdtln/AxeBundle/Controller/AxeController.php</file>
-            <file>file:/var/www/html/autres/BDTLN/src/Bdtln/DefaultBundle/Resources/config/routing.yml</file>
-            <file>file:/var/www/html/autres/BDTLN/app/Resources/views/index.html.twig</file>
-            <file>file:/var/www/html/autres/BDTLN/src/Bdtln/DefaultBundle/Resources/views/layout_default.html.twig</file>
-            <file>file:/var/www/html/autres/BDTLN/src/Bdtln/AxeBundle/Resources/views/layout_axe.html.twig</file>
-            <file>file:/var/www/html/autres/BDTLN/app/Resources/views/header/header.html.twig</file>
-            <file>file:/var/www/html/autres/BDTLN/src/Bdtln/AxeBundle/Entity/AxeRepository.php</file>
-            <file>file:/var/www/html/autres/BDTLN/src/Bdtln/DefaultBundle/Resources/views/Default/index.html.twig</file>
+            <file>file:/var/www/html/autres/BDTLN/src/Bdtln/AxeBundle/Form/AxeType.php</file>
+            <file>file:/var/www/html/autres/BDTLN/src/Bdtln/ProjectBundle/Controller/ProjectController.php</file>
+            <file>file:/var/www/html/autres/BDTLN/src/Bdtln/ProjectBundle/Entity/Project.php</file>
+            <file>file:/var/www/html/autres/BDTLN/src/Bdtln/ProjectBundle/Form/ProjectType.php</file>
             <file>file:/var/www/html/autres/BDTLN/src/Bdtln/AxeBundle/Entity/Axe.php</file>
-            <file>file:/var/www/html/autres/BDTLN/src/Bdtln/AxeBundle/Resources/views/Axe/axe_list.html.twig</file>
+            <file>file:/var/www/html/autres/BDTLN/src/Bdtln/ProjectBundle/Resources/views/Project/add_project.html.twig</file>
         </group>
     </open-files>
 </project-private>

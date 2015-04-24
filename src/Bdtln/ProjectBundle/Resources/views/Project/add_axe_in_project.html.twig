@@ -1,0 +1,35 @@
+{# src/Bdtln/ProjectBundle/Resources/views/Project/add_axe_in_project.html.twig #}
+{#
+    Here an administrator will can add an axe in a project
+#}
+
+{% extends "BdtlnProjectBundle::layout_project.html.twig" %}
+
+{% block project_body %}
+    
+    <div>
+        You will add an axe in  in project {{ project.englishTitle }}
+        <br />
+        Choose an axe
+        <br />
+            {% for information in app.session.flashbag.get('information')%}
+                <p>
+                    {{ information }}
+                </p>
+            {% endfor %}
+            <form method="POST" action="{{ path('bdtln_project_add_axe_in_project', {'slug': project.slug}) }}">
+            <select name="axe">
+                <option value="">--------------</option>
+                {% for axe in axes %}
+                    <option value="{{ axe.id }}">{{axe.englishTitle}}</option>
+                {% endfor %}
+            </select><br />
+            <input type="submit" value="Submit"/>
+        </form>
+    </div>
+    
+    
+    
+    
+    
+{% endblock %}

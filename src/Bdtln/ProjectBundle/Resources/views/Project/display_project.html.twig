@@ -6,6 +6,10 @@
 {% extends "BdtlnProjectBundle::layout_project.html.twig" %}
 
 {% block project_body %}
+    
+    <a href="{{ path('bdtln_project_add_axe_in_project' , {'slug': project.slug }) }}">Add an axe</a>
+    
+    
     <div class="row clearfix">
     	<div class="col-md-8 column" id="article">
             <!-- The title of the project -->
