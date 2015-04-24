@@ -10,6 +10,7 @@ Clone this repository onto your web server
 Execute following commands :
 + php app/console doctrine:database:create
 + php app/console doctrine:schema:update --force
++ php ./composer.php update
 
 2) Checking your System Configuration for Symfony2
 ---------------------------------------------------

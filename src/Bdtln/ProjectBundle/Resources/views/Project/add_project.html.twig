@@ -1,0 +1,76 @@
+{# src/Bdtln/ProjectBundle/Resources/views/Project/add_project.html.twig #}
+{#
+    Here an administrator will can create a project
+#}
+
+{% extends "BdtlnProjectBundle::layout_project.html.twig" %}
+
+{% block project_body %}
+    
+    
+    {% for information in app.session.flashbag.get('information')%}
+    <p>
+        {{ information }}
+    </p>
+    {% endfor %}
+    <form action="{{ path('bdtln_project_add_project') }}" method="POST" {{ form_enctype(form) }}>
+        {{ form_errors(form) }}
+        <div>
+            {{ form_label(form.englishTitle, 'Titre anglais') }}
+            {{ form_errors(form.englishTitle) }}
+            {{ form_widget(form.englishTitle) }}
+        </div>
+        <div>
+            {{ form_label(form.frenchTitle, 'Titre français') }}
+            {{ form_errors(form.frenchTitle) }}
+            {{ form_widget(form.frenchTitle) }}
+        </div>
+        <div>
+            {{ form_label(form.englishSummary, 'Résumé anglais') }}
+            {{ form_errors(form.englishSummary) }}
+            {{ form_widget(form.englishSummary) }}
+        </div>
+        <div>
+            {{ form_label(form.frenchSummary, 'Résumé français') }}
+            {{ form_errors(form.frenchSummary) }}
+            {{ form_widget(form.frenchSummary) }}
+        </div>
+        <div>
+            {{ form_label(form.englishDescription, 'Description anglaise') }}
+            {{ form_errors(form.englishDescription) }}
+            {{ form_widget(form.englishDescription) }}
+        </div>
+        
+        <div>
+            {{ form_label(form.frenchDescription, 'Description française') }}
+            {{ form_errors(form.frenchDescription) }}
+            {{ form_widget(form.frenchDescription) }}
+        </div>
+        <div>
+            {{ form_label(form.beginningDate, 'Date de début') }}
+            {{ form_errors(form.beginningDate) }}
+            {{ form_widget(form.beginningDate) }}
+        </div>
+        <div>
+            {{ form_label(form.endingDate, 'Date de fin') }}
+            {{ form_errors(form.endingDate) }}
+            {{ form_widget(form.endingDate) }}
+        </div>
+        
+        <label for="axe">Axe principal</label>
+        <select name="axe">
+            <option value="" selected="selected">--------</option>
+            {% for axe in axes %}
+                <option value="{{ axe.id }}">{{ axe.frenchTitle }}</option>
+            {% endfor %}
+        </select><br />
+        
+        {{ form_rest(form) }}
+        
+        <input type="submit" value="Submit" />
+    </form>
+    
+    
+    
+    
+{% endblock %}

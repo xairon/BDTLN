@@ -287,4 +287,21 @@ class Axe
     {
         return $this->projects;
     }
+    
+    
+    /**
+     * hasProject test is this axe own the project
+     * @param \Bdtln\ProjectBundle\Entity\Project $project the project that we want test
+     * @return boolean true if $project is in this axe
+     */
+    public function hasProject( \Bdtln\ProjectBundle\Entity\Project $project ) {
+        $allProjects = $this->getProjects();
+        
+        for ( $i = 0; $i < count($allProjects); $i++ ) {
+            if ( $allProjects[$i] == $project )
+                return true;
+        }
+        return false;
+    }
+    
 }

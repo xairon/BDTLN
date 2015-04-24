@@ -4,6 +4,7 @@ namespace Bdtln\ProjectBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Project
@@ -27,6 +28,13 @@ class Project
      * @var string
      *
      * @ORM\Column(name="french_title", type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = "2",
+     *      max = "255",
+     *      minMessage = "The french title should be longer than {{ limit }} characters",
+     *      maxMessage = "The french title not be longer than {{ limit }} characters"
+     * )
      */
     private $frenchTitle;
 
@@ -35,6 +43,13 @@ class Project
      * @var string
      *
      * @ORM\Column(name="english_title", type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = "2",
+     *      max = "255",
+     *      minMessage = "The englih title should be longer than {{ limit }} characters",
+     *      maxMessage = "The english title not be longer than {{ limit }} characters"
+     * )
      */
     private $englishTitle;
 
@@ -45,8 +60,14 @@ class Project
      * @var string
      *
      * @ORM\Column(name="french_summary", type="string", length=255)
+     * @Assert\Length(
+     *      min = "20",
+     *      max = "255",
+     *      minMessage = "The french summary should be longer than {{ limit }} characters",
+     *      maxMessage = "The french summary not be longer than {{ limit }} characters"
+     * )
      */
-    private $french_summary;
+    private $frenchSummary;
 
     
     /**
@@ -54,8 +75,14 @@ class Project
      * @var string
      *
      * @ORM\Column(name="english_summary", type="string", length=255)
+     * @Assert\Length(
+     *      min = "20",
+     *      max = "255",
+     *      minMessage = "The english summary should be longer than {{ limit }} characters",
+     *      maxMessage = "The english summary not be longer than {{ limit }} characters"
+     * )
      */
-    private $english_summary;
+    private $englishSummary;
     
     
     
@@ -82,6 +109,7 @@ class Project
      * @var \DateTime
      *
      * @ORM\Column(name="beginning_date", type="date")
+     * @Assert\DateTime()
      */
     private $beginningDate;
 
@@ -90,6 +118,7 @@ class Project
      * @var \DateTime
      *
      * @ORM\Column(name="ending_date", type="date", nullable=true)
+     * @Assert\DateTime()
      */
     private $endingDate;
 
@@ -111,6 +140,13 @@ class Project
      * @ORM\Column(length=255, unique=true)
      */
     private $slug;
+    
+    /**
+     * axes represent the axes to whome belong to the project
+     * @var ArrayCollection 
+     * @ORM\ManyToMany(targetEntity="Bdtln\AxeBundle\Entity\Axe")
+     */
+    private $axes;
     
     
     public function __construct() {
@@ -134,29 +170,6 @@ class Project
 
 
 
-    /**
-     * Set axes
-     *
-     * @param array $axes
-     *
-     * @return Project
-     */
-    public function setAxes($axes)
-    {
-        $this->axes = $axes;
-
-        return $this;
-    }
-
-    /**
-     * Get axes
-     *
-     * @return array
-     */
-    public function getAxes()
-    {
-        return $this->axes;
-    }
 
 
   
@@ -220,7 +233,7 @@ class Project
      */
     public function setFrenchSummary($frenchSummary)
     {
-        $this->french_summary = $frenchSummary;
+        $this->frenchSummary = $frenchSummary;
 
         return $this;
     }
@@ -232,7 +245,7 @@ class Project
      */
     public function getFrenchSummary()
     {
-        return $this->french_summary;
+        return $this->frenchSummary;
     }
 
     /**
@@ -244,7 +257,7 @@ class Project
      */
     public function setEnglishSummary($englishSummary)
     {
-        $this->english_summary = $englishSummary;
+        $this->englishSummary = $englishSummary;
 
         return $this;
     }
@@ -256,7 +269,7 @@ class Project
      */
     public function getEnglishSummary()
     {
-        return $this->english_summary;
+        return $this->englishSummary;
     }
 
     /**
@@ -413,4 +426,56 @@ class Project
     {
         return $this->slug;
     }
+    
+    
+    
+    
+    
+    
+    /**
+     * Add axe
+     *
+     * @param \Bdtln\AxeBundle\Entity\Axe $axe
+     *
+     * @return Axe
+     */
+    public function addAxe(\Bdtln\AxeBundle\Entity\Axe $axe)
+    {
+        $this->axes[] = $axe;
+
+        return $this;
+    }
+
+    /**
+     * Remove axe
+     *
+     * @param \Bdtln\AxeBundle\Entity\Axe $axe
+     */
+    public function removeAxe(\Bdtln\AxeBundle\Entity\Axe $axe)
+    {
+        $this->axes->removeElement($axe);
+    }
+
+    /**
+     * Get axes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAxes()
+    {
+
+        
+        
+        
+        
+        return $this->axes;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
 }

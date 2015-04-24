@@ -1,13 +1,22 @@
 #The displaying of a project.
 #@param project_slug the slug of the project we want to see
 bdtln_project_display:
-    path:     /{slug}
+    path:     /display/{slug}
     defaults: { _controller: BdtlnProjectBundle:Project:index}
     requirements:
-        project_slug:   ([a-zA-Z0-9-_])+
+        slug:   ([a-zA-Z0-9-_])+
 
+#Add a project
+bdtln_project_add_project:
+    path: /add_project
+    defaults: { _controller: BdtlnProjectBundle:Project:add_project }
 
-
+#Add an axe into a project
+bdtln_project_add_axe_in_project:
+    path: /add_axe/{slug}
+    defaults: { _controller: BdtlnProjectBundle:Project:add_axe_in_project }
+    requirements:
+        slug:   ([a-zA-Z-0-9-_])+
 
 
 

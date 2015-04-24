@@ -5,7 +5,7 @@ namespace Bdtln\ProjectBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use Bdtln\ProjectBundle\Form\FileType;
+use Bdtln\AxeBundle\Form\AxeType;
 
 class ProjectType extends AbstractType
 {
@@ -24,7 +24,7 @@ class ProjectType extends AbstractType
             ->add('englishDescription', 'textarea', array('required' => false))
             ->add('beginningDate', 'date')
             ->add('endingDate', 'date', array('required' => false))
-        ;
+    ;
     }
     
     /**
