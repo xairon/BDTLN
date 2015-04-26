@@ -141,12 +141,7 @@ class Project
      */
     private $slug;
     
-    /**
-     * axes represent the axes to whome belong to the project
-     * @var ArrayCollection 
-     * @ORM\ManyToMany(targetEntity="Bdtln\AxeBundle\Entity\Axe")
-     */
-    private $axes;
+
     
     
     public function __construct() {
@@ -428,49 +423,7 @@ class Project
     }
     
     
-    
-    
-    
-    
-    /**
-     * Add axe
-     *
-     * @param \Bdtln\AxeBundle\Entity\Axe $axe
-     *
-     * @return Axe
-     */
-    public function addAxe(\Bdtln\AxeBundle\Entity\Axe $axe)
-    {
-        $this->axes[] = $axe;
-
-        return $this;
-    }
-
-    /**
-     * Remove axe
-     *
-     * @param \Bdtln\AxeBundle\Entity\Axe $axe
-     */
-    public function removeAxe(\Bdtln\AxeBundle\Entity\Axe $axe)
-    {
-        $this->axes->removeElement($axe);
-    }
-
-    /**
-     * Get axes
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getAxes()
-    {
-
-        
-        
-        
-        
-        return $this->axes;
-    }
-    
+ 
     
     
     
