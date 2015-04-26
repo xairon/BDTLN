@@ -16,7 +16,12 @@ bdtln_project_add_axe_in_project:
     path: /add_axe/{slug}
     defaults: { _controller: BdtlnProjectBundle:Project:add_axe_in_project }
     requirements:
+        slug:   ([a-zA-Z0-9-_])+
+
+#Update a project
+bdtln_project_update_project:
+    path: /update_project/{slug}
+    defaults: { _controller: BdtlnProjectBundle:Project:update_project }
+    requirements:
         slug:   ([a-zA-Z-0-9-_])+
-
-
 
