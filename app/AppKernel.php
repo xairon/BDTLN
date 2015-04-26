@@ -24,6 +24,7 @@ class AppKernel extends Kernel
             new Bdtln\AxeBundle\BdtlnAxeBundle(),
             new Bdtln\DefaultBundle\BdtlnDefaultBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            new Bdtln\UserBundle\BdtlnUserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

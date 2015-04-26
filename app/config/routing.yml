@@ -1,3 +1,7 @@
+bdtln_user:
+    resource: "@BdtlnUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
 bdtln_default:
     resource: "@BdtlnDefaultBundle/Resources/config/routing.yml"
     prefix:   /
