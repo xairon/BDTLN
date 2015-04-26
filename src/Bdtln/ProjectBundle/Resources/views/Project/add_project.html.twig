@@ -5,9 +5,16 @@
 
 {% extends "BdtlnProjectBundle::layout_project.html.twig" %}
 
+{% block scripts %}
+    <!--<script type="text/javascript" src="ckfinder/ckfinder.js"></script>-->
+    <script type="text/javascript" src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+    {{ parent() }}
+{% endblock %}
+
+
 {% block project_body %}
     
-    
+    {#The sessions flashbag like an error wrote in controller will be displayed here#}
     {% for information in app.session.flashbag.get('information')%}
     <p>
         {{ information }}
@@ -72,5 +79,9 @@
     
     
     
-    
+<script type="text/javascript">
+    var editorFrench = CKEDITOR.replace( 'bdtln_projectbundle_project_frenchDescription' );
+    var editorEnglish = CKEDITOR.replace( 'bdtln_projectbundle_project_englishDescription' );
+//    CKFinder.setupCKEditor( editor, 'ckfinder/' );
+</script>
 {% endblock %}
