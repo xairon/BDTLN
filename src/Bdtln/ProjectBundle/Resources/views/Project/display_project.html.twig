@@ -8,7 +8,7 @@
 {% block project_body %}
     
     <a href="{{ path('bdtln_project_add_axe_in_project' , {'slug': project.slug }) }}">Add an axe</a>
-    
+    <a href="{{ path('bdtln_project_update_project' , {'slug': project.slug }) }}">Update the project</a>
     
     <div class="row clearfix">
     	<div class="col-md-8 column" id="article">
@@ -17,7 +17,7 @@
             
             <!-- The description of the project -->
             <p class="lead">
-		{{ project.frenchDescription }}
+		{{ project.frenchDescription | replace({'<script': '','</script>': '', '"': "&quot;", "'": "&#39;"}) | raw }}
             </p>
             
         </div>
