@@ -12,14 +12,24 @@
         <br />
         Choose an axe
         <br />
+            {# If an error or an information was initialized in the controller, we display
+              it here #}
             {% for information in app.session.flashbag.get('information')%}
                 <p>
                     {{ information }}
                 </p>
             {% endfor %}
+            
+            {#If this project belong to all axes, we cant display any axe here#}
+            {% if axes is empty %}
+                <p>
+                    Ce projet contient déjà tous les axes
+                </p>
+            {% endif %}
             <form method="POST" action="{{ path('bdtln_project_add_axe_in_project', {'slug': project.slug}) }}">
             <select name="axe">
                 <option value="">--------------</option>
+               {#Display all the axes if the proeject don't belong to all axes#}     
                 {% for axe in axes %}
                     <option value="{{ axe.id }}">{{axe.englishTitle}}</option>
                 {% endfor %}
