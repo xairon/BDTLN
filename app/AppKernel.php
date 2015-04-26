@@ -24,6 +24,11 @@ class AppKernel extends Kernel
             new Bdtln\AxeBundle\BdtlnAxeBundle(),
             new Bdtln\DefaultBundle\BdtlnDefaultBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
+            new Bdtln\UserBundle\BdtlnUserBundle(),
+            new JMS\AopBundle\JMSAopBundle(),
+            new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
+            new JMS\DiExtraBundle\JMSDiExtraBundle($this),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
