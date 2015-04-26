@@ -5,7 +5,7 @@ imports:
 
 framework:
     #esi:             ~
-    #translator:      { fallback: "%locale%" }
+    translator:      { fallback: "%locale%" }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -88,3 +88,11 @@ services:
             - [ setAnnotationReader, [ @annotation_reader ] ]
             - [ setDefaultLocale, [ en ] ]
             - [ setTranslationFallback, [ true ] ]
+            
+fos_user:
+    db_driver:  orm
+    #The kind of database, we user Doctrine ORMs
+    firewall_name:  main
+    #The firewall name that we use for those users
+    user_class: Bdtln\UserBundle\Entity\User
+    #The entity class that we use
