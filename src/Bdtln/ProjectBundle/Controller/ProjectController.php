@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use \Bdtln\ProjectBundle\Entity\File;
 use Bdtln\ProjectBundle\Entity\Project;
 use Bdtln\ProjectBundle\Form\ProjectType;
+use JMS\SecurityExtraBundle\Annotation\Secure;
+
 
 class ProjectController extends Controller
 {
@@ -21,6 +23,7 @@ class ProjectController extends Controller
      /**
      * add_projectAction will display a form and allow to create a project
      * @return Response Project/add_project.html.twig
+     * @Secure(roles="ROLE_SUPER_ADMIN")
      */
     public function  add_projectAction() {
         //The entityManager will allow to save the project in the database
@@ -72,12 +75,14 @@ class ProjectController extends Controller
     /**
      * add_axe_in_project allow to add axe in a project
      * @param type $id the id of Project
+     * @Secure(roles="IS_AUTHENTICATED_REMEMBERED")
      */
     public function add_axe_in_projectAction( Project $project ) {
         
+        
         //Verifier si la personne qui regarde cette page est aussi celle qui est responsable du projet
         
-        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager = $this->getDoctrine()->getManager();  
         $axeRepository = $entityManager->getRepository('BdtlnAxeBundle:Axe');
         $axes = $axeRepository->findAllWithProjects();
         //The axes witch doesn't own this project
