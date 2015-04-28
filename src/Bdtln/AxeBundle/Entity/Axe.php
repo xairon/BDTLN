@@ -3,6 +3,8 @@
 namespace Bdtln\AxeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Axe
@@ -26,6 +28,12 @@ class Axe
      * @var string
      *
      * @ORM\Column(name="french_title", type="string", length=255, unique=true)
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = "2",
+     *      max = "255",
+     *      minMessage = "The french title should be longer than {{ limit }} characters",
+     *      maxMessage = "The french title not be longer than {{ limit }} characters")
      */
     private $frenchTitle;
     
@@ -35,6 +43,12 @@ class Axe
      * @var string
      *
      * @ORM\Column(name="english_title", type="string", length=255, unique=true)
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = "2",
+     *      max = "255",
+     *      minMessage = "The english title should be longer than {{ limit }} characters",
+     *      maxMessage = "The english title not be longer than {{ limit }} characters")
      */
     private $englishTitle;
 
@@ -62,6 +76,11 @@ class Axe
      * @var string
      *
      * @ORM\Column(name="french_summary", type="string", length=255)
+     * @Assert\Length(
+     *      min = "2",
+     *      max = "255",
+     *      minMessage = "The english title should be longer than {{ limit }} characters",
+     *      maxMessage = "The english title not be longer than {{ limit }} characters")
      */
     private $frenchSummary;
 
@@ -71,6 +90,11 @@ class Axe
      * @var string
      *
      * @ORM\Column(name="english_summary", type="string", length=255)
+     * @Assert\Length(
+     *      min = "2",
+     *      max = "255",
+     *      minMessage = "The english title should be longer than {{ limit }} characters",
+     *      maxMessage = "The english title not be longer than {{ limit }} characters")
      */
     private $englishSummary;
     
@@ -78,9 +102,30 @@ class Axe
     /**
      * projects represent all the projects in the axe
      * @var ArrayCollection 
-     * @ORM\ManyToMany(targetEntity="Bdtln\ProjectBundle\Entity\Project")
+     * @ORM\ManyToMany(targetEntity="Bdtln\ProjectBundle\Entity\Project", cascade={"remove"})
      */
     private $projects;
+    
+    /**
+     * slug represent the slug of the axe
+     * @var string 
+     * @Gedmo\Slug(fields={"englishTitle"})
+     * @ORM\Column(length=255, unique=true)
+     */
+    private $slug;
+    
+    
+    
+    /**
+     * managers represent all the managers of the axe
+     *@ORM\ManyToMany(targetEntity="Bdtln\UserBundle\Entity\User")
+     * @ORM\JoinTable(name="axe_manager",
+     *       joinColumns={@ORM\JoinColumn(name="axe", referencedColumnName="id")},
+     *       inverseJoinColumns={@ORM\JoinColumn(name="user", referencedColumnName="id")})
+     */
+    private $managers;
+    
+    
     
     
     
@@ -304,4 +349,62 @@ class Axe
         return false;
     }
     
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return Axe
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * Add manager
+     *
+     * @param \Bdtln\UserBundle\Entity\User $manager
+     *
+     * @return Axe
+     */
+    public function addManager(\Bdtln\UserBundle\Entity\User $manager)
+    {
+        $this->managers[] = $manager;
+
+        return $this;
+    }
+
+    /**
+     * Remove manager
+     *
+     * @param \Bdtln\UserBundle\Entity\User $manager
+     */
+    public function removeManager(\Bdtln\UserBundle\Entity\User $manager)
+    {
+        $this->managers->removeElement($manager);
+    }
+
+    /**
+     * Get managers
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getManagers()
+    {
+        return $this->managers;
+    }
 }

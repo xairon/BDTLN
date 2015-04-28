@@ -1,0 +1,41 @@
+{# src/Bdtln/AxeBundle/Resources/views/Axe/delete_axe.html.twig #}
+{#
+    Here an administrator will can delete an axe
+#}
+
+{% extends "BdtlnAxeBundle::layout_axe.html.twig" %}
+
+
+{% block axe_body %}
+    
+    {#The sessions flashbag like an error written in controller will be displayed here#}
+    {% for information in app.session.flashbag.get('information')%}
+    <p>
+        {{ information }}
+    </p>
+    {% endfor %}
+    
+    
+    <form method="POST" action="{{ path('bdtln_axe_delete_axe', {'slug': slug}) }}" >
+        <p>Voulez-vous supprimer cet axe ? Les projets appartenant à cet axe seront supprimés.</p><br />
+        
+        <label>Yes</label><input type="radio" name="delete" value="yes" />
+        <label>No</label><input type="radio" name="delete" value="no" />
+        <div class="control-group">
+            
+            <input type="hidden" name="token" value="{{ app.session.get('token') }}" />
+            <label class="control-label" for="submit"></label>
+            <div class="controls">
+                <button id="submit" name="submit" class="btn btn-primary">Ajouter</button>
+            </div>
+        </div>
+        
+    </form>
+    
+    
+    
+    
+    
+    
+    
+{% endblock %}

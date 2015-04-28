@@ -7,12 +7,12 @@
 
 {% block axe_body %}
     {# if the controlle has given the axes to us, we display all axes with all project in#}
-    {% if axes is not null %}
+    {% if axes is not null and axes|length > 0 %}
         {% for axe in axes %}
             <div class="row clearfix" >
             
                 <div class="col-md-10 column" id="axe">
-                    <h3>{{ axe.frenchTitle }}</h3>
+                    <h3><a href="{{ path('bdtln_axe_display_axe', {'slug': axe.slug}) }}">{{ axe.frenchTitle }}</a></h3>
                     <hr>
                     <ul>
                         {% set projects = axe.projects %}

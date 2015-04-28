@@ -15,12 +15,12 @@ class AxeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('frenchTitle')
-            ->add('englishTitle')
-            ->add('englishDescription')
-            ->add('frenchDescription')
-            ->add('frenchSummary')
-            ->add('englishSummary')
+            ->add('frenchTitle', 'text')
+            ->add('englishTitle', 'text')
+            ->add('englishDescription', 'textarea')
+            ->add('frenchDescription', 'textarea')
+            ->add('frenchSummary', 'text')
+            ->add('englishSummary', 'text')
         ;
     }
     
