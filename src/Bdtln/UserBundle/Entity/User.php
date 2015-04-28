@@ -67,6 +67,8 @@ class User extends BaseUser
      */
     private $dateLeaving;
     
+
+    
     
     public function __construct() {
         parent::__construct();
