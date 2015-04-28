@@ -34,6 +34,7 @@
                     <option value="{{ axe.id }}">{{axe.englishTitle}}</option>
                 {% endfor %}
             </select><br />
+            <input type="hidden" value="{{app.session.get('token') }}" name="token" /><br />
             <input type="submit" value="Submit"/>
         </form>
     </div>

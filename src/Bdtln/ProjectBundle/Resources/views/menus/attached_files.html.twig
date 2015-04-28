@@ -1,10 +1,13 @@
 {# src/ProjectBundle/Resources/views/menus/attached_files.html.twig #}
 
-
-<div id="flux">
-    <h4>Pièces jointes</h4>
-    <ul>
-        <li>Integer molestie lorem at massa</li>
-     	<li>Facilisis in pretium nisl aliquet</li>
-    </ul>
-</div>
+{# If there is at least one attached file, display it #}
+{% if files is defined and files is not null and files|length > 0%}
+    <div id="flux">
+        <h4>Pièces jointes</h4>
+        <ul>
+            {% for file in files %}
+                <li>{{ file.title }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
