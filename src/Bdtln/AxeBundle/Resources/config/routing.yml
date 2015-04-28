@@ -2,3 +2,38 @@
 bdtln_axe_homepage:
     path:     /
     defaults: { _controller: BdtlnAxeBundle:Axe:index }
+
+#Display one axe
+bdtln_axe_display_axe:
+    path:   /display/{slug}
+    defaults:   { _controller: BdtlnAxeBundle:Axe:display_axe }
+    requirements:
+        slug:   ([a-zA-Z0-9-_])+
+        
+#Add an axe
+bdtln_axe_add_axe:
+    path:   /add_axe
+    defaults:   { _controller: BdtlnAxeBundle:Axe:add_axe }
+    requirements:
+        slug:   ([a-zA-Z0-9-_])+
+        
+#Update an axe
+bdtln_axe_update_axe:
+    path:   /update_axe/{slug}
+    defaults:   { _controller: BdtlnAxeBundle:Axe:update_axe }
+    requirements:
+        slug:   ([a-zA-Z0-9-_])+
+        
+#Update managers
+bdtln_axe_update_managers:
+    path:   /update_managers/{slug}
+    defaults:   { _controller: BdtlnAxeBundle:Axe:update_managers }
+    requirements:
+        slug:   ([a-zA-Z0-9-_])+
+        
+#Delete an axe
+bdtln_axe_delete_axe:
+    path:   /delete/{slug}
+    defaults:   { _controller: BdtlnAxeBundle:Axe:delete_axe }
+    requirements:
+        slug:   ([a-zA-A0-9-_])+

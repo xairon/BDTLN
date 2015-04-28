@@ -1,0 +1,73 @@
+{# src/Bdtln/AxeBundle/Resources/views/Axe/add_axe.html.twig #}
+{#
+    Here an administrator will can create a axe
+#}
+
+{% extends "BdtlnAxeBundle::layout_axe.html.twig" %}
+
+{% block scripts %}
+    <!--<script type="text/javascript" src="ckfinder/ckfinder.js"></script>-->
+    <script type="text/javascript" src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+    {{ parent() }}
+{% endblock %}
+
+
+{% block axe_body %}
+    
+    <p>Ajouter un axe</p>
+    
+    {#The sessions flashbag like an error written in controller will be displayed here#}
+    {% for information in app.session.flashbag.get('information')%}
+    <p>
+        {{ information }}
+    </p>
+    {% endfor %}
+    <form action="{{ path('bdtln_axe_add_axe') }}" method="POST" {{ form_enctype(form) }}>
+        {{ form_errors(form) }}
+        <div>
+            {{ form_label(form.englishTitle, 'Titre anglais') }}
+            {{ form_errors(form.englishTitle) }}
+            {{ form_widget(form.englishTitle) }}
+        </div>
+        <div>
+            {{ form_label(form.frenchTitle, 'Titre français') }}
+            {{ form_errors(form.frenchTitle) }}
+            {{ form_widget(form.frenchTitle) }}
+        </div>
+        <div>
+            {{ form_label(form.englishSummary, 'Résumé anglais') }}
+            {{ form_errors(form.englishSummary) }}
+            {{ form_widget(form.englishSummary) }}
+        </div>
+        <div>
+            {{ form_label(form.frenchSummary, 'Résumé français') }}
+            {{ form_errors(form.frenchSummary) }}
+            {{ form_widget(form.frenchSummary) }}
+        </div>
+        <div>
+            {{ form_label(form.englishDescription, 'Description anglaise') }}
+            {{ form_errors(form.englishDescription) }}
+            {{ form_widget(form.englishDescription) }}
+        </div>
+        
+        <div>
+            {{ form_label(form.frenchDescription, 'Description française') }}
+            {{ form_errors(form.frenchDescription) }}
+            {{ form_widget(form.frenchDescription) }}
+        </div>
+        
+        
+        
+        {{ form_rest(form) }}
+        
+        <input type="submit" value="Submit" />
+    </form>
+    
+    
+    
+<script type="text/javascript">
+    var editorFrench = CKEDITOR.replace( 'bdtln_axebundle_axe_frenchDescription' );
+    var editorEnglish = CKEDITOR.replace( 'bdtln_axebundle_axe_englishDescription' );
+//    CKFinder.setupCKEditor( editor, 'ckfinder/' );
+</script>
+{% endblock %}

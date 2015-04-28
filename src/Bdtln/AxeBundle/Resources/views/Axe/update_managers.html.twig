@@ -1,0 +1,100 @@
+{# src/Bdtln/AxeBundle/Resources/views/Axe/update_managers.html.twig #}
+{#
+    Here an administrator will can add a participant into a project
+#}
+
+{% extends "BdtlnAxeBundle::layout_axe.html.twig" %}
+
+
+{% block axe_body %}
+    
+    
+        <div class="row clearfix" >
+		<div class="col-md-10 column">
+			<form action="{{ path('bdtln_axe_update_managers', {'slug': axe.slug}) }}" class="form-horizontal" id="formulaire" method="POST">
+				<fieldset>
+
+					<!-- Form Name -->
+					<legend>Ajouter un participant à l'axe</legend>
+
+                                        {#The sessions flashbag like an error written in controller will be displayed here#}
+                                        {% for information_add in app.session.flashbag.get('informations_add')%}
+                                        <p>
+                                            {{ information_add }}
+                                        </p>
+                                        {% endfor %}
+
+					<!-- Select Basic -->
+					<div class="control-group">
+					  <label class="control-label" for="selectUser">Ajouter un administrateur</label>
+					  <div class="controls">
+					    <select id="selectUser" name="selectUser" class="input-xlarge">
+                                                <option>-----------</option>
+                                                {% for noManager in noManagers %}
+                                                    <option value="{{ noManager.id }}">{{ noManager.firstName }} {{ noManager.lastName }}</option>
+                                                {% endfor %}
+					    </select>
+					  </div>
+					</div>
+                                        <input type="hidden" value="{{app.session.get('token_add_manager') }}" name="token_add_manager" /><br />
+                                        <input type="hidden" value="submit_add" name="submit_add" />
+
+					<!-- Button -->
+					<div class="control-group">
+					  <label class="control-label" for="submit"></label>
+					  <div class="controls">
+					    <button id="submit" name="submit" class="btn btn-primary">Ajouter</button>
+					  </div>
+					</div>
+				</fieldset>
+                                </form>
+		</div>
+		<div class="col-md-2 column">
+		</div>
+	</div>
+        <!-- Delete a participant -->
+        <div class="row clearfix" >
+		<div class="col-md-10 column">
+			<form action="{{ path('bdtln_axe_update_managers', {'slug': axe.slug}) }}" class="form-horizontal" id="formulaire" method="POST">
+				<fieldset>
+
+					<!-- Form Name -->
+					<legend>Retirer un administrateur de l'axe</legend>
+
+                                        {% for information_delete in app.session.flashBag.get('informations_delete') %}
+                                            {{ information_delete }}
+                                        {% endfor %}
+                                            
+					<!-- Select Basic -->
+					<div class="control-group">
+                                            <label class="control-label" for="selectUser">Supprimer un administrateur</label>
+                                            <div class="controls">
+                                                <select id="selectUser" name="selectUser" class="input-xlarge">
+                                                    <option>-----------</option>
+                                                    {% for manager in managers %}
+                                                        <option value="{{ manager.id }}"> {{ manager.firstName }} {{ manager.lastName }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+					</div>
+                                        <input type="hidden" value="{{app.session.get('token_delete_manager') }}" name="token_delete_manager" /><br />
+
+                                        <input type="hidden" value="submit_delete" name="submit_delete" />
+
+					<!-- Button -->
+
+					<div class="control-group">
+					  <label class="control-label" for="submit"></label>
+					  <div class="controls">
+					    <button id="submit" name="submit" class="btn btn-primary">Ajouter</button>
+					  </div>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+		<div class="col-md-2 column">
+		</div>
+	</div>
+    
+
+{% endblock %}

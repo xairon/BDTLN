@@ -1,0 +1,34 @@
+{# src/BdtlnAxeBundle/Resources/views/Axe/display_axe.html.twig #}
+{#
+    Here everybody will can see a list with all axes
+#}
+
+{% extends "BdtlnAxeBundle::layout_axe.html.twig" %}
+
+{% block axe_body %}
+    
+    {# If the current user is SUPER ADMIN or admin of this axe, he can see the links below #}
+    {% if isAdmin == true %}
+        <a href="{{ path('bdtln_axe_update_axe' , {'slug': axe.slug }) }}">Update the axe</a>
+       <a href="{{ path('bdtln_axe_update_managers', {'slug': axe.slug }) }}">Manage the administrators</a>
+         <a href="{{ path('bdtln_axe_delete_axe', {'slug': axe.slug }) }}">Delete the axe</a>
+    {% endif %}
+    <div class="row clearfix" >
+		<div class="col-md-10 column" id="axe">
+			<h3>{{ axe.englishTitle}}</h3>
+			<hr>
+			
+                        <p class="lead">
+                            {{ axe.englishDescription | replace({'<script': '','</script>': '', '"': "&quot;", "'": "&#39;"}) | raw }}
+			</p>
+
+		</div>
+		<div class="col-md-2 column">
+		</div>
+	</div>
+    
+    
+    
+    
+    
+{% endblock %}

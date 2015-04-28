@@ -26,6 +26,11 @@ class AxeRepository extends \Doctrine\ORM\EntityRepository {
         return $queryBuilder->getQuery()->getResult();
     }
 
+    /**
+     * findAllNotInProject will find all the axes witch don't contain the given project
+     * @param Project $project
+     * @return ArrayCollection the list of axes
+     */
     public function findAllNotInProject($project) {
 
         //Get all axes, joined with their projects
@@ -46,6 +51,30 @@ class AxeRepository extends \Doctrine\ORM\EntityRepository {
         }
 
         return $axesNotInProject;
+    }
+    
+    
+    /**
+     * findOneAxeWithManagers will find the given axe linked with their managers
+     * @param string $slugAxe
+     * @return Axe if it exists, or null
+     */
+    public function findOneWithManagers($slugAxe) {
+        
+        //Creating of querybuilder
+        $queryBuilder = $this->_em->createQueryBuilder('a');
+        //Select all from axe with a join between axe and project 
+        $queryBuilder->select('a')
+                ->from('BdtlnAxeBundle:Axe', 'a')
+                ->leftJoin('a.managers', 'm')
+                ->addSelect('m')
+                ->where('a.slug = :slug')
+                ->setParameter(':slug', $slugAxe)
+        ;
+                
+        return $queryBuilder->getQuery()->getOneOrNullResult();
+        
+        
     }
 
 }
