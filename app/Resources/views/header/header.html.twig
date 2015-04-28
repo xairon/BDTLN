@@ -40,6 +40,19 @@
                                                 <li>
                                                     <a class="navbar-brand" href="{{ path('bdtln_project_add_project') }}">Ajouter un projet</a>
                                                 </li>
+                                                <li>
+                                                    <a class="navbar-brand" href="{{ path('bdtln_axe_add_axe') }}">Ajouter un axe</a>
+                                                </li>
+                                                
+                                                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                                    <li>
+                                                        <a class="navbar-brand" href="#">{{ app.user.username }} - </a><a class="navbar-brand" href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+                                                    </li>
+                                                {% else %}
+                                                    <li>
+                                                        <a class="navbar-brand" href="{{ path('fos_user_security_login') }}">Connexion</a>
+                                                    </li>
+                                                {% endif %}
 					</ul>
 				</div>	
 			</nav>
