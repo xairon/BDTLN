@@ -1,0 +1,100 @@
+{# src/Bdtln/ProjectBundle/Resources/views/Project/update_participants.html.twig #}
+{#
+    Here an administrator will can add or delete a participant into a project
+#}
+
+{% extends "BdtlnProjectBundle::layout_project.html.twig" %}
+
+
+{% block project_body %}
+    
+    
+    
+        <div class="row clearfix" >
+		<div class="col-md-10 column">
+			<form action="{{ path('bdtln_project_update_participants', {'slug': project.slug}) }}" class="form-horizontal" id="formulaire" method="POST">
+				<fieldset>
+
+					<!-- Form Name -->
+					<legend>Ajouter un participant au projet</legend>
+
+                                           {#The sessions flashbag like an error written in controller will be displayed here#}
+                                            {% for information_add in app.session.flashbag.get('informations_add')%}
+                                            <p>
+                                                {{ information_add }}
+                                            </p>
+                                            {% endfor %}
+					<!-- Select Basic -->
+					<div class="control-group">
+					  <label class="control-label" for="selectUser">Ajouter un participant</label>
+					  <div class="controls">
+					    <select id="selectUser" name="selectUser" class="input-xlarge">
+                                                <option>-----------</option>
+                                                {% for noParticipant in noParticipants %}
+                                                    <option value="{{ noParticipant.id }}">{{ noParticipant.firstName }} {{ noParticipant.lastName }}</option>
+                                                {% endfor %}
+					    </select>
+					  </div>
+					</div>
+                                        <input type="hidden" value="{{app.session.get('token_add_participant') }}" name="token_add_participant" /><br />
+                                        <input type="hidden" value="submit_add" name="submit_add" />
+
+					<!-- Button -->
+					<div class="control-group">
+					  <label class="control-label" for="submit"></label>
+					  <div class="controls">
+					    <button id="submit" name="submit" class="btn btn-primary">Ajouter</button>
+					  </div>
+					</div>
+				</fieldset>
+                                </form>
+		</div>
+		<div class="col-md-2 column">
+		</div>
+	</div>
+        <!-- Delete a participant -->
+        <div class="row clearfix" >
+		<div class="col-md-10 column">
+			<form action="{{ path('bdtln_project_update_participants', {'slug': project.slug}) }}" class="form-horizontal" id="formulaire" method="POST">
+				<fieldset>
+
+					<!-- Form Name -->
+					<legend>Retirer un participant du projet</legend>
+
+                                        {% for information_delete in app.session.flashBag.get('informations_delete') %}
+                                            {{ information_delete }}
+                                        {% endfor %}
+                                            
+					<!-- Select Basic -->
+					<div class="control-group">
+                                            <label class="control-label" for="selectUser">Supprimer un participant</label>
+                                            <div class="controls">
+                                                <select id="selectUser" name="selectUser" class="input-xlarge">
+                                                    <option>-----------</option>
+                                                    {% for participant in participants %}
+                                                        <option value="{{ participant.id }}"> {{ participant.firstName }} {{ participant.lastName }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+					</div>
+                                        <input type="hidden" value="{{app.session.get('token_delete_participant') }}" name="token_delete_participant" /><br />
+
+                                        <input type="hidden" value="submit_delete" name="submit_delete" />
+
+					<!-- Button -->
+
+					<div class="control-group">
+					  <label class="control-label" for="submit"></label>
+					  <div class="controls">
+					    <button id="submit" name="submit" class="btn btn-primary">Ajouter</button>
+					  </div>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+		<div class="col-md-2 column">
+		</div>
+	</div>
+    
+
+{% endblock %}

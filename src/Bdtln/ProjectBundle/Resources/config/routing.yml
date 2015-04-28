@@ -12,6 +12,7 @@ bdtln_project_add_project:
     defaults: { _controller: BdtlnProjectBundle:Project:add_project }
 
 #Add an axe into a project
+#@param project_slug the slug of the project we want to see
 bdtln_project_add_axe_in_project:
     path: /add_axe/{slug}
     defaults: { _controller: BdtlnProjectBundle:Project:add_axe_in_project }
@@ -19,9 +20,31 @@ bdtln_project_add_axe_in_project:
         slug:   ([a-zA-Z0-9-_])+
 
 #Update a project
+#@param project_slug the slug of the project we want to see
 bdtln_project_update_project:
     path: /update_project/{slug}
     defaults: { _controller: BdtlnProjectBundle:Project:update_project }
     requirements:
         slug:   ([a-zA-Z-0-9-_])+
 
+#Manage the participants to a project
+bdtln_project_update_participants:
+    path:   /update_participants/{slug}
+    defaults:   { _controller: BdtlnProjectBundle:Project:update_participants }
+    requirements:
+        slug:   ([a-zA-Z0-9-_])+
+
+#Manage the managers of a project
+bdtln_project_update_managers:
+    path:   /update_managers/{slug}
+    defaults:   { _controller: BdtlnProjectBundle:Project:update_managers }
+    requirements:
+        slug:   ([a-zA-Z0-9-_])+
+        
+#Delete a project
+bdtln_project_delete_project:
+    path:   /delete/{slug}
+    defaults:   { _controller: BdtlnProjectBundle:Project:delete_project }
+    requirements:
+        slug:   ([a-zA-Z0-9-_])+
+        

@@ -11,6 +11,101 @@ namespace Bdtln\ProjectBundle\Entity;
 class ProjectRepository extends \Doctrine\ORM\EntityRepository
 {
    
+    /**
+     * findProjectWithParticipantsManagerAndFiles will find a project with it participants, managers and files
+     * @param type $slugProject the project's slug
+     * @return Project if the project is found, null else
+     */
+    public function findProjectWithParticipantsManagersAndFiles( $slugProject ) {
         
+        $queryBuilder = $this->_em->createQueryBuilder('p');
+        
+        $queryBuilder->select('p')
+                     ->from('BdtlnProjectBundle:Project', 'p')
+                     ->leftJoin("p.participants", 'pp')
+                     ->addSelect('pp')
+                     ->leftJoin('p.managers', 'pm')
+                     ->addSelect('pm')
+                     ->leftJoin('p.files', 'pf')
+                     ->addSelect('pf')
+                     ->where('p.slug = :slug')
+                     ->setParameter('slug', $slugProject)
+                ;
+        
+        
+        return $queryBuilder->getQuery()->getOneOrNullResult();
+        
+    }
+     
+    
+    /**
+     * findProjectWithParticipants will find a project with it participants
+     * @param type $slugProject the project's slug
+     * @return Project if the project is found, null else
+     */
+    public function findProjectWithParticpants( $slugProject ) {
+        
+        $queryBuilder = $this->_em->createQueryBuilder('p');
+        
+        $queryBuilder->select('p')
+                     ->from('BdtlnProjectBundle:Project', 'p')
+                     ->leftJoin("p.participants", 'pp')
+                     ->addSelect('pp')
+                     ->where('p.slug = :slug')
+                     ->setParameter('slug', $slugProject)
+                ;
+        
+        return $queryBuilder->getQuery()->getOneOrNullResult();
+        
+    }
+    
+    
+    /**
+     * findProjectWithManagers will find a project with it managers
+     * @param type $slugProject the project's slug
+     * @return Project if the project is found, null else
+     */
+    public function findProjectWithManagers( $slugProject ) {
+        
+        $queryBuilder = $this->_em->createQueryBuilder('p');
+        
+        $queryBuilder->select('p')
+                     ->from('BdtlnProjectBundle:Project', 'p')
+                     ->leftJoin("p.managers", 'pm')
+                     ->addSelect('pm')
+                     ->where('p.slug = :slug')
+                     ->setParameter('slug', $slugProject)
+                ;
+        
+        return $queryBuilder->getQuery()->getOneOrNullResult();
+        
+    }
+    
+    
+    
+    /**
+     * findProjectWithManagersAndParticipants will find a project with it managers and participants
+     * @param type $slugProject the project's slug
+     * @return Project if the project is found, null else
+     */
+    public function findProjectWithManagersAndParticipants( $slugProject ) {
+        
+        $queryBuilder = $this->_em->createQueryBuilder('p');
+        
+        $queryBuilder->select('p')
+                     ->from('BdtlnProjectBundle:Project', 'p')
+                     ->leftJoin("p.managers", 'pm')
+                     ->addSelect('pm')
+                     ->leftJoin('p.participants', 'pp')
+                     ->addSelect('pp')
+                     ->where('p.slug = :slug')
+                     ->setParameter('slug', $slugProject)
+                ;
+        
+        return $queryBuilder->getQuery()->getOneOrNullResult();
+        
+    }
+    
+    
     
 }

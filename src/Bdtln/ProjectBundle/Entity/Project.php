@@ -60,6 +60,7 @@ class Project
      * @var string
      *
      * @ORM\Column(name="french_summary", type="string", length=255)
+     * @Assert\NotBlank()
      * @Assert\Length(
      *      min = "20",
      *      max = "255",
@@ -141,7 +142,29 @@ class Project
      */
     private $slug;
     
-
+    /**
+     *
+     * @var ArrayCollection
+     * 
+     * @ORM\ManyToMany(targetEntity="Bdtln\UserBundle\Entity\User")
+     * @ORM\JoinTable(name="project_manager",
+     *       joinColumns={@ORM\JoinColumn(name="project", referencedColumnName="id")},
+     *       inverseJoinColumns={@ORM\JoinColumn(name="user", referencedColumnName="id")})
+     */
+    private $managers;
+    
+    /**
+     *
+     * @var ArrayCollection
+     * 
+     * @ORM\ManyToMany(targetEntity="Bdtln\UserBundle\Entity\User")
+     * @ORM\JoinTable(name="project_participant", 
+     *       joinColumns={@ORM\JoinColumn(name="project", referencedColumnName="id")},
+     *       inverseJoinColumns={@ORM\JoinColumn(name="user", referencedColumnName="id")})
+     */
+    private $participants;
+    
+    
     
     
     public function __construct() {
@@ -431,4 +454,72 @@ class Project
     
     
     
+
+    /**
+     * Add manager
+     *
+     * @param \Bdtln\UserBundle\Entity\User $manager
+     *
+     * @return Project
+     */
+    public function addManager(\Bdtln\UserBundle\Entity\User $manager)
+    {
+        $this->managers[] = $manager;
+
+        return $this;
+    }
+
+    /**
+     * Remove manager
+     *
+     * @param \Bdtln\UserBundle\Entity\User $manager
+     */
+    public function removeManager(\Bdtln\UserBundle\Entity\User $manager)
+    {
+        $this->managers->removeElement($manager);
+    }
+
+    /**
+     * Get managers
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getManagers()
+    {
+        return $this->managers;
+    }
+
+    /**
+     * Add participant
+     *
+     * @param \Bdtln\UserBundle\Entity\User $participant
+     *
+     * @return Project
+     */
+    public function addParticipant(\Bdtln\UserBundle\Entity\User $participant)
+    {
+        $this->participants[] = $participant;
+
+        return $this;
+    }
+
+    /**
+     * Remove participant
+     *
+     * @param \Bdtln\UserBundle\Entity\User $participant
+     */
+    public function removeParticipant(\Bdtln\UserBundle\Entity\User $participant)
+    {
+        $this->participants->removeElement($participant);
+    }
+
+    /**
+     * Get participants
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getParticipants()
+    {
+        return $this->participants;
+    }
 }

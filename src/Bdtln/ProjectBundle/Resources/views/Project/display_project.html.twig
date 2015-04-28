@@ -6,10 +6,15 @@
 {% extends "BdtlnProjectBundle::layout_project.html.twig" %}
 
 {% block project_body %}
-    
-    <a href="{{ path('bdtln_project_add_axe_in_project' , {'slug': project.slug }) }}">Add an axe</a>
-    <a href="{{ path('bdtln_project_update_project' , {'slug': project.slug }) }}">Update the project</a>
-    
+
+    {# If the current user is SUPER ADMIN or admin of this project, he can see the links below #}
+    {% if isAdmin == true %}
+        <a href="{{ path('bdtln_project_add_axe_in_project' , {'slug': project.slug }) }}">Add an axe</a>
+        <a href="{{ path('bdtln_project_update_project' , {'slug': project.slug }) }}">Update the project</a>
+        <a href="{{ path('bdtln_project_update_participants' , {'slug': project.slug }) }}">Manage the participants</a>
+        <a href="{{ path('bdtln_project_update_managers', {'slug': project.slug }) }}">Manage the administrators</a>
+        <a href="{{ path('bdtln_project_delete_project', {'slug': project.slug }) }}">Delete the project</a>
+    {% endif %}
     <div class="row clearfix">
     	<div class="col-md-8 column" id="article">
             <!-- The title of the project -->
@@ -25,7 +30,10 @@
         <div class="col-md-2 column">
         </div>
         <div class="col-md-2 column" >
+            {# Set participants of project #}
+            {% set participants = project.participants %}
             {% include "BdtlnProjectBundle:menus:participants.html.twig" %}
+            {% set files = project.files %}
             {% include 'BdtlnProjectBundle:menus:attached_files.html.twig' %}
         </div>
     </div>
