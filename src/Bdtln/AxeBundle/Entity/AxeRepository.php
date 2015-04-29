@@ -12,7 +12,7 @@ class AxeRepository extends \Doctrine\ORM\EntityRepository {
 
     /**
      * findAllWithProject() will find all axes and do a join to get the projects in only once query
-     * @return ArrayCollection the list of all axes linked with their all projects
+     * @return ArrayCollection the list of all axes joined with their all projects
      */
     public function findAllWithProjects() {
         //Creating of querybuilder
@@ -54,7 +54,7 @@ class AxeRepository extends \Doctrine\ORM\EntityRepository {
     
     
     /**
-     * findOneAxeWithManagers will find the given axe linked with their managers
+     * findOneAxeWithManagers will find the given axe joined with their managers
      * @param string $slugAxe
      * @return Axe if it exists, or null
      */
