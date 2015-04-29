@@ -73,12 +73,12 @@ class AxeController extends Controller
                             //Redirect on the page of new axe
                             return $this->redirect( $this->generateUrl('bdtln_axe_display_axe', array('slug' => $axe->getSlug())) );
                        } else { //If all descriptions are empty
-                           $this->get('session')->getFlashBag()->add('information', 'Au moins une description doit être remplie !');
+                           $this->get('session')->getFlashBag()->add('information', 'At least one description must be filled !');
                            return $this->render('BdtlnaxeBundle:Axe:add_axe.html.twig', array('form' => $axeForm->createView(), 'axes' => $axes));
                         }
                 }       
              else { //If the form is invalid
-                $this->get('session')->getFlashBag()->add('information', 'L\'axe n\'a pas pu être enregistré !');
+                $this->get('session')->getFlashBag()->add('information', 'The axe couldn\'t be saved !');
             }
         }
         
@@ -116,12 +116,12 @@ class AxeController extends Controller
                             //Redirect on the page of new axe
                             return $this->redirect( $this->generateUrl('bdtln_axe_display_axe', array('slug' => $axe->getSlug(), 'isAdmin' => $isAdmin)) );
                        } else { //If all descriptions are empty
-                           $this->get('session')->getFlashBag()->add('information', 'Au moins une description doit être remplie !');
+                           $this->get('session')->getFlashBag()->add('information', 'At least one description must be filled !');
                            return $this->render('BdtlnaxeBundle:Axe:add_update.html.twig', array('form' => $axeForm->createView(), 'axes' => $axe));
                         }
                 }       
              else { //If the form is invalid
-                $this->get('session')->getFlashBag()->add('information', 'L\'axe n\'a pas pu être enregistré !');
+                $this->get('session')->getFlashBag()->add('information', 'The axe couldn\t be saved !');
             }
         }
         
@@ -146,7 +146,7 @@ class AxeController extends Controller
         $axe = $repositoryAxe->findOneWithManagers($slug);
         
         if ( $axe === null )
-            throw $this->createNotFoundException ('Axe non trouvé');
+            throw $this->createNotFoundException ('Axe not found');
         
         $managers = $axe->getManagers()->toArray();
         $allUsers = $repositoryUser->findAll();
@@ -185,7 +185,7 @@ class AxeController extends Controller
             } else if ( !empty($_POST['submit_delete']) ) {//If he want delete a manager
                 
                 if ( in_array("ROLE_SUPER_ADMIN", $postedManager->getRoles())) { //If postedManager is SUPER_ADMIN
-                    $this->get('session')->getFlashBag()->add('informations_delete', 'The root can\'t be deleted !');
+                    $this->get('session')->getFlashBag()->add('informations_delete', 'The super administrator can\t be deleted !');
                     return $this->redirect( $this->generateUrl('bdtln_axe_update_managers', array('slug' => $axe->getSlug())) );
                 }
                 else if ( count($managers) > 1 ) {
@@ -193,7 +193,7 @@ class AxeController extends Controller
                     $entityManager->flush();
                     return $this->redirect( $this->generateUrl('bdtln_axe_display_axe', array('slug' => $axe->getSlug())) );
                 } else {
-                    $this->get('session')->getFlashBag()->add('informations_delete', 'The project must have at least one manager !');
+                    $this->get('session')->getFlashBag()->add('informations_delete', 'The axe must have at least one manager !');
                     return $this->redirect( $this->generateUrl('bdtln_axe_update_managers', array('slug' => $axe->getSlug())) );
                 }
             } else { //If in the submitted form there is not submit_add and not submit_delete
