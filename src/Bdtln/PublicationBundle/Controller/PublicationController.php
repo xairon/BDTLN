@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class PublicationController extends Controller
 {
     /**
-     * indexAction will display the list of all publication
+     * indexAction will display the list of all publications
      * @return Response Publication/publication_list.html.twig the list of publication
      */
     public function indexAction()
