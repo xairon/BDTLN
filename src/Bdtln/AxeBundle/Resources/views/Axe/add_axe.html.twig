@@ -14,12 +14,12 @@
 
 {% block axe_body %}
     
-    <p>Ajouter un axe</p>
+    <p>{{ "Add an axe" | trans }}</p>
     
     {#The sessions flashbag like an error written in controller will be displayed here#}
     {% for information in app.session.flashbag.get('information')%}
     <p>
-        {{ information }}
+        {{ information | trans }}
     </p>
     {% endfor %}
     <form action="{{ path('bdtln_axe_add_axe') }}" method="POST" {{ form_enctype(form) }}>

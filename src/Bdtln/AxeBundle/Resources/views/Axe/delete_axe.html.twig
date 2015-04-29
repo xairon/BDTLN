@@ -11,22 +11,22 @@
     {#The sessions flashbag like an error written in controller will be displayed here#}
     {% for information in app.session.flashbag.get('information')%}
     <p>
-        {{ information }}
+        {{ information | trans }}
     </p>
     {% endfor %}
     
     
     <form method="POST" action="{{ path('bdtln_axe_delete_axe', {'slug': slug}) }}" >
-        <p>Voulez-vous supprimer cet axe ? Les projets appartenant à cet axe seront supprimés.</p><br />
+        <p>{% trans %}Voulez-vous supprimer cet axe ? Les projets appartenant à cet axe seront supprimés.{% endtrans %}</p><br />
         
-        <label>Yes</label><input type="radio" name="delete" value="yes" />
-        <label>No</label><input type="radio" name="delete" value="no" />
+        <label>{{ "Yes" | trans }}</label><input type="radio" name="delete" value="yes" />
+        <label>{{ "No" | trans }}</label><input type="radio" name="delete" value="no" />
         <div class="control-group">
             
             <input type="hidden" name="token" value="{{ app.session.get('token') }}" />
             <label class="control-label" for="submit"></label>
             <div class="controls">
-                <button id="submit" name="submit" class="btn btn-primary">Ajouter</button>
+                <button id="submit" name="submit" class="btn btn-primary">{{"Add" | trans }}</button>
             </div>
         </div>
         

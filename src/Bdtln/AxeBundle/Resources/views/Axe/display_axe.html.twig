@@ -9,9 +9,9 @@
     
     {# If the current user is SUPER ADMIN or admin of this axe, he can see the links below #}
     {% if isAdmin == true %}
-        <a href="{{ path('bdtln_axe_update_axe' , {'slug': axe.slug }) }}">Update the axe</a>
-       <a href="{{ path('bdtln_axe_update_managers', {'slug': axe.slug }) }}">Manage the administrators</a>
-         <a href="{{ path('bdtln_axe_delete_axe', {'slug': axe.slug }) }}">Delete the axe</a>
+        <a href="{{ path('bdtln_axe_update_axe' , {'slug': axe.slug }) }}">{{ "Update the axe" | trans }}</a>
+       <a href="{{ path('bdtln_axe_update_managers', {'slug': axe.slug }) }}">{{ "Manage the administrators" | trans }}</a>
+         <a href="{{ path('bdtln_axe_delete_axe', {'slug': axe.slug }) }}">{{"Delete the axe" | trans }}</a>
     {% endif %}
     <div class="row clearfix" >
 		<div class="col-md-10 column" id="axe">
