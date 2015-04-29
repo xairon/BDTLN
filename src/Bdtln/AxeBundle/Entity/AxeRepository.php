@@ -49,7 +49,6 @@ class AxeRepository extends \Doctrine\ORM\EntityRepository {
             if (!in_array($project, $projectsOwnedByThisAxe))
                 $axesNotInProject[] = $axes[$i];
         }
-
         return $axesNotInProject;
     }
     
