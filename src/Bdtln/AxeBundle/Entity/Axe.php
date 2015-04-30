@@ -48,7 +48,7 @@ class Axe
      *      min = "2",
      *      max = "255",
      *      minMessage = "The english title should be longer than {{ limit }} characters",
-     *      maxMessage = "The english title not be longer than {{ limit }} characters")
+     *      maxMessage = "The english title should not be longer than {{ limit }} characters")
      */
     private $englishTitle;
 
@@ -77,10 +77,10 @@ class Axe
      *
      * @ORM\Column(name="french_summary", type="string", length=255)
      * @Assert\Length(
-     *      min = "2",
+     *      min = "20",
      *      max = "255",
-     *      minMessage = "The english title should be longer than {{ limit }} characters",
-     *      maxMessage = "The english title not be longer than {{ limit }} characters")
+     *      minMessage = "The french summary should be longer than {{ limit }} characters",
+     *      maxMessage = "The french summary should not be longer than {{ limit }} characters")
      */
     private $frenchSummary;
 
@@ -91,10 +91,10 @@ class Axe
      *
      * @ORM\Column(name="english_summary", type="string", length=255)
      * @Assert\Length(
-     *      min = "2",
+     *      min = "20",
      *      max = "255",
-     *      minMessage = "The english title should be longer than {{ limit }} characters",
-     *      maxMessage = "The english title not be longer than {{ limit }} characters")
+     *      minMessage = "The english summary should be longer than {{ limit }} characters",
+     *      maxMessage = "The english summary not be longer than {{ limit }} characters")
      */
     private $englishSummary;
     
