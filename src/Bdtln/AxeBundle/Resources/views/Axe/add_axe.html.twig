@@ -23,7 +23,7 @@
     </p>
     {% endfor %}
     <form action="{{ path('bdtln_axe_add_axe') }}" method="POST" {{ form_enctype(form) }}>
-        {{ form_errors(form) }}
+        {{ form_errors(form) | trans }}
         <div>
             {{ form_label(form.englishTitle, 'Titre anglais') }}
             {{ form_errors(form.englishTitle) }}
