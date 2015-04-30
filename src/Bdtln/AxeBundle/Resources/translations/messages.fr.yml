@@ -1,18 +1,29 @@
-'Add an axe': 'Ajouter un axe'
+'Add an axe': Ajouter un axe
 'Are you sure to want delete this axe ? All projects witch belong to it will be deleted.': 'Voulez-vous supprimer cet axe ? Les projets appartenant à cet axe seront supprimés.'
 'Yes': Oui
 'No': Non
 Add: Ajouter
-'Update the axe': 'Mettre l''axe à jour'
-'Manage the administrators': 'Gérer les administrateurs'
-'Delete the axe': 'Supprimer l''axe'
-'Add a participant into the axe': 'Ajouter un participant à cet axe'
+'Update the axe': Mettre l'axe à jour
+'Manage the administrators': Gérer les administrateurs
+'Delete the axe': Supprimer l'axe
+'Add a participant into the axe': Ajouter un participant à cet axe
 'Add an administrator': 'Ajouter un administrateur'
-'Put off an administrator of this axe': 'Retirer un administrateur de cet axe'
-'Delete an administrator': 'Supprimer un administrateur'
+'Put off an administrator of this axe': Retirer un administrateur de cet axe'
+'Delete an administrator': Supprimer un administrateur
 'At least one description must be filled !': Au moins une description doit être remplie !
-'The axe couldn''t be saved !': L''axe n''a pas pu être enregistré !
+'The axe couldn''t be saved !': L'axe n'a pas pu être enregistré !
 'Axe not found': Axe non trouvé
 'The people was not found': La personne n'a pas été trouvée
 The super administrator can''t be deleted !': Le super administrateur ne peut pas être supprimé !
 'The axe must have at least one manager !': L'axe doit avoir au moins un administrateur !
+'The french title should be longer than 2 characters': Le titre français doit faire plus de 2 caractères
+'The french title not be longer than 255 characters': Le titre français doit faire moins de 255 caractères
+'The english title should be longer than 2 characters': Le titre anglais doit faire plus de 2 caractères
+'The english title should not be longer than 255 characters': Le titre anglais doit faire moins de 255 caractères
+'The french summary should be longer than 20 characters': Le résumé français doit faire plus de 20 caractères
+'The french summary not be longer than 255 characters': Le résumé français ne doit pas faire plus de 255 caractères
+'The english summary should be longer than 20 characters': Le résumé anglais doit faire plus de 20 caractères
+'The english summary not be longer than 255 characters': Le résumé anglais ne doit pas faire plus de 255 caractères
+
+
+
