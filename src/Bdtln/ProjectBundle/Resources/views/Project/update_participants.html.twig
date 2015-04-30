@@ -16,17 +16,17 @@
 				<fieldset>
 
 					<!-- Form Name -->
-					<legend>Ajouter un participant au projet</legend>
+					<legend>{{ "Add a participant to the project" | trans }}</legend>
 
                                            {#The sessions flashbag like an error written in controller will be displayed here#}
                                             {% for information_add in app.session.flashbag.get('informations_add')%}
                                             <p>
-                                                {{ information_add }}
+                                                {{ information_add | trans }}
                                             </p>
                                             {% endfor %}
 					<!-- Select Basic -->
 					<div class="control-group">
-					  <label class="control-label" for="selectUser">Ajouter un participant</label>
+					  <label class="control-label" for="selectUser">{{ "Add a participant" | trans }}</label>
 					  <div class="controls">
 					    <select id="selectUser" name="selectUser" class="input-xlarge">
                                                 <option>-----------</option>
@@ -43,7 +43,7 @@
 					<div class="control-group">
 					  <label class="control-label" for="submit"></label>
 					  <div class="controls">
-					    <button id="submit" name="submit" class="btn btn-primary">Ajouter</button>
+					    <button id="submit" name="submit" class="btn btn-primary">{{ "Add" | trans }}</button>
 					  </div>
 					</div>
 				</fieldset>
@@ -59,15 +59,15 @@
 				<fieldset>
 
 					<!-- Form Name -->
-					<legend>Retirer un participant du projet</legend>
+					<legend>{{ "Delete a participant from the project" | trans }}</legend>
 
                                         {% for information_delete in app.session.flashBag.get('informations_delete') %}
-                                            {{ information_delete }}
+                                            {{ information_delete | trans }}
                                         {% endfor %}
                                             
 					<!-- Select Basic -->
 					<div class="control-group">
-                                            <label class="control-label" for="selectUser">Supprimer un participant</label>
+                                            <label class="control-label" for="selectUser">{{ "Delete a participant" | trans }}</label>
                                             <div class="controls">
                                                 <select id="selectUser" name="selectUser" class="input-xlarge">
                                                     <option>-----------</option>
@@ -86,7 +86,7 @@
 					<div class="control-group">
 					  <label class="control-label" for="submit"></label>
 					  <div class="controls">
-					    <button id="submit" name="submit" class="btn btn-primary">Ajouter</button>
+					    <button id="submit" name="submit" class="btn btn-primary">{{ "Delete" | trans }}</button>
 					  </div>
 					</div>
 				</fieldset>
