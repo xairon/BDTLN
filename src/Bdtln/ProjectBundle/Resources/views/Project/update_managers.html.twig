@@ -1,6 +1,6 @@
 {# src/Bdtln/ProjectBundle/Resources/views/Project/update_managers.html.twig #}
 {#
-    Here an administrator will can add a participant into a project
+    Here an administrator will can manage the administrators in a project
 #}
 
 {% extends "BdtlnProjectBundle::layout_project.html.twig" %}
@@ -16,18 +16,18 @@
 				<fieldset>
 
 					<!-- Form Name -->
-					<legend>Ajouter un participant au administrateur</legend>
+					<legend>{{ "Add a participant as administrator" | trans }}</legend>
 
                                         {#The sessions flashbag like an error written in controller will be displayed here#}
                                         {% for information_add in app.session.flashbag.get('informations_add')%}
                                         <p>
-                                            {{ information_add }}
+                                            {{ information_add | trans }}
                                         </p>
                                         {% endfor %}
 
 					<!-- Select Basic -->
 					<div class="control-group">
-					  <label class="control-label" for="selectUser">Ajouter un administrateur</label>
+					  <label class="control-label" for="selectUser">{{ "Add an administrator" | trans }}</label>
 					  <div class="controls">
 					    <select id="selectUser" name="selectUser" class="input-xlarge">
                                                 <option>-----------</option>
@@ -44,7 +44,7 @@
 					<div class="control-group">
 					  <label class="control-label" for="submit"></label>
 					  <div class="controls">
-					    <button id="submit" name="submit" class="btn btn-primary">Ajouter</button>
+					    <button id="submit" name="submit" class="btn btn-primary">{{ "Add" | trans }}</button>
 					  </div>
 					</div>
 				</fieldset>
@@ -60,15 +60,15 @@
 				<fieldset>
 
 					<!-- Form Name -->
-					<legend>Retirer un administrateur du projet</legend>
+					<legend>{{ "Delete an administrator from this project" | trans }}</legend>
 
                                         {% for information_delete in app.session.flashBag.get('informations_delete') %}
-                                            {{ information_delete }}
+                                            {{ information_delete | trans }}
                                         {% endfor %}
                                             
 					<!-- Select Basic -->
 					<div class="control-group">
-                                            <label class="control-label" for="selectUser">Supprimer un administrateur</label>
+                                            <label class="control-label" for="selectUser">{{ "Delete an administrator" | trans }}</label>
                                             <div class="controls">
                                                 <select id="selectUser" name="selectUser" class="input-xlarge">
                                                     <option>-----------</option>
@@ -87,7 +87,7 @@
 					<div class="control-group">
 					  <label class="control-label" for="submit"></label>
 					  <div class="controls">
-					    <button id="submit" name="submit" class="btn btn-primary">Ajouter</button>
+					    <button id="submit" name="submit" class="btn btn-primary">{{ "Delete" | trans }}</button>
 					  </div>
 					</div>
 				</fieldset>

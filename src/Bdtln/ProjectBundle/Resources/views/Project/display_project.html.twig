@@ -9,11 +9,11 @@
 
     {# If the current user is SUPER ADMIN or admin of this project, he can see the links below #}
     {% if isAdmin == true %}
-        <a href="{{ path('bdtln_project_add_axe_in_project' , {'slug': project.slug }) }}">Add an axe</a>
-        <a href="{{ path('bdtln_project_update_project' , {'slug': project.slug }) }}">Update the project</a>
-        <a href="{{ path('bdtln_project_update_participants' , {'slug': project.slug }) }}">Manage the participants</a>
-        <a href="{{ path('bdtln_project_update_managers', {'slug': project.slug }) }}">Manage the administrators</a>
-        <a href="{{ path('bdtln_project_delete_project', {'slug': project.slug }) }}">Delete the project</a>
+        <a href="{{ path('bdtln_project_add_axe_in_project' , {'slug': project.slug }) }}">{{ "Add an axe" | trans }}</a>
+        <a href="{{ path('bdtln_project_update_project' , {'slug': project.slug }) }}">{{ "Update the project" | trans }}</a>
+        <a href="{{ path('bdtln_project_update_participants' , {'slug': project.slug }) }}">{{ "Manage the participants" | trans }}</a>
+        <a href="{{ path('bdtln_project_update_managers', {'slug': project.slug }) }}">{{ "Manage the administrators" | trans }}</a>
+        <a href="{{ path('bdtln_project_delete_project', {'slug': project.slug }) }}">{{ "Delete the project" | trans }}</a>
     {% endif %}
     <div class="row clearfix">
     	<div class="col-md-8 column" id="article">
