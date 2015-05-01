@@ -15,7 +15,7 @@ Add: Ajouter
 'Add an administrator': 'Ajouter un administrateur'
 'Delete an administrator from this project': 'Supprimer un administrateur de ce projet'
 'Delete an administrator': 'Supprimer un administrateur'
-Delete: Supprimer
+'Delete': Supprimer
 'Add a participant to the project': 'Ajouter un participant à ce projet'
 'Add a participant': 'Ajouter un participant'
 'Delete a participant from the project': 'Supprimer un participant de projet'
@@ -29,3 +29,10 @@ Delete: Supprimer
 'French descripion': 'Descripion française'
 'Beginning date': 'Date de début'
 'Ending date': 'Date de fin'
+'This project already own this axe!': 'Ce projet contient déjà cet axe !'
+'The axe has been added!': 'L''axe a été ajouté !'
+'The axe has been deleted from this project!': 'L''axe a été supprimé du projet !'
+'A project must belong at least to one axe!': 'Un projet doit appartenir à au moins un axe !'
+'This project doesn''t own this axe!': 'Ce projet ne contient pas l''axe indiqué !'
+'Delete an axe': 'Retirer un axe'
+'Update axes': 'Gérer les axes'
