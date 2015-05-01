@@ -9,6 +9,9 @@ BDTLN is a website, witch will allow to a researcher workers team to manage it m
 - Clone this repository onto your web server
 - Delete the folder "vendor"
 - Install a webserver, Wampserver if you're using Windows for example
+- Copy parameters.yml.dist in the same folder, and rename the copy as parameters.yml
+- Set your paramaters in app/config/parameters.yml, the username and password for database, and the database's name (BDTLN is better)
+
 Execute following commands :
 + php ./composer.phar update
 + php app/console doctrine:database:create
