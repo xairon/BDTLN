@@ -20,7 +20,7 @@
         {{ information | trans }}
     </p>
     {% endfor %}
-    <form action="{{ path('bdtln_project_add_project') }}" method="POST" {{ form_enctype(form) }}>
+    <form action="{{ path('bdtln_project_update_project', {'slug': slug}) }}" method="POST" {{ form_enctype(form) }}>
         {{ form_errors(form) }}
          <div>
             {% set englishTitle = "English title" | trans %}
@@ -73,13 +73,6 @@
             {{ form_widget(form.endingDate) }}
         </div>
         
-        <label for="axe">{{ "Main axe" | trans }}</label>
-        <select name="axe">
-            <option value="" selected="selected">--------</option>
-            {% for axe in axes %}
-                <option value="{{ axe.id }}">{{ axe.frenchTitle }}</option>
-            {% endfor %}
-        </select><br />
         
         {{ form_rest(form) }}
         
