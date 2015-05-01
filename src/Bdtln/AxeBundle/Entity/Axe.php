@@ -318,7 +318,7 @@ class Axe
      *
      * @param \Bdtln\ProjectBundle\Entity\Projet $project
      */
-    public function removeProject(\Bdtln\ProjectBundle\Entity\Projet $project)
+    public function removeProject(\Bdtln\ProjectBundle\Entity\Project $project)
     {
         $this->projects->removeElement($project);
     }
