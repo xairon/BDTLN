@@ -93,7 +93,7 @@ class ProjectController extends Controller
      * @return Response BdtlnProjectBundle:Project:add_axe_in_project.html.twig
      * @Secure(roles="IS_AUTHENTICATED_REMEMBERED")
      */
-    public function add_axe_in_projectAction( Project $project ) {
+    public function update_axes_in_projectAction( Project $project ) {
         
         
         //Check if the current user has rigths or if he's the SUPER ADMIN
@@ -110,31 +110,61 @@ class ProjectController extends Controller
         $axes = $axeRepository->findAllWithProjects();
         //The axes witch doesn't own this project
         $axesNotInProject = $axeRepository->findAllNotInProject($project);
+        $axesInProject = $axeRepository->findAllInProject($project);
         
         //If the form is submit
         if ( $this->get('request')->getMethod() == "POST" ) {
             $idAxe = intval($_POST['axe']);
-            //look over all axes in order to test if the given axe is valid
-            for ( $i = 0; $i < count($axes); $i++ ) {
-                if ( $idAxe == $axes[$i]->getId() && !empty($session->get('token')) && $_POST['token'] == $session->get('token') ) {
-                    //If the project is not already in this axe AND check the token (for csrf)
-                    if ( in_array($axes[$i], $axesNotInProject) ) { 
-                        $axes[$i]->addProject($project);
-                        $entityManager->persist($project);
-                        $entityManager->flush();
-                        $this->get('session')->getFlashBag()->add('information', 'L\'axe a bien été ajouté !');
-                        return $this->redirect( $this->generateUrl('bdtln_project_add_axe_in_project', array('slug' => $project->getSlug())) );
-                    } else { //If axes[$i] doesn't belong to axes witch are not in project
-                        $this->get('session')->getFlashBag()->add('information', 'Ce projet a déjà cet axe !');
+            //If admin want add an axe into the project
+            if ( !empty($_POST['add_axe']) ) {
+                //look over all axes in order to test if the given axe is valid
+                for ( $i = 0; $i < count($axes); $i++ ) {
+                    if ( $idAxe == $axes[$i]->getId() && !empty($session->get('token_add')) && $_POST['token_add'] == $session->get('token_add') ) {
+                        //If the project is not already in this axe AND check the token (for csrf)
+                        if ( in_array($axes[$i], $axesNotInProject) ) { 
+                            $axes[$i]->addProject($project);
+                            $entityManager->persist($project);
+                            $entityManager->persist($axes[$i]);
+                            $entityManager->flush();
+                            $this->get('session')->getFlashBag()->add('information_add', 'The axe has been added!');
+                            return $this->redirect( $this->generateUrl('bdtln_project_update_axes_in_project', array('slug' => $project->getSlug())) );
+                        } else { //If axes[$i] doesn't belong to axes witch are not in project
+                            $this->get('session')->getFlashBag()->add('information_add', 'This project already own this axe!');
+                        }
+                        break;
                     }
-                    break;
                 }
+            } else if ( !empty($_POST['delete_axe']) ) { //Id admin want delete an axe
+                if ( count($axesInProject) > 1 ) { //If project belong at least to 2 project
+                    //look over all axes in order to test if the given axe is valid
+                    for ( $i = 0; $i < count($axes); $i++ ) {
+                        if ( $idAxe == $axes[$i]->getId() && !empty($session->get('token_delete')) && $_POST['token_delete'] == $session->get('token_delete') ) {
+                            //If the project is in this axe AND check the token (for csrf)
+                            if ( in_array($axes[$i], $axesInProject) ) { 
+                                $axes[$i]->removeProject($project);
+                                $entityManager->persist($project);
+                                $entityManager->persist($axes[$i]);
+                                $entityManager->flush();
+                                $this->get('session')->getFlashBag()->add('information_delete', 'The axe has been deleted from this project!');
+                                return $this->redirect( $this->generateUrl('bdtln_project_update_axes_in_project', array('slug' => $project->getSlug())) );
+                            } else { //If axes[$i] doesn't belong to axes witch are not in project
+                                $this->get('session')->getFlashBag()->add('information_delete', 'This project doesn\'t own this axe!');
+                            }
+                            break;
+                        }
+                    }
+                } else { //If the project belong to only one axe, we can't delete it
+                    $this->get('session')->getFlashBag()->add('information_delete', 'A project must belong at least to one axe!');
+                }
+            } else { //Form is invalid
+                return $this->redirect( $this->generateUrl('bdtln_project_update_axes_in_project') );
             }
         }
         
-        $session->set('token', md5(time()));
+        $session->set('token_add', md5(time()));
+        $session->set('token_delete', sha1(time()));
         
-        return $this->render('BdtlnProjectBundle:Project:add_axe_in_project.html.twig', array('project' => $project, 'axes' => $axesNotInProject));
+        return $this->render('BdtlnProjectBundle:Project:update_axes_in_project.html.twig', array('project' => $project, 'axesNotInProject' => $axesNotInProject, 'axesInProject' => $axesInProject));
     }
     
     /**
@@ -159,24 +189,16 @@ class ProjectController extends Controller
 
         //The form
         $projectForm = $this->createForm(new ProjectType(), $project);
-        $axes = $entityManager->getRepository('BdtlnAxeBundle:Axe')->findAll();
         
         $request = $this->get('request');
         //If it is a validation of form
         if ( $request->getMethod() == "POST" ) {
-            $idAxe = intval($_POST['axe']);
             //Loading of the form
             $projectForm->bind($request);
-            //If all the inputs are valids, and wanted axe is differend of 0, save in database
-            if ( $projectForm->isValid() && intval($_POST['axe']) != 0 ) {
-                //Compare idAxe with all axes
-                for ( $i = 0; $i < count($axes); $i++ ) {
-                    //If the id of wanted axe is valid
-                    if ( $axes[$i]->getId() == $idAxe ) {
+            //If all the inputs are valids, save in database
+            if ( $projectForm->isValid() ) {
                         //if at least one description is not empty
                         if (!empty($project->getFrenchDescription()) || !empty($project->getEnglishDescription())) {
-                            $axes[$i]->addProject($project);
-                            $entityManager->persist($axes[$i]);
                             $entityManager->persist($project);
                             $entityManager->flush();
                             //Redirect on the page of updated project
@@ -185,16 +207,14 @@ class ProjectController extends Controller
                            $this->get('session')->getFlashBag()->add('information', 'Au moins une description doit être remplie !');
                            return $this->render('BdtlnProjectBundle:Project:update_project.html.twig', array('form' => $projectForm->createView(), 'axes' => $axes));
                         }                           
-                    }
-                }       
+                    
+                     
             } else { //If the form is invalid
                 $this->get('session')->getFlashBag()->add('information', 'Le projet n\'a pas pu être enregistré !');
             }
-            if ( intval($idAxe) == 0 )
-            $this->get('session')->getFlashBag()->add('information', 'Veuillez ajouter un axe ! !');
 
         }
-        return $this->render('BdtlnProjectBundle:Project:update_project.html.twig', array('form' => $projectForm->createView(), 'axes' => $axes));
+        return $this->render('BdtlnProjectBundle:Project:update_project.html.twig', array('form' => $projectForm->createView(), 'slug' => $project->getSlug()));
     }
     
     
