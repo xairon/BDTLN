@@ -75,5 +75,32 @@ class AxeRepository extends \Doctrine\ORM\EntityRepository {
         
         
     }
+    
+    
+    /**
+     * findAllInProject will find all the axes witch contain the given project
+     * @param Project $project
+     * @return ArrayCollection the list of axes
+     */
+    public function findAllInProject($project) {
+
+        //Get all axes, joined with their projects
+        $axes = $this->findAllWithProjects();
+        //The axes witch belong to the project
+        $axesInProject = array();
+        /*
+         * Look over all axes in order to display only the axes witch
+         * own this project
+         */
+        for ($i = 0; $i < count($axes); $i++) {
+            /* At eatch round of loop, $projectsOwnByThisAxe contains 
+             * the projects owned by $axes[$i]
+             */
+            $projectsOwnedByThisAxe = $axes[$i]->getProjects()->toArray();
+            if (in_array($project, $projectsOwnedByThisAxe))
+                $axesInProject[] = $axes[$i];
+        }
+        return $axesInProject;
+    }
 
 }
