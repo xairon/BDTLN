@@ -56,18 +56,18 @@ class Projects implements FixtureInterface {
             
             $axe1 = new Axe();
             $axe1->setEnglishDescription("This axe is about databases . . . .");
-            $axe1->setEnglishSummary("It's an axe");
-            $axe1->setEnglishTitle("Mon premier Axe");
+            $axe1->setEnglishSummary("It's an axe bla bla bla bla bla");
+            $axe1->setEnglishTitle("My First Axe");
             $axe1->setFrenchDescription("Cet axe concerne les bases de données");
             $axe1->setFrenchSummary("C'est un axe");
-            $axe1->setFrenchTitle("Mon Second Axe");
+            $axe1->setFrenchTitle("Mon Premier Axe");
             $axe1->addProject($projectWithFiles);
             
             
             $axe2 = new Axe();
             $axe2->setEnglishDescription("This axe is about languages . . . .");
             $axe2->setEnglishSummary("It's an other axe");
-            $axe2->setEnglishTitle("Mon Second Axe");
+            $axe2->setEnglishTitle("My Second Axe");
             $axe2->setFrenchDescription("Cet axe concerne le langage");
             $axe2->setFrenchSummary("C'est un autre axe");
             $axe2->setFrenchTitle("Mon Deuxième Axe");
