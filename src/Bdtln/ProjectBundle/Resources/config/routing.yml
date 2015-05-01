@@ -13,9 +13,9 @@ bdtln_project_add_project:
 
 #Add an axe into a project
 #@param project_slug the slug of the project we want to see
-bdtln_project_add_axe_in_project:
-    path: /add_axe/{slug}
-    defaults: { _controller: BdtlnProjectBundle:Project:add_axe_in_project }
+bdtln_project_update_axes_in_project:
+    path: /update_axes/{slug}
+    defaults: { _controller: BdtlnProjectBundle:Project:update_axes_in_project }
     requirements:
         slug:   ([a-zA-Z0-9-_])+
 
