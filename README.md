@@ -6,11 +6,19 @@ BDTLN is a website, witch will allow to a researcher workers team to manage it m
 1) Installing
 --------------
 
-Clone this repository onto your web server
+- Clone this repository onto your web server
+- Delete the folder "vendor"
+- Install a webserver, Wampserver if you're using Windows for example
 Execute following commands :
++ php ./composer.phar update
 + php app/console doctrine:database:create
 + php app/console doctrine:schema:update --force
-+ php ./composer.php update
++ php app/console doctrine:fixtures:load
+
+Note : If you're using Windows, add "php" to the PATH
+
+Two users are already created, a simple user and a super admin.
+For super admin the login is "admin" and password too, for user the login is "user" ans password too.
 
 2) Checking your System Configuration for Symfony2
 ---------------------------------------------------
