@@ -22,7 +22,21 @@
             
             <!-- The description of the project -->
             <p class="lead">
-		{{ project.frenchDescription | replace({'<script': '','</script>': '', "'": "&#39;"}) | raw }}
+
+                {% if app.request.locale == "en" %}
+                    {% if project.englishDescription is not null %}
+                        {{ project.englishDescription | replace({'<script': '','</script>': '', "'": "&#39;"}) | raw }}
+                    {% else %}
+                        {{ 'There is no description in english, but maybe there is in french.' }}
+                    {% endif %}
+                {% else %} {#if locale = fr#}
+                    {% if project.frenchDescription is not null %}
+                        {{ project.frenchDescription | replace({'<script': '','</script>': '', "'": "&#39;"}) | raw }}
+                    {% else %}
+                        {{ "Il n'y a pas de description en français, mais peut-être qu'il y en a une en anglais." }}
+                    {% endif %}
+                {% endif %}
+            
             </p>
             
         </div>
