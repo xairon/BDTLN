@@ -16,11 +16,6 @@ bdtln_project:
     requirements:
         _locale:    fr|en
 
-bdtln_translation:
-    resource: "@BdtlnTranslationBundle/Resources/config/routing.yml"
-    prefix:   /translation
-    requirements:
-        _locale:    fr|en
 
 bdtln_administration:
     resource: "@BdtlnAdministrationBundle/Resources/config/routing.yml"
