@@ -53,7 +53,7 @@ body
 	margin-right: 15px;
 	margin-top: 15px;
 }
-#pied_de_page : img
+#pied_de_page img
 {
 	float: right;
 	right: 0px;
@@ -103,4 +103,7 @@ body
 	margin-left: 20px;
 }
 
-
+#text-banniere
+{
+    color: black;
+}
