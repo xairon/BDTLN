@@ -53,5 +53,5 @@ security:
     # of your application based on roles, ip, host or methods
     # http://symfony.com/doc/current/book/security.html#security-book-access-control-matching-options
     access_control:
-        - { path: ^/%locale%/register, roles: ROLE_SUPER_ADMIN, requires_channel: http|https }
+        - { path: ^/(fr|en)/register, roles: ROLE_SUPER_ADMIN, requires_channel: http|https }
         #Only SUPER_ADMIN can add a member
