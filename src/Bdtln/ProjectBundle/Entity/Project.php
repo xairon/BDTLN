@@ -92,7 +92,7 @@ class Project
      * page project
      * @var string
      *
-     * @ORM\Column(name="french_description", type="text")
+     * @ORM\Column(name="french_description", type="text", nullable=true)
      */
     private $frenchDescription;
     
@@ -101,7 +101,7 @@ class Project
      * page project
      * @var string
      *
-     * @ORM\Column(name="english_description", type="text")
+     * @ORM\Column(name="english_description", type="text", nullable=true)
      */
     private $englishDescription;
 
