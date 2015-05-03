@@ -11,6 +11,7 @@ namespace Bdtln\UserBundle\DataFixtures\ORM;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Bdtln\UserBundle\Entity\User;
+use Bdtln\PublicationBundle\Entity\Publication;
 
 
 
@@ -48,6 +49,14 @@ class Users implements FixtureInterface {
         $manager->persist($admin);
         $manager->persist($user);
         $manager->flush();
+        
+        
+        $publication1 = new Publication();
+        $publication1->setTitle('My first publication');
+        $publication1->setContent('This is a great publication');
+        $publication1->setOwner($user);
+        
+        
     }
     
     
