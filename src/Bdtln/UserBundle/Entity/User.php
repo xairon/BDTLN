@@ -179,7 +179,7 @@ class User extends BaseUser
      *
      * @return string
      */
-    public function getZnglishBiography()
+    public function getEnglishBiography()
     {
         return $this->englishBiography;
     }
@@ -207,4 +207,38 @@ class User extends BaseUser
     {
         return $this->dateRegister;
     }
+    
+    
+    
+    
+    
+    
+    /**
+     * Set dateLeaving
+     *
+     * @param \DateTime $dateLeaving
+     *
+     * @return User
+     */
+    public function setDateLeaving($dateLeaving)
+    {
+        $this->dateLeaving = $dateLeaving;
+
+        return $this;
+    }
+
+    /**
+     * Get dateLeaving
+     *
+     * @return \DateTime
+     */
+    public function getDateLeaving()
+    {
+        return $this->dateLeaving;
+    }
+    
+    
+    
+    
+    
 }
