@@ -1,3 +1,0 @@
-bdtln_translation_homepage:
-    path:     /
-    defaults: { _controller: BdtlnTranslationBundle:Translation:index }
