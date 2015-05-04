@@ -55,7 +55,8 @@ class Users implements FixtureInterface {
         $publication1->setTitle('My first publication');
         $publication1->setContent('This is a great publication');
         $publication1->setOwner($user);
-        
+        $manager->persist($publication1);
+        $manager->flush($publication1);
         
     }
     
