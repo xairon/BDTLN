@@ -12,7 +12,9 @@ class PublicationController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('BdtlnPublicationBundle:Publication:publication_list.html.twig');
+        $publications = $this->getDoctrine()->getManager()->getRepository('BdtlnPublicationBundle:Publication')->findAllWithOwner();
+        
+        return $this->render('BdtlnPublicationBundle:Publication:publication_list.html.twig', array('publications' => $publications));
     }
     
     
