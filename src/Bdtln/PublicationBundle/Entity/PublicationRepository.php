@@ -10,4 +10,39 @@ namespace Bdtln\PublicationBundle\Entity;
  */
 class PublicationRepository extends \Doctrine\ORM\EntityRepository
 {
+    
+    /**
+     * findLast find the last publication added
+     * @param integer $quantity
+     * @return ArrayCollection
+     */
+    public function findLast( $quantity = 10 ) {
+        
+        $queryBuilder = $this->_em->createQueryBuilder('p');
+        
+        $queryBuilder->select('p')
+                     ->from('BdtlnPublicationBundle:Publication', 'p')
+                     ->orderBy('p.datePublication', 'DESC')
+                     ->setFirstResult('0')
+                     ->setMaxResults( $quantity )
+                ;
+        
+        
+        return $queryBuilder->getQuery()->getResult();
+        
+    }
+    
+    
+    public function findAllWithOwner() {
+        $queryBuilder = $this->_em->createQueryBuilder('p');
+        
+        $queryBuilder->select('p')
+                     ->from('BdtlnPublicationBundle:Publication', 'p')
+                     ->innerJoin('BdtlnUserBundle:User', 'u', 'p.owner = u.id')
+                     ->addSelect('u')
+                ;
+        
+        return $queryBuilder->getQuery()->getResult();
+    }
+    
 }
