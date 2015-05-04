@@ -12,16 +12,20 @@
             <table class="table" id="formulaire">
                 <thead>
                     <tr>
-                        <th>Publication</th>
-                        <th>Auteur</th>
+                        <th> {{ "Publication" | trans }}</th>
+                        <th>{{ "Author" }}</th>
                     </tr>
                 </thead>
+                {% if publications is defined and publications is not null and publications | length > 0 %}
                 <tbody>
+                    {% for publication in publications %}
                     <tr>
-                        <td> <a href="#">bla bla</a></td>
-			<td><a href="#">Mr truc</a></td>
+                        <td> <a href="#">{{ publication.title }}</a></td>
+			<td><a href="#">{{ publication.owner.firstName }}</a></td>
                     </tr>
+                    {% endfor %}
                 </tbody>
+                {% endif %}
             </table>
 		</div>
 		<div class="col-md-2 column">
