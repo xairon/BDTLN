@@ -163,7 +163,7 @@ class User extends BaseUser
     /**
      * Set franch biography
      *
-     * @param string $frenchBiography
+     * @param string $englishBiography
      *
      * @return User
      */
