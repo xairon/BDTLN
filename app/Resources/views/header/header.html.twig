@@ -41,12 +41,12 @@
                                                     <a class="navbar-brand" href="{{ path('bdtln_project_add_project') }}">{{ "Add a project" | trans }}</a>
                                                 </li>
                                                 <li>
-                                                    <a class="navbar-brand" href="{{ path('bdtln_axe_add_axe') }}">{{ "Ajouter un axe" | trans }}</a>
+                                                    <a class="navbar-brand" href="{{ path('bdtln_axe_add_axe') }}">{{ "Add an axe" | trans }}</a>
                                                 </li>
                                                 
                                                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                                                     <li>
-                                                        <a class="navbar-brand" href="#">{{ app.user.username }} - </a><a class="navbar-brand" href="{{ path('fos_user_security_logout') }}">{{ "Log out" | trans }}</a>
+                                                        <a class="navbar-brand" href="{{ path('fos_user_profile_show') }}">{{ app.user.username }} - </a><a class="navbar-brand" href="{{ path('fos_user_security_logout') }}">{{ "Log out" | trans }}</a>
                                                     </li>
                                                 {% else %}
                                                     <li>
