@@ -11,7 +11,10 @@ class DefaultController extends Controller
      * @return Response Default/index.html.twig
      */
     public function indexAction() {
-        return $this->render('BdtlnDefaultBundle:Default:index.html.twig');
+        
+        $lastPublication10 = $this->getDoctrine()->getManager()->getRepository('BdtlnPublicationBundle:Publication')->findLast(10);
+        
+        return $this->render('BdtlnDefaultBundle:Default:index.html.twig', array('lastPublications' => $lastPublication10));
     }
     
     
