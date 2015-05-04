@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="publication")
  * @ORM\Entity(repositoryClass="Bdtln\PublicationBundle\Entity\PublicationRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Publication
 {
