@@ -21,7 +21,7 @@
             <h2 class="text-center">{{ project.frenchTitle }}</h2>
             
             <!-- The description of the project -->
-            <p class="lead">
+            <div class="lead">
 
                 {% if app.request.locale == "en" %}
                     {% if project.englishDescription is not null %}
@@ -37,7 +37,7 @@
                     {% endif %}
                 {% endif %}
             
-            </p>
+            </div>
             
         </div>
         
