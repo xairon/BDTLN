@@ -21,17 +21,20 @@ class ProjectController extends Controller
     public function indexAction( $slug ) {
             //Get the project and files and participants if it exists
             $projectDisplayed = $this->getDoctrine()->getManager()->getRepository('BdtlnProjectBundle:Project')->findProjectWithParticipantsManagersAndFiles( $slug );
-            //If the project is null
+            //If the project is not null
             if ( $projectDisplayed != null ) {
                 $isAdmin = false;
                 $user = $this->getUser();
                 $managers = $projectDisplayed->getManagers()->toArray();
+                
+                
+                
                 //If the user has the rights to see the links like add a participant etc
                 if ( $user != null && in_array("ROLE_SUPER_ADMIN", $user->getRoles()) || in_array($user, $managers))
                         $isAdmin = true;
                 return $this->render('BdtlnProjectBundle:Project:display_project.html.twig', array('project' => $projectDisplayed, 'isAdmin' => $isAdmin));
             }
-            else //If the project is not null
+            else //If the project is null
                 throw $this->createNotFoundException ("Project not found");
     }
     
@@ -49,13 +52,10 @@ class ProjectController extends Controller
         $projectForm = $this->createForm(new ProjectType(), $project);
         $axes = $entityManager->getRepository('BdtlnAxeBundle:Axe')->findAll();
         $user = $this->getUser();
-        $request = Request::createFromGlobals();
-        $cookieJS = $request->cookies->get('jsEnabled');
-        
         
         $request = $this->get('request');
         //If it is a validation of form
-        if ( $request->getMethod() == "POST" && !empty($cookieJS) ) {
+        if ( $request->getMethod() == "POST" ) {
             
            
             $idAxe = intval($_POST['axe']);
@@ -91,8 +91,6 @@ class ProjectController extends Controller
 
         }
         
-        //For security, remove jsEnabled cookie each time
-        $request->cookies->remove('jsEnabled');
         return $this->render('BdtlnProjectBundle:Project:add_project.html.twig', array('form' => $projectForm->createView(), 'axes' => $axes));
     }
  
@@ -194,7 +192,7 @@ class ProjectController extends Controller
                 throw new AccessDeniedHttpException("Accès limité");
         
         $request = $this->get('request');
-        $cookieJS = $request->cookies->get('jsEnabled');
+       
         
         //The entityManager will allow to save the project in the database
         $entityManager = $this->getDoctrine()->getManager();
@@ -204,22 +202,12 @@ class ProjectController extends Controller
         
         
         //If it is a validation of form
-        if ( $request->getMethod() == "POST" && !empty($cookieJS) ) {
+        if ( $request->getMethod() == "POST" ) {
             
             //Loading of the form
             $projectForm->bind($request);
             //If all the inputs are valids, save in database
             if ( $projectForm->isValid() ) {
-                
-                //JS must be enabled for security, if it doesn't, we redirect the user
-               $request = Request::createFromGlobals();
-                $cookieJS = $request->cookies->get('jsEnabled');
-                if ( !isset($cookieJS) ) {
-                    return $this->redirect( $this->generateUrl('bdtln_default_homepage') );
-                }
-                $request->cookies->remove('jsEnabled');
-
-                
                 
                 //if at least one description is not empty
                 if (!empty($project->getFrenchDescription()) || !empty($project->getEnglishDescription())) {
@@ -238,8 +226,6 @@ class ProjectController extends Controller
 
         }
         
-        //For security, remove jsEnabled cookie each time
-        $request->cookies->remove('jsEnabled');
         return $this->render('BdtlnProjectBundle:Project:update_project.html.twig', array('form' => $projectForm->createView(), 'slug' => $project->getSlug()));
     }
     

@@ -25,13 +25,13 @@
 
                 {% if app.request.locale == "en" %}
                     {% if project.englishDescription is not null %}
-                        {{ project.englishDescription | replace({'<script': '','</script>': '', "'": "&#39;"}) | raw }}
+                        {{ project.englishDescription | purify | raw }}
                     {% else %}
                         {{ 'There is no description in english, but maybe there is in french.' }}
                     {% endif %}
                 {% else %} {#if locale = fr#}
                     {% if project.frenchDescription is not null %}
-                        {{ project.frenchDescription | replace({'<script': '','</script>': '', "'": "&#39;"}) | raw }}
+                        {{ project.frenchDescription | purify | raw }}
                     {% else %}
                         {{ "Il n'y a pas de description en français, mais peut-être qu'il y en a une en anglais." }}
                     {% endif %}

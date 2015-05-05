@@ -56,12 +56,11 @@ class AxeController extends Controller
         $user = $this->getUser();
         $isAdmin = ( $user != null && (in_array("ROLE_SUPER_ADMIN", $user->getRoles()) || in_array($user, $managers) ) ) ? true : false;
         $request = $this->get('request');
-        $cookieJS = $request->cookies->get('jsEnabled');
-
+       
         
         
-        //If it is a validation of form and js is enabled
-        if ( $request->getMethod() == "POST" && !empty($cookieJS) ) {
+        //If it is a validation of form
+        if ( $request->getMethod() == "POST" ) {
             
            
             
@@ -87,8 +86,6 @@ class AxeController extends Controller
             }
         }
         
-        //For security, remove jsEnabled cookie each time
-        $request->cookies->remove('jsEnabled');
        return $this->render('BdtlnAxeBundle:Axe:add_axe.html.twig', array('form' => $axeForm->createView())); 
     }
     
@@ -103,29 +100,18 @@ class AxeController extends Controller
         $user = $this->getUser();
         $managers = $axe->getManagers();
         $isAdmin = ( $user != null && (in_array("ROLE_SUPER_ADMIN", $user->getRoles()) || in_array($user, $managers) ) ) ? true : false;
-         $request = $this->get('request');
-        $cookieJS = $request->cookies->get('jsEnabled');
+        $request = $this->get('request');
         
         
         
         
-        
-        //If it is a validation of form and js is enabled
-        if ( $request->getMethod() == "POST" && isset($cookieJS) ) {
+        //If it is a validation of form
+        if ( $request->getMethod() == "POST" ) {
             
             //Loading of the form
             $axeForm->bind($request);
             //If all the inputs are valids, save in database
             if ( $axeForm->isValid() ) {
-                
-                    //JS must be enabled for security, if it doesn't, we redirect the user
-               $request = Request::createFromGlobals();
-                $cookieJS = $request->cookies->get('jsEnabled');
-                if ( !isset($cookieJS) ) {
-                    return $this->redirect( $this->generateUrl('bdtln_default_homepage') );
-                }
-                $request->cookies->remove('jsEnabled');
-
                 
                 //if at least one description is not empty
                 if (!empty($axe->getFrenchDescription()) || !empty($axe->getEnglishDescription())) { 
@@ -143,8 +129,6 @@ class AxeController extends Controller
             }
         }
         
-        //For security, remove jsEnabled cookie each time
-        $request->cookies->remove('jsEnabled');
        return $this->render('BdtlnAxeBundle:Axe:update_axe.html.twig', array('form' => $axeForm->createView(), 'axe' => $axe)); 
     }
     
