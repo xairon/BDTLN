@@ -55,34 +55,40 @@ class AxeController extends Controller
         $managers = $axe->getManagers();
         $user = $this->getUser();
         $isAdmin = ( $user != null && (in_array("ROLE_SUPER_ADMIN", $user->getRoles()) || in_array($user, $managers) ) ) ? true : false;
-      
+        $request = $this->get('request');
+        $cookieJS = $request->cookies->get('jsEnabled');
 
         
-        $request = $this->get('request');
-        //If it is a validation of form
-        if ( $request->getMethod() == "POST" ) {
+        
+        //If it is a validation of form and js is enabled
+        if ( $request->getMethod() == "POST" && !empty($cookieJS) ) {
+            
+           
+            
             //Loading of the form
             $axeForm->bind($request);
             //If all the inputs are valids, save in database
             if ( $axeForm->isValid() ) {
-                        //if at least one description is not empty
-                        if (!empty($axe->getFrenchDescription()) || !empty($axe->getEnglishDescription())) { 
-                            $axe->addManager($user); //SUPER ADMIN is always manager
-                            $entityManager->persist($axe);
-                            $entityManager->flush();
-                            //Redirect on the page of new axe
-                            return $this->redirect( $this->generateUrl('bdtln_axe_display_axe', array('slug' => $axe->getSlug())) );
-                       } else { //If all descriptions are empty
-                           $this->get('session')->getFlashBag()->add('information', 'At least one description must be filled !');
-                           return $this->render('BdtlnaxeBundle:Axe:add_axe.html.twig', array('form' => $axeForm->createView(), 'axes' => $axes));
-                        }
-                }       
-             else { //If the form is invalid
+                
+                //if at least one description is not empty
+                if (!empty($axe->getFrenchDescription()) || !empty($axe->getEnglishDescription())) { 
+                    $axe->addManager($user); //SUPER ADMIN is always manager
+                    $entityManager->persist($axe);
+                    $entityManager->flush();
+                    //Redirect on the page of new axe
+                    return $this->redirect( $this->generateUrl('bdtln_axe_display_axe', array('slug' => $axe->getSlug())) );
+                } else { //If all descriptions are empty
+                    $this->get('session')->getFlashBag()->add('information', 'At least one description must be filled !');
+                    return $this->render('BdtlnaxeBundle:Axe:add_axe.html.twig', array('form' => $axeForm->createView(), 'axes' => $axes));
+                }
+            }       
+            else { //If the form is invalid
                 $this->get('session')->getFlashBag()->add('information', 'The axe couldn\'t be saved !');
             }
         }
         
-        
+        //For security, remove jsEnabled cookie each time
+        $request->cookies->remove('jsEnabled');
        return $this->render('BdtlnAxeBundle:Axe:add_axe.html.twig', array('form' => $axeForm->createView())); 
     }
     
@@ -97,35 +103,48 @@ class AxeController extends Controller
         $user = $this->getUser();
         $managers = $axe->getManagers();
         $isAdmin = ( $user != null && (in_array("ROLE_SUPER_ADMIN", $user->getRoles()) || in_array($user, $managers) ) ) ? true : false;
-      
+         $request = $this->get('request');
+        $cookieJS = $request->cookies->get('jsEnabled');
         
         
         
         
-        $request = $this->get('request');
-        //If it is a validation of form
-        if ( $request->getMethod() == "POST" ) {
+        
+        //If it is a validation of form and js is enabled
+        if ( $request->getMethod() == "POST" && isset($cookieJS) ) {
+            
             //Loading of the form
             $axeForm->bind($request);
             //If all the inputs are valids, save in database
             if ( $axeForm->isValid() ) {
-                        //if at least one description is not empty
-                        if (!empty($axe->getFrenchDescription()) || !empty($axe->getEnglishDescription())) { 
-                            $entityManager->persist($axe);
-                            $entityManager->flush();
-                            //Redirect on the page of new axe
-                            return $this->redirect( $this->generateUrl('bdtln_axe_display_axe', array('slug' => $axe->getSlug(), 'isAdmin' => $isAdmin)) );
-                       } else { //If all descriptions are empty
-                           $this->get('session')->getFlashBag()->add('information', 'At least one description must be filled !');
-                           return $this->render('BdtlnaxeBundle:Axe:add_update.html.twig', array('form' => $axeForm->createView(), 'axes' => $axe));
-                        }
-                }       
+                
+                    //JS must be enabled for security, if it doesn't, we redirect the user
+               $request = Request::createFromGlobals();
+                $cookieJS = $request->cookies->get('jsEnabled');
+                if ( !isset($cookieJS) ) {
+                    return $this->redirect( $this->generateUrl('bdtln_default_homepage') );
+                }
+                $request->cookies->remove('jsEnabled');
+
+                
+                //if at least one description is not empty
+                if (!empty($axe->getFrenchDescription()) || !empty($axe->getEnglishDescription())) { 
+                    $entityManager->persist($axe);
+                    $entityManager->flush();
+                    //Redirect on the page of new axe
+                    return $this->redirect( $this->generateUrl('bdtln_axe_display_axe', array('slug' => $axe->getSlug(), 'isAdmin' => $isAdmin)) );
+                } else { //If all descriptions are empty
+                    $this->get('session')->getFlashBag()->add('information', 'At least one description must be filled !');
+                    return $this->render('BdtlnaxeBundle:Axe:add_update.html.twig', array('form' => $axeForm->createView(), 'axes' => $axe));
+                }
+            }       
              else { //If the form is invalid
                 $this->get('session')->getFlashBag()->add('information', 'The axe couldn\t be saved !');
             }
         }
         
-        
+        //For security, remove jsEnabled cookie each time
+        $request->cookies->remove('jsEnabled');
        return $this->render('BdtlnAxeBundle:Axe:update_axe.html.twig', array('form' => $axeForm->createView(), 'axe' => $axe)); 
     }
     

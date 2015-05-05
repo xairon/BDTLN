@@ -14,6 +14,22 @@
 
 {% block axe_body %}
     
+    <script type="text/javaSsript" src="{{ asset('scripts/secure_form_ckeditor.js') }}">
+    </script>
+    <noscript>
+        <style>
+            #form-add-project {
+                display: none;
+            }
+        
+            #msg-js-disabled {
+                font-size: 3em;
+                text-align: center;
+            }
+        </style>
+        <p id="msg-js-disabled">You have to enable javaScript</p>
+    </noscript>
+    
     <p>Modifier un axe</p>
     
     {#The sessions flashbag like an error written in controller will be displayed here#}
