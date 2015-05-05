@@ -7,6 +7,8 @@ use Bdtln\ProjectBundle\Entity\Project;
 use Bdtln\ProjectBundle\Form\ProjectType;
 use JMS\SecurityExtraBundle\Annotation\Secure;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Symfony\Component\HttpFoundation\Request;
+
 
 
 class ProjectController extends Controller
@@ -47,15 +49,21 @@ class ProjectController extends Controller
         $projectForm = $this->createForm(new ProjectType(), $project);
         $axes = $entityManager->getRepository('BdtlnAxeBundle:Axe')->findAll();
         $user = $this->getUser();
+        $request = Request::createFromGlobals();
+        $cookieJS = $request->cookies->get('jsEnabled');
+        
         
         $request = $this->get('request');
         //If it is a validation of form
-        if ( $request->getMethod() == "POST" ) {
+        if ( $request->getMethod() == "POST" && !empty($cookieJS) ) {
+            
+           
             $idAxe = intval($_POST['axe']);
             //Loading of the form
             $projectForm->bind($request);
             //If all the inputs are valids, and wanted axe is differend of 0, save in database
             if ( $projectForm->isValid() && intval($_POST['axe']) != 0 ) {
+                
                 //Compare idAxe with all axes
                 for ( $i = 0; $i < count($axes); $i++ ) {
                     //If the id of wanted axe is valid
@@ -70,19 +78,21 @@ class ProjectController extends Controller
                             //Redirect on the page of new project
                             return $this->redirect( $this->generateUrl('bdtln_project_display', array('slug' => $project->getSlug())) );
                        } else { //If all descriptions are empty
-                           $this->get('session')->getFlashBag()->add('information', 'Au moins une description doit être remplie !');
+                           $this->get('session')->getFlashBag()->add('information', 'At least one description should be filled!');
                            return $this->render('BdtlnProjectBundle:Project:add_project.html.twig', array('form' => $projectForm->createView(), 'axes' => $axes));
                         }                           
                     }
                 }       
             } else { //If the form is invalid
-                $this->get('session')->getFlashBag()->add('information', 'Le projet n\'a pas pu être enregistré !');
+                $this->get('session')->getFlashBag()->add('information', 'The project couldn\'t be saved!');
             }
             if ( intval($idAxe) == 0 )
-            $this->get('session')->getFlashBag()->add('information', 'Veuillez ajouter un axe ! !');
+            $this->get('session')->getFlashBag()->add('information', 'Please add an axe!');
 
         }
         
+        //For security, remove jsEnabled cookie each time
+        $request->cookies->remove('jsEnabled');
         return $this->render('BdtlnProjectBundle:Project:add_project.html.twig', array('form' => $projectForm->createView(), 'axes' => $axes));
     }
  
@@ -183,6 +193,8 @@ class ProjectController extends Controller
         if ( !in_array("ROLE_SUPER_ADMIN", $user->getRoles()) && !in_array($user, $managers))
                 throw new AccessDeniedHttpException("Accès limité");
         
+        $request = $this->get('request');
+        $cookieJS = $request->cookies->get('jsEnabled');
         
         //The entityManager will allow to save the project in the database
         $entityManager = $this->getDoctrine()->getManager();
@@ -190,30 +202,44 @@ class ProjectController extends Controller
         //The form
         $projectForm = $this->createForm(new ProjectType(), $project);
         
-        $request = $this->get('request');
+        
         //If it is a validation of form
-        if ( $request->getMethod() == "POST" ) {
+        if ( $request->getMethod() == "POST" && !empty($cookieJS) ) {
+            
             //Loading of the form
             $projectForm->bind($request);
             //If all the inputs are valids, save in database
             if ( $projectForm->isValid() ) {
-                        //if at least one description is not empty
-                        if (!empty($project->getFrenchDescription()) || !empty($project->getEnglishDescription())) {
-                            $entityManager->persist($project);
-                            $entityManager->flush();
-                            //Redirect on the page of updated project
-                            return $this->redirect( $this->generateUrl('bdtln_project_display', array('slug' => $project->getSlug())) );
-                       } else { //If all descriptions are empty
-                           $this->get('session')->getFlashBag()->add('information', 'Au moins une description doit être remplie !');
-                           return $this->render('BdtlnProjectBundle:Project:update_project.html.twig', array('form' => $projectForm->createView(), 'axes' => $axes));
-                        }                           
-                    
+                
+                //JS must be enabled for security, if it doesn't, we redirect the user
+               $request = Request::createFromGlobals();
+                $cookieJS = $request->cookies->get('jsEnabled');
+                if ( !isset($cookieJS) ) {
+                    return $this->redirect( $this->generateUrl('bdtln_default_homepage') );
+                }
+                $request->cookies->remove('jsEnabled');
+
+                
+                
+                //if at least one description is not empty
+                if (!empty($project->getFrenchDescription()) || !empty($project->getEnglishDescription())) {
+                    $entityManager->persist($project);
+                    $entityManager->flush();
+                    //Redirect on the page of updated project
+                    return $this->redirect( $this->generateUrl('bdtln_project_display', array('slug' => $project->getSlug())) );
+                } else { //If all descriptions are empty
+                    $this->get('session')->getFlashBag()->add('information', 'Au moins une description doit être remplie !');
+                    return $this->render('BdtlnProjectBundle:Project:update_project.html.twig', array('form' => $projectForm->createView(), 'axes' => $axes));
+                }    
                      
             } else { //If the form is invalid
                 $this->get('session')->getFlashBag()->add('information', 'Le projet n\'a pas pu être enregistré !');
             }
 
         }
+        
+        //For security, remove jsEnabled cookie each time
+        $request->cookies->remove('jsEnabled');
         return $this->render('BdtlnProjectBundle:Project:update_project.html.twig', array('form' => $projectForm->createView(), 'slug' => $project->getSlug()));
     }
     
