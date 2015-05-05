@@ -14,25 +14,6 @@
 
 {% block project_body %}
     
-    <script type="text/javascript" src="{{ asset('scripts/secure_form_ckeditor.js') }}">
-    </script>
-    
-    
-    <noscript>
-        <style>
-            #form-add-project {
-                display: none;
-            }
-        
-            #msg-js-disabled {
-                font-size: 3em;
-                text-align: center;
-            }
-        </style>
-        <p id="msg-js-disabled">You have to enable javaScript</p>
-        <meta http-equiv="refresh" content="1">
-    </noscript>
-    
     {#The sessions flashbag like an error wrote in controller will be displayed here#}
     {% for information in app.session.flashbag.get('information')%}
     <p>

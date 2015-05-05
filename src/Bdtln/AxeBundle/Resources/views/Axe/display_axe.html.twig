@@ -19,7 +19,21 @@
 			<hr>
 			
                         <p class="lead">
-                            {{ axe.englishDescription | replace({'<script': '','</script>': '', '"': "&quot;", "'": "&#39;"}) | raw }}
+                            
+                {% if app.request.locale == "en" %}
+                    {% if axe.englishDescription is not null %}
+                        {{ axe.englishDescription | purify | raw }}
+                    {% else %}
+                        {{ 'There is no description in english, but maybe there is in french.' }}
+                    {% endif %}
+                {% else %} {#if locale = fr#}
+                    {% if axe.frenchDescription is not null %}
+                        {{ axe.frenchDescription | purify | raw }}
+                    {% else %}
+                        {{ "Il n'y a pas de description en français, mais peut-être qu'il y en a une en anglais." }}
+                    {% endif %}
+                {% endif %}
+                            
 			</p>
 
 		</div>
