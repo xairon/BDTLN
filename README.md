@@ -18,7 +18,7 @@ Execute following commands :
 + php app/console doctrine:schema:update --force
 + php app/console doctrine:fixtures:load
 
-Note : If you're using Windows, add "php" to the PATH
+Note : If you're using Windows, add "Php" and "Git" to the PATH
 
 Two users are already created, a simple user and a super admin.
 For super admin the login is "admin" and password too, for user the login is "user" ans password too.
