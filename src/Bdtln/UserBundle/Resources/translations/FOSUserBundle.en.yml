@@ -1,0 +1,8 @@
+form:
+    firstname: 'First name:'
+    lastname: 'Last name:'
+    dateregister: 'Date register:'
+    
+security:
+    login:
+        email: 'Email:'
