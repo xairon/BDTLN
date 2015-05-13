@@ -4,6 +4,7 @@ namespace Bdtln\UserBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * User
@@ -67,7 +68,18 @@ class User extends BaseUser
      */
     private $dateLeaving;
     
-
+    /**
+     * @Gedmo\Slug(fields={"lastName"})
+     * @var type 
+     */
+    protected $username;
+    
+    /**
+     * @Gedmo\Slug(fields={"lastName"})
+     * @var type 
+     */
+    protected $usernameCanonical;
+    
     
     
     public function __construct() {
@@ -137,7 +149,7 @@ class User extends BaseUser
     }
 
     /**
-     * Set franch biography
+     * Set french biography
      *
      * @param string $frenchBiography
      *
@@ -161,7 +173,7 @@ class User extends BaseUser
     }
     
     /**
-     * Set franch biography
+     * Set french biography
      *
      * @param string $englishBiography
      *
@@ -209,7 +221,7 @@ class User extends BaseUser
     }
     
     
-    
+   
     
     
     
@@ -236,7 +248,6 @@ class User extends BaseUser
     {
         return $this->dateLeaving;
     }
-    
     
     
     
