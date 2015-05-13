@@ -6,8 +6,23 @@
 {% extends "BdtlnProjectBundle::layout_project.html.twig" %}
 
 {% block scripts %}
-    <!--<script type="text/javascript" src="ckfinder/ckfinder.js"></script>-->
-    <script type="text/javascript" src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('tinymce/tinymce.min.js') }}"></script>
+	<script type="text/javascript">
+		tinymce.init({
+			selector: "textarea",
+			theme: "modern",
+			plugins: [
+        "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+        "searchreplace wordcount visualblocks visualchars code fullscreen",
+        "insertdatetime media nonbreaking save table contextmenu directionality",
+        "emoticons template paste textcolor colorpicker textpattern jbimages"
+		],
+			
+			toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+    toolbar2: "print preview media | forecolor backcolor emoticons jbimages"
+			
+		});
+</script>
     {{ parent() }}
 {% endblock %}
 
@@ -81,9 +96,4 @@
     
     
     
-<script type="text/javascript">
-    var editorFrench = CKEDITOR.replace( 'bdtln_projectbundle_project_frenchDescription' );
-    var editorEnglish = CKEDITOR.replace( 'bdtln_projectbundle_project_englishDescription' );
-//    CKFinder.setupCKEditor( editor, 'ckfinder/' );
-</script>
 {% endblock %}

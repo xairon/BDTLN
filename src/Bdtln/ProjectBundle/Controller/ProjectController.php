@@ -61,8 +61,8 @@ class ProjectController extends Controller
             $idAxe = intval($_POST['axe']);
             //Loading of the form
             $projectForm->bind($request);
-            //If all the inputs are valids, and wanted axe is differend of 0, save in database
-            if ( $projectForm->isValid() && intval($_POST['axe']) != 0 ) {
+            //If all the inputs are valids, and wanted axe is greater than 0, save in database
+            if ( $projectForm->isValid() && intval($_POST['axe']) > 0 && $project->getBeginningDate() < $project->getEndingDate() ) {
                 
                 //Compare idAxe with all axes
                 for ( $i = 0; $i < count($axes); $i++ ) {
@@ -207,7 +207,7 @@ class ProjectController extends Controller
             //Loading of the form
             $projectForm->bind($request);
             //If all the inputs are valids, save in database
-            if ( $projectForm->isValid() ) {
+            if ( $projectForm->isValid() && $project->getBeginningDate() < $project->getEndingDate() ) {
                 
                 //if at least one description is not empty
                 if (!empty($project->getFrenchDescription()) || !empty($project->getEnglishDescription())) {
