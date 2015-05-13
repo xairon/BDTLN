@@ -232,12 +232,16 @@ class AxeController extends Controller
             //If the form is invalid
             if ( empty($token) ||  $_POST['token'] != $token || $_POST['delete'] != "yes" && $_POST['delete'] != "no" )
                 throw $this->createNotFoundException ();
-            //Else, delete the axe and all project in this axe
+            //Else, delete the axe and all project in this axe only if $_POST['delete'] = "yes"
             
+            if ( $_POST['delete'] == "yes" ) {
+                $entityManager->remove($axe);
+                $entityManager->flush();
+                return $this->redirect( $this->generateUrl('bdtln_axe_homepage') );
+            } else { //If $_POST['delete'] = "no" redirect on the axe's page
+                return $this->redirect( $this->generateUrl('bdtln_axe_display_axe', array('slug' => $axe->getSlug())) );
+            }
             
-            $entityManager->remove($axe);
-            $entityManager->flush();
-            return $this->redirect( $this->generateUrl('bdtln_axe_homepage') );
         }
         
         $session->set('token', sha1(time()));

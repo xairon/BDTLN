@@ -414,10 +414,14 @@ class ProjectController extends Controller
             //If the form is invalid
             if ( empty($token) ||  $_POST['token'] != $token || $_POST['delete'] != "yes" && $_POST['delete'] != "no" )
                 throw $this->createNotFoundException ();
-            //Else, delete the project
-            $entityManager->remove($project);
-            $entityManager->flush();
-            return $this->redirect( $this->generateUrl('bdtln_axe_homepage') );
+            //Else, delete the project only if $_POST['delete'] equals "yes"
+            if ( $_POST['delete'] == "yes" ) {
+                $entityManager->remove($project);
+                $entityManager->flush();
+                return $this->redirect( $this->generateUrl('bdtln_axe_homepage') );
+            } else { //IF $_POST['delete'] equals "no" redirect on the project's page
+                return $this->redirect( $this->generateUrl('bdtln_project_display', array('slug' => $project->getSlug())) );
+            }
         }
         
         $session->set('token', sha1(time()));
