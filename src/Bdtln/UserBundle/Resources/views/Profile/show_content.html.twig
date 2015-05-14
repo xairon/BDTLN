@@ -1,0 +1,16 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="fos_user_user_show">
+    <p>{{ 'profile.show.firstname'|trans }}: {{ user.firstName }}</p>
+    
+    <p>{{ 'profile.show.lastname'|trans }}: {{ user.lastName }}</p>
+    
+    <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+    
+    <p>{{ 'profile.show.frenchbiography'|trans }}: {{ user.frenchBiography }}</p>
+    
+    <p>{{ 'profile.show.englishbiography'|trans }}: {{ user.englishBiography }}</p>
+    
+    <p>{{ 'profile.show.dateregister'|trans }}: {{ user.dateRegister|localizeddate('long', 'none', app.request.locale) }}</p>
+    
+</div>
