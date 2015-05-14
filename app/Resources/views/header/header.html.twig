@@ -9,7 +9,7 @@
 				<div class="col-md-8 column text-right">
 					<img src="{{ asset("bootstrap/img/logo.png") }}">
 					<h3>
-						Département informatique
+						Bases de données et traitement du langage naturel
 					</h3>
                                         <p id="text-banniere">Université François Rabelais - UFR Sciences et Techniques - Antenne de Blois</p>
 				</div>
@@ -46,7 +46,7 @@
                                                 
                                                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                                                     <li>
-                                                        <a class="navbar-brand" href="{{ path('fos_user_profile_show') }}">{{ app.user.username }} - </a><a class="navbar-brand" href="{{ path('fos_user_security_logout') }}">{{ "Log out" | trans }}</a>
+                                                        <a class="navbar-brand" href="{{ path('fos_user_profile_show', {'username': app.user.username}) }}">{{ app.user.username }} - </a><a class="navbar-brand" href="{{ path('fos_user_security_logout') }}">{{ "Log out" | trans }}</a>
                                                     </li>
                                                 {% else %}
                                                     <li>
