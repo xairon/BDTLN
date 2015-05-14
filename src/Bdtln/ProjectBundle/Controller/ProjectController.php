@@ -189,7 +189,7 @@ class ProjectController extends Controller
         $managers = $project->getManagers()->toArray();
         //If the user hasn't the rights to be here
         if ( !in_array("ROLE_SUPER_ADMIN", $user->getRoles()) && !in_array($user, $managers))
-                throw new AccessDeniedHttpException("Accès limité");
+                throw new AccessDeniedHttpException("The user can't be here");
         
         $request = $this->get('request');
        
