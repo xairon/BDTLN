@@ -1,0 +1,9 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+
+{% block fos_user_content %}
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        <a href="{{ path('fos_user_profile_edit', {'username': app.user.username}) }}">Edit profile</a>
+    {% endif %}
+    {% include "FOSUserBundle:Profile:show_content.html.twig" %}
+{% endblock fos_user_content %}

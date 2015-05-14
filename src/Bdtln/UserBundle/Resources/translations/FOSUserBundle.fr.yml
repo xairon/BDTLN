@@ -2,7 +2,18 @@ form:
     firstname: 'Prénom :'
     lastname: 'Nom :'
     dateregister: 'Date d''arrivée :'
+    frenchbiography: 'Biographie française :'
+    englishbiography: 'Biographie anglaise :'
 
 security:
     login:
         email: 'Email :'
+        
+profile:
+    show:
+        firstname: 'Prénom'
+        lastname: 'Nom'
+        frenchbiography: 'Biographie française'
+        englishbiography: 'Biographie anglaise'
+        dateregister: 'Date d''arrivée'
+    

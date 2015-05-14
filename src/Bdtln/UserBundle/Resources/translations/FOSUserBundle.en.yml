@@ -2,7 +2,18 @@ form:
     firstname: 'First name:'
     lastname: 'Last name:'
     dateregister: 'Date register:'
+    frenchbiography: 'French biography:'
+    englishbiography: 'English biography:'
     
 security:
     login:
         email: 'Email:'
+
+profile:
+    show:
+        firstname: 'First name'
+        lastname: 'Last name'
+        frenchbiography: 'French biography'
+        englishbiography: 'English bigraphy'
+        dateregister: 'Date register'
+    
