@@ -29,6 +29,7 @@ class UserProfileType extends AbstractType
             ->add('lastName', 'text', array('label' => "form.lastname", 'translation_domain' => 'FOSUserBundle'))
             ->add('frenchBiography', 'textarea', array('label' => 'form.frenchbiography', 'translation_domain' => 'FOSUserBundle') )
             ->add('englishBiography', 'textarea', array('label' => 'form.englishbiography', 'translation_domain' => 'FOSUserBundle') )
+            
         ;
     }
     

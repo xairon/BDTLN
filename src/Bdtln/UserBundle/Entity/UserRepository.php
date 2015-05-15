@@ -10,4 +10,23 @@ namespace Bdtln\UserBundle\Entity;
  */
 class UserRepository extends \Doctrine\ORM\EntityRepository
 {
+    
+    /**
+     * setCagegoryNull set field category to null for a given id
+     * @param integer $idCategory
+     */
+    public function setCategoryNull( $idCategory ) {
+        
+        $queryBuilder = $this->_em->createQueryBuilder('u');
+        
+        $q = $queryBuilder->update('BdtlnUserBundle:User', 'u')
+                     ->set('u.category', "NULL")
+                     ->where('u.category = :idcategory')
+                     ->setParameter('idcategory', $idCategory)
+                     ->getQuery();
+            ;
+        $q->execute();
+        
+    }
+    
 }

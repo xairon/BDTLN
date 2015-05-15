@@ -12,6 +12,7 @@ use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Bdtln\UserBundle\Entity\User;
 use Bdtln\PublicationBundle\Entity\Publication;
+use Bdtln\UserBundle\Entity\Category;
 
 
 
@@ -24,6 +25,23 @@ class Users implements FixtureInterface {
 
     public function load(ObjectManager $manager) {
         
+        
+        $category1 = new Category();
+        $category1->setEnglishTitle("Teachers-Researchers");
+        $category1->setFrenchTitle("Enseignant-Chercheurs");
+        $manager->persist($category1);
+        
+        $category2 = new Category();
+        $category2->setEnglishTitle("Doctors");
+        $category2->setFrenchTitle("Docteurs");
+        $manager->persist($category2);
+        
+        $category3 = new Category();
+        $category3->setEnglishTitle("Doctorant");
+        $category3->setFrenchTitle("Doctorant");
+        $manager->persist($category3);
+        $manager->flush();
+        
         $admin = new User();
         $admin->setUsername('admin');
         $admin->setPlainPassword("admin");
@@ -34,6 +52,7 @@ class Users implements FixtureInterface {
         $admin->setFirstName("admin");
         $admin->setLastName("admin");
         $admin->setEnabled(true);
+        
         
         $user = new User();
         $user->setUsername('user');
@@ -56,7 +75,7 @@ class Users implements FixtureInterface {
         $publication1->setContent('This is a great publication');
         $publication1->setOwner($user);
         $manager->persist($publication1);
-        $manager->flush($publication1);
+        $manager->flush();
         
     }
     

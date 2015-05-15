@@ -1,0 +1,27 @@
+{# src/Bdtln/UserBundle/Resources/views/Category/delete_category.html.twig #}
+{#
+    Here an administrator will can delete a category
+#}
+
+{% extends "BdtlnUserBundle::layout.html.twig" %}
+
+
+{% block fos_user_content %}
+   
+    {{ "Do you want delete the following category" | trans }} ?
+    
+    <form method="POST" action="{{ path('bdtln_user_delete_category', {'id': id}) }}">
+        
+        <label>{{ 'Yes'|trans }}</label><input value="yes" name="delete_category" type="radio"/>
+        <label>{{ 'No'|trans }}</label><input checked="checked" value="no" name="delete_category" type="radio" />
+        <input type="hidden" name="token" value="{{ app.session.get('token') }}" />
+        <br />
+        <input type="submit" value="{{ "Delete" | trans }}" />
+    </form>
+    
+    
+    
+    
+    
+    
+{% endblock %}

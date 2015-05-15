@@ -53,7 +53,10 @@ class ProfileController extends Controller
     public function editAction(Request $request, User $user)
     {
         
+        
         $entityManager = $this->getDoctrine()->getManager();
+        $allCategories = $entityManager->getRepository('BdtlnUserBundle:Category')->findAll();
+        
         
         //$user must be a User, root or the owner of account
         if (!is_object($user) || !$user instanceof UserInterface || ( $user != $this->getUser() && !in_array('ROLE_SUPER_ADMIN', $this->getUser()->getRoles()) ) ) {
@@ -64,18 +67,22 @@ class ProfileController extends Controller
         $form->setData($user);
 
         $form->handleRequest($request);
+        if ( $this->get('request')->getMethod() == "POST" ) {
+            $givenCategory = $entityManager->getRepository('BdtlnUserBundle:Category')->findOneOrNullById(intval($_POST['category']));
+            //Verifier que les titres sont pas to defined
+            if ($form->isValid() && $givenCategory != null ) {
+                $user->setCategory($givenCategory);
+                $entityManager->persist($user);
+                $entityManager->flush();
 
-        if ($form->isValid()) {
-           
-            $entityManager->persist($user);
-            $entityManager->flush();
-          
-            return $this->redirect( $this->generateUrl('fos_user_profile_show') );
+                return $this->redirect( $this->generateUrl('fos_user_profile_show', array('username' => $user->getUsername())) );
+            }
         }
-
+            
         return $this->render('FOSUserBundle:Profile:edit.html.twig', array(
             'form' => $form->createView(),
-            'username' => $user->getUsername()
+            'user' => $user,
+            'categories' => $allCategories
         ));
     }
 }

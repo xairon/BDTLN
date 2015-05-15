@@ -13,4 +13,11 @@
     
     <p>{{ 'profile.show.dateregister'|trans }}: {{ user.dateRegister|localizeddate('long', 'none', app.request.locale) }}</p>
     
+    {% if user.category is not null %}
+        {% if app.request.locale == 'fr' %}
+            <p>{{ 'profile.show.category'|trans }}: {{ user.category.frenchTitle }}</p>
+        {% else %}
+            <p>{{ 'profile.show.category'|trans }}: {{ user.category.englishTitle }}</p>
+        {% endif %}
+    {% endif %}
 </div>
