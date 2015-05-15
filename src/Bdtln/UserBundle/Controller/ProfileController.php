@@ -69,7 +69,6 @@ class ProfileController extends Controller
         $form->handleRequest($request);
         if ( $this->get('request')->getMethod() == "POST" ) {
             $givenCategory = $entityManager->getRepository('BdtlnUserBundle:Category')->findOneOrNullById(intval($_POST['category']));
-            //Verifier que les titres sont pas to defined
             if ($form->isValid() && $givenCategory != null ) {
                 $user->setCategory($givenCategory);
                 $entityManager->persist($user);
