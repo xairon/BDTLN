@@ -4,6 +4,8 @@ form:
     dateregister: 'Date register:'
     frenchbiography: 'French biography:'
     englishbiography: 'English biography:'
+    categoryadded: 'Category added'
+    categoryupdated: 'Category updated'
     
 security:
     login:
@@ -16,4 +18,5 @@ profile:
         frenchbiography: 'French biography'
         englishbiography: 'English bigraphy'
         dateregister: 'Date register'
+        category: 'Category'
     

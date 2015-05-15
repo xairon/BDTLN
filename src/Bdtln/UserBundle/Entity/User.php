@@ -5,6 +5,7 @@ namespace Bdtln\UserBundle\Entity;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Bdtln\UserBundle\Entity\Category;
 
 /**
  * User
@@ -69,16 +70,26 @@ class User extends BaseUser
     private $dateLeaving;
     
     /**
-     * @Gedmo\Slug(fields={"lastName"})
-     * @var type 
+     * @Gedmo\Slug(fields={"firstName", "lastName"})
+     * @var string 
      */
     protected $username;
     
     /**
-     * @Gedmo\Slug(fields={"lastName"})
-     * @var type 
+     * @Gedmo\Slug(fields={"firstName", "lastName"})
+     * @var string 
      */
     protected $usernameCanonical;
+    
+    
+    /**
+     * The user category
+     * @var Bdtln\UserBundle\Entity\Category
+     * @ORM\ManyToOne(targetEntity="Bdtln\UserBundle\Entity\Category") 
+     */
+    private $category;
+    
+    
     
     
     
@@ -252,4 +263,28 @@ class User extends BaseUser
     
     
     
+
+    /**
+     * Set category
+     *
+     * @param \Bdtln\UserBundle\Entity\Category $category
+     *
+     * @return User
+     */
+    public function setCategory(Category $category = null)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \Bdtln\UserBundle\Entity\Category
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
 }

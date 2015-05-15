@@ -1,0 +1,25 @@
+{# src/Bdtln/UserBundle/Resources/views/Category/add_category.html.twig #}
+{#
+    Here an administrator will can see all categories
+#}
+
+{% extends "BdtlnUserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+
+    <a href="{{ path('bdtln_user_add_category') }}">{{ 'Add a category' | trans }}</a>
+    {# display all categories #}
+    {% if categories is defined and categories is not null %}
+        {% for category in categories %}
+            <div>
+                    {{category.frenchTitle}}
+                    <a href="{{ path('bdtln_user_edit_category', {'id': category.id}) }}">{{ 'Edit' | trans }}</a>
+                    <a href="{{ path('bdtln_user_delete_category', {'id': category.id}) }}">{{ 'Delete' | trans }}</a>
+            </div>
+        {% endfor %}
+        
+    {% endif %}
+    
+    
+    
+{% endblock %}

@@ -54,7 +54,10 @@
                                                     </li>
                                                 {% endif %}
                                                 <li>
-                                                    <a href="{{ path('fos_user_registration_register') }}">{{ 'Add member' | trans }}</a>
+                                                    <a class="navbar-brand" href="{{ path('fos_user_registration_register') }}">{{ 'Add member' | trans }}</a>
+                                                </li>
+                                                 <li>
+                                                    <a class="navbar-brand" href="{{ path('bdtln_user_display_all_categories') }}">{{ 'Display categories' | trans }}</a>
                                                 </li>
                                                 <li>
                                                     <a href="javascript:changeLanguageToFrench();" class="navbar-brand">FR</a>

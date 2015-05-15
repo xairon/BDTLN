@@ -1,0 +1,39 @@
+{# src/Bdtln/UserBundle/Resources/views/Category/add_category.html.twig #}
+{#
+    Here an administrator will can create a category
+#}
+
+{% extends "BdtlnUserBundle::layout.html.twig" %}
+
+
+{% block fos_user_content %}
+   
+    {{ "You will update a category" | trans }}
+    
+    <form method="POST" action="{{ path('bdtln_user_edit_category', {'id': id}) }}">
+        {{ form_errors(form) }}
+        <div>
+            {% set englishTitle = "English title" | trans %}
+            
+            {{ form_label(form.englishTitle, englishTitle) }}
+            {{ form_errors(form.englishTitle) }}
+            {{ form_widget(form.englishTitle) }}
+        </div>
+        <div>
+            {% set frenchTitle = "French title" | trans %}
+            {{ form_label(form.frenchTitle, frenchTitle) }}
+            {{ form_errors(form.frenchTitle) }}
+            {{ form_widget(form.frenchTitle) }}
+        </div>
+        
+        {{ form_rest(form) }}
+        
+        <input type="submit" value="{{ "Update" | trans }}" />
+    </form>
+    
+    
+    
+    
+    
+    
+{% endblock %}
