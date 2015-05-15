@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use FOS\UserBundle\Form\Type\RegistrationFormType;
+use Bdtln\UserBundle\Form\PhotoType;
 
 class UserProfileType extends AbstractType
 {
@@ -29,7 +30,8 @@ class UserProfileType extends AbstractType
             ->add('lastName', 'text', array('label' => "form.lastname", 'translation_domain' => 'FOSUserBundle'))
             ->add('frenchBiography', 'textarea', array('label' => 'form.frenchbiography', 'translation_domain' => 'FOSUserBundle') )
             ->add('englishBiography', 'textarea', array('label' => 'form.englishbiography', 'translation_domain' => 'FOSUserBundle') )
-            
+            ->add('photo', new PhotoType(), array('label' => "Photo", "required" => false))
+                
         ;
     }
     

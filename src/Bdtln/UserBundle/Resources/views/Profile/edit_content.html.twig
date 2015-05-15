@@ -3,6 +3,14 @@
 <form action="{{ path('fos_user_profile_edit', {'username': user.username}) }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
     {{ form_widget(form) }}
     
+    {% if user.photo is not null %}
+        current photo :
+        <img id="current-photo" src="{{asset(user.photo.uploadDir ~ '/' ~ user.photo.url)}}" alt="{{ 'Photo of ' ~ user.photo.alt }}"/>
+        <br />
+        <label>Just delete my photo</label><input type="checkbox" name="delete_photo" value="yes"/>
+        <br />
+    {% endif %}
+    
     <select required="required" name="category">
         <option value="" >Category</option>
         {% for category in categories %}

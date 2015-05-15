@@ -89,6 +89,12 @@ class User extends BaseUser
      */
     private $category;
     
+    /**
+     *
+     * @var File
+     * @ORM\OneToOne(targetEntity="Bdtln\UserBundle\Entity\Photo") 
+     */
+    private $photo;
     
     
     
@@ -287,4 +293,20 @@ class User extends BaseUser
     {
         return $this->category;
     }
+    
+    /**
+     * Get photo
+     * @return \Bdtln\UserBundle\Entity\Photo
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+    
+    public function setPhoto(Photo $photo = null)
+    {
+        $this->photo = $photo;
+        return $this;
+    }
+    
 }
