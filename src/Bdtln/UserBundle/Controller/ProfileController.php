@@ -23,6 +23,7 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use JMS\SecurityExtraBundle\Annotation\Secure;
 use Bdtln\UserBundle\Form\UserProfileType;
 use Bdtln\UserBundle\Entity\User;
+use Bdtln\UserBundle\Entity\Photo;
 
 /**
  * Controller managing the user profile
@@ -55,7 +56,9 @@ class ProfileController extends Controller
         
         
         $entityManager = $this->getDoctrine()->getManager();
-        $allCategories = $entityManager->getRepository('BdtlnUserBundle:Category')->findAll();
+        $userRepository = $entityManager->getRepository('BdtlnUserBundle:User');
+        $categoryRepository = $entityManager->getRepository('BdtlnUserBundle:Category');
+        $allCategories = $categoryRepository->findAll();
         
         
         //$user must be a User, root or the owner of account
@@ -68,9 +71,32 @@ class ProfileController extends Controller
 
         $form->handleRequest($request);
         if ( $this->get('request')->getMethod() == "POST" ) {
-            $givenCategory = $entityManager->getRepository('BdtlnUserBundle:Category')->findOneOrNullById(intval($_POST['category']));
-            if ($form->isValid() && $givenCategory != null ) {
+            $givenCategory = $categoryRepository->findOneOrNullById(intval($_POST['category']));
+            if ($form->isValid() && $givenCategory != null) {
+                //If a photo is uploaded
+                if ( $user->getPhoto() != null ) {
+                    //If the user has already a photo
+                    $oldPhoto = $userRepository->findOneById($user->getId())->getPhoto();
+                    
+                    //If delete_photo isn't checked
+                    if ( empty($_POST['delete_photo'])) {
+                        $photoName = null;
+                        //If there was already a photo, get the name
+                        if ( $oldPhoto != null)
+                            $photoName = $oldPhoto->getUrl();
+                        //Upload new photo
+                        $user->getPhoto()->upload($user->getFirstName(), $user->getLastName(), $photoName);
+                    } else { //else, delete photo on server and on database
+                        $entityManager->remove($user->getPhoto());
+                        $user->getPhoto()->deleteFile();
+                        $user->setPhoto(null);
+                    }
+                }
+                
                 $user->setCategory($givenCategory);
+                if ( empty($_POST['delete_photo']) )
+                    $entityManager->persist($user->getPhoto());
+                
                 $entityManager->persist($user);
                 $entityManager->flush();
 
