@@ -3,6 +3,8 @@
 namespace Bdtln\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\File;
 
 /**
  * Photo
@@ -38,6 +40,7 @@ class Photo
     /**
      *
      * @var File 
+     * @Assert\Image()
      */
     private $file;
 
@@ -107,7 +110,7 @@ class Photo
     }
     
     
-    public function setFile( $file ) {
+    public function setFile( File $file ) {
         $this->file = $file;
         return $this;
     }
