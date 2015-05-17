@@ -5,9 +5,10 @@ namespace Bdtln\ProjectBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Bdtln\ProjectBundle\Entity\Project;
 use Bdtln\ProjectBundle\Form\ProjectType;
+use Bdtln\ProjectBundle\Form\AttachedFileType;
+use Bdtln\ProjectBundle\Entity\AttachedFile;
 use JMS\SecurityExtraBundle\Annotation\Secure;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
-use Symfony\Component\HttpFoundation\Request;
 
 
 
@@ -226,7 +227,7 @@ class ProjectController extends Controller
 
         }
         
-        return $this->render('BdtlnProjectBundle:Project:update_project.html.twig', array('form' => $projectForm->createView(), 'slug' => $project->getSlug()));
+        return $this->render('BdtlnProjectBundle:Project:update_project.html.twig', array('form' => $projectForm->createView(), 'project' => $project));
     }
     
     
@@ -425,12 +426,109 @@ class ProjectController extends Controller
         }
         
         $session->set('token', sha1(time()));
-        return $this->render('BdtlnProjectBundle:Project:delete_project.html.twig', array('slug' => $project->getSlug()));
+        return $this->render('BdtlnProjectBundle:Project:delete_project.html.twig', array('project' => $project));
+    }
+    
+    /**
+     * add_file allow to add a file in a project
+     * @param string $slug the project where we want add a file
+     * @Secure(roles="IS_AUTHENTICATED_REMEMBERED")
+     */
+    public function add_fileAction($slug) {
+        
+         //Get the project and files and participants if it exists
+            $entityManager = $this->getDoctrine()->getManager();
+            $project = $entityManager->getRepository('BdtlnProjectBundle:Project')->findProjectWithParticipantsManagersAndFiles( $slug );
+            //If the project is not null
+            if ( $project != null ) {
+                $user = $this->getUser();
+                $managers = $project->getManagers()->toArray();
+                $request = $this->get('request');
+                $file = new AttachedFile();
+                $fileForm = $this->createForm(new AttachedFileType(), $file);
+                //If the user has the rights to see this page
+                if ( $user != null && in_array("ROLE_SUPER_ADMIN", $user->getRoles()) || in_array($user, $managers)) {
+                    //On form submit   
+                    if ($request->getMethod() == "POST") {
+                        $fileForm->submit($request);
+                        if ( $fileForm->isValid() ) {
+                            
+                            $project->addFile($file);
+                            $file->upload($file->getTitle());
+                            $entityManager->flush();
+                            $this->get('session')->getFlashBag()->add('information', 'The file is added');
+                            return $this->redirect( $this->generateUrl('bdtln_project_add_file', array('slug' => $slug)) );
+                        }
+                        
+                    }
+                    
+                    
+                    
+                    
+                    
+                    return $this->render('BdtlnProjectBundle:Project:add_file.html.twig', array('slug' => $slug, 'form' => $fileForm->createView(),
+                                              'frenchTitle' => $project->getFrenchTitle(), 'englishTitle' => $project->getEnglishTitle()));
+                }
+                else { //If user hasn't right
+                    throw $this->createAccessDeniedException('Access denied');
+                }
+            }
+            else //If the project is null
+                throw $this->createNotFoundException ("Project not found");
     }
     
     
-    
-    
-    
+    public function delete_fileAction($slug) {
+        
+        
+            //Get the project and files and participants if it exists
+            $entityManager = $this->getDoctrine()->getManager();
+            $project = $entityManager->getRepository('BdtlnProjectBundle:Project')->findProjectWithParticipantsManagersAndFiles( $slug );
+            //If the project is not null
+            if ( $project != null ) {
+                $user = $this->getUser();
+                $managers = $project->getManagers()->toArray();
+                $request = $this->get('request');
+                $session = $this->get('session');
+                $token = $session->get('token');
+                $allFiles = $project->getFiles();
+                //If the user has the rights to see this page
+                if ( $user != null && in_array("ROLE_SUPER_ADMIN", $user->getRoles()) || in_array($user, $managers)) {
+                    //On form submit   
+                    if ($request->getMethod() == "POST" ) {
+                        //If token is invalid
+                        if ( empty($token) || $token != $_POST['token'] )
+                            throw $this->createAccessDeniedException();
+                        
+                        $fileRepository = $entityManager->getRepository('BdtlnProjectBundle:AttachedFile');
+                        foreach ( $_POST['delete_file'] as $idFile ) {
+                            $file = $fileRepository->find(intval($idFile));
+                            if ( $file != null && $project->hasFile($file) ) {
+                                $project->removeFile($file);
+                                $entityManager->remove($file);
+                                $file->deleteFile();
+                            }
+                            $this->get('session')->getFlashBag()->add('information', 'The file is removed');
+                        }
+                        $entityManager->flush();
+                        /**
+                         * Recuperer toutes les cases cochees
+                         * parcourir, et si le projet hasFile() de ce fichier
+                         * on supprimer
+                         */
+                        
+                    }
+                    $session->set('token', sha1(time()));
+                    //Render of the view
+                    return $this->render('BdtlnProjectBundle:Project:delete_file.html.twig', array('slug' => $slug, 'files' => $allFiles,
+                                'frenchTitle' => $project->getFrenchTitle(), 'englishTitle' => $project->getEnglishTitle()));
+                }
+                else { //If user hasn't right
+                    throw $this->createAccessDeniedException();
+                }
+            }
+            else //If the project is null
+                throw $this->createNotFoundException ("Project not found");
+    }
     
 }

@@ -32,7 +32,7 @@
     {#The sessions flashbag like an error wrote in controller will be displayed here#}
     {% for information in app.session.flashbag.get('information')%}
     <p>
-        {{ information }}
+        {{ information | trans }}
     </p>
     {% endfor %}
 

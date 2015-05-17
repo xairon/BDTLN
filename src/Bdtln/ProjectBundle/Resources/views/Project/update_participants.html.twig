@@ -16,7 +16,14 @@
 				<fieldset>
 
 					<!-- Form Name -->
-					<legend>{{ "Add a participant to the project" | trans }}</legend>
+					<legend>
+                                            {{ "Add a participant to the project" | trans }}
+                                            {% if app.request.locale == 'fr' %}
+                                                {{ project.frenchTitle }}
+                                            {% else %}
+                                                {{ project.englishTitle }}
+                                            {% endif %}
+                                        </legend>
 
                                            {#The sessions flashbag like an error written in controller will be displayed here#}
                                             {% for information_add in app.session.flashbag.get('informations_add')%}
@@ -59,7 +66,14 @@
 				<fieldset>
 
 					<!-- Form Name -->
-					<legend>{{ "Delete a participant from the project" | trans }}</legend>
+					<legend>
+                                            {{ "Delete a participant from the project" | trans }}
+                                            {% if app.request.locale == 'fr' %}
+                                                {{ project.frenchTitle }}
+                                            {% else %}
+                                                {{ project.englishTitle }}
+                                            {% endif %}
+                                        </legend>
 
                                         {% for information_delete in app.session.flashBag.get('informations_delete') %}
                                             {{ information_delete | trans }}

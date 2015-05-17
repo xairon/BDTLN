@@ -13,7 +13,12 @@
         <a href="{{ path('bdtln_project_update_project' , {'slug': project.slug }) }}">{{ "Update the project" | trans }}</a>
         <a href="{{ path('bdtln_project_update_participants' , {'slug': project.slug }) }}">{{ "Manage the participants" | trans }}</a>
         <a href="{{ path('bdtln_project_update_managers', {'slug': project.slug }) }}">{{ "Manage the administrators" | trans }}</a>
-        <a href="{{ path('bdtln_project_delete_project', {'slug': project.slug }) }}">{{ "Delete the project" | trans }}</a>
+        <a href="{{ path('bdtln_project_delete_project', {'slug': project.slug }) }}">{{ "Delete the project" | trans }}</a>        
+        <a href="{{ path('bdtln_project_add_file', {'slug': project.slug}) }}">{{ 'Add a file' | trans }}</a>
+        {% if project.files is not null and project.files | length > 0%}
+            <a href="{{ path('bdtln_project_delete_file', {'slug': project.slug}) }}">{{ 'Remove a file' | trans }}</a>
+        {% endif %}
+
     {% endif %}
     <div class="row clearfix">
     	<div class="col-md-8 column" id="article">

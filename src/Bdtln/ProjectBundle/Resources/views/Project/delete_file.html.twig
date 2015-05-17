@@ -1,0 +1,40 @@
+{# src/Bdtln/ProjectBundle/Resources/views/Project/delete_file.html.twig #}
+{#
+    Here an administrator will can remove a file from a project
+#}
+
+{% extends "BdtlnProjectBundle::layout_project.html.twig" %}
+
+{% block project_body %}
+    {{ 'You will remove files from the project' | trans }}
+    {# Display the project's title #}
+    {% if app.request.locale == 'fr' %}
+        {{ frenchTitle }}
+    {% else %}
+        {{ englishTitle }}
+    {% endif %}
+    
+<br />
+    {#The sessions flashbag like an error wrote in controller will be displayed here#}
+    {% for information in app.session.flashbag.get('information')%}
+    <p>
+        {{ information | trans}}
+    </p>
+    {% endfor %}
+    
+    {% if files is not null and files | length > 0%}
+        <form method="POST" action="{{ path('bdtln_project_delete_file', {'slug': slug}) }}">
+            {% for file in files %}
+                <label>{{ file.title }}</label><input type="checkbox" name="delete_file[]" value="{{ file.id }}" /><br />
+            {% endfor %}
+                <input type="hidden" name="token" value="{{ app.session.get('token') }}" />
+            <input type="submit" value="{{ 'Delete' | trans }}" />
+        </form>
+    {% else %}
+        {{ 'There is no file in this project' }}
+    {% endif %}
+    
+    
+    
+    
+{% endblock %}
