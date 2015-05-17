@@ -7,7 +7,7 @@
         {% if files is defined and files is not null and files|length > 0%}
             <ul>
                 {% for file in files %}
-                    <li>{{ file.title }}</li>
+                    <li><a title="{{ file.title }}" href="{{ asset('uploads/attached_files/'~file.path) }}">{{ file.title }}</a></li>
                 {% endfor %}
             </ul>
         {% endif %}

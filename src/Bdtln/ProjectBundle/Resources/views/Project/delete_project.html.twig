@@ -16,8 +16,16 @@
     {% endfor %}
     
     
-    <form method="POST" action="{{ path('bdtln_project_delete_project', {'slug': slug}) }}" >
-        <p>{{ "Do you want delete this project ?" | trans }}</p><br />
+    <form method="POST" action="{{ path('bdtln_project_delete_project', {'slug': project.slug}) }}" >
+        <p>
+            {{ "Do you want delete the project" | trans }}
+            {% if app.request.locale == 'fr' %}
+                {{ project.frenchTitle }}
+            {% else %}
+                {{ project.englishTitle }}
+            {% endif %}
+            ?
+        </p><br />
         
         <label>{{ "Yes" | trans }}</label><input type="radio" name="delete" value="yes" />
         <label>{{ "No" | trans }}</label><input type="radio" name="delete" value="no" />

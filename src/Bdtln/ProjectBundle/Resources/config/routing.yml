@@ -47,4 +47,16 @@ bdtln_project_delete_project:
     defaults:   { _controller: BdtlnProjectBundle:Project:delete_project }
     requirements:
         slug:   ([a-zA-Z0-9-_])+
-        
+
+#Add file in a project
+bdtln_project_add_file:
+    path:   /add-file/{slug}
+    defaults:   { _controller: BdtlnProjectBundle:Project:add_file }
+    requirements:
+        slug:   ([a-zA-Z0-9-_])+
+#Delete file in project
+bdtln_project_delete_file:
+    path:   /delete-file/{slug}
+    defaults:   { _controller: BdtlnProjectBundle:Project:delete_file }
+    requirements:
+        slug:   ([a-zA-Z0-9-_])+

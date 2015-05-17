@@ -29,13 +29,21 @@
 
 {% block project_body %}
     
+    <h2>
+        {% if app.request.locale == 'fr' %}
+            {{ project.frenchTitle }}
+        {% else %}
+            {{ project.englishTitle }}
+        {% endif %}
+    </h2>
+    
     {#The sessions flashbag like an error wrote in controller will be displayed here#}
     {% for information in app.session.flashbag.get('information')%}
     <p>
         {{ information | trans }}
     </p>
     {% endfor %}
-    <form action="{{ path('bdtln_project_update_project', {'slug': slug}) }}" method="POST" {{ form_enctype(form) }}>
+    <form action="{{ path('bdtln_project_update_project', {'slug': project.slug}) }}" method="POST" {{ form_enctype(form) }}>
         {{ form_errors(form) }}
          <div>
             {% set englishTitle = "English title" | trans %}

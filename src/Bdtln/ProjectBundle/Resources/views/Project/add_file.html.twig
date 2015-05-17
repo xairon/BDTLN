@@ -1,0 +1,43 @@
+{# src/Bdtln/ProjectBundle/Resources/views/Project/add_file.html.twig #}
+{#
+    Here an administrator will can add a file in a project
+#}
+
+{% extends "BdtlnProjectBundle::layout_project.html.twig" %}
+
+{% block project_body %}
+    {{ 'You will add a file in the project' | trans }}
+    {% if app.request.locale == 'fr' %}
+        {{ frenchTitle }}
+    {% else %}
+        {{ englishTitle }}
+    {% endif %}
+    
+    {#The sessions flashbag like an error wrote in controller will be displayed here#}
+    {% for information in app.session.flashbag.get('information')%}
+    <p>
+        {{ information | trans }}
+    </p>
+    {% endfor %}
+    <form method="POST" action="{{ path('bdtln_project_add_file', {'slug': slug}) }}" {{ form_enctype(form) }}>
+        
+        {{ form_errors(form) }}
+        {% set title = 'Title:' | trans %}
+        {% set file = 'File:' | trans %}
+        <div>
+            {{ form_label(form.title, title) }}
+            {{ form_errors(form.title) }}
+            {{ form_widget(form.title) }}
+        </div>
+        <div>
+            {{ form_label(form.file, file) }}
+            {{ form_errors(form.file) }}
+            {{ form_widget(form.file) }}
+        </div>
+        
+        {{ form_rest(form) }}
+        <input type="submit" value="{{ 'Add' | trans }}" />
+    </form>
+    
+    
+{% endblock %}

@@ -5,7 +5,7 @@
 'Do you want delete this project ?': 'Voulez-vous vraiment supprimer ce projet ?'
 'Yes': Oui
 'No': Non
-Add: Ajouter
+'Add': Ajouter
 'Add an axe': 'Ajouter un axe'
 'Update the project': 'Modifier le projet'
 'Manage the participants': 'Gérer les participants'
@@ -16,11 +16,11 @@ Add: Ajouter
 'Delete an administrator from this project': 'Supprimer un administrateur de ce projet'
 'Delete an administrator': 'Supprimer un administrateur'
 'Delete': Supprimer
-'Add a participant to the project': 'Ajouter un participant à ce projet'
+'Add a participant to the project': 'Ajouter un participant au projet'
 'Add a participant': 'Ajouter un participant'
-'Delete a participant from the project': 'Supprimer un participant de projet'
+'Delete a participant from the project': 'Supprimer un participant du projet'
 'Delete a participant': 'Supprimer un participant'
-'Attached files': 'Pièce jointes'
+'Attached files': 'Pièces jointes'
 'English title': 'Titre anglais'
 'French title': 'Titre français'
 'English summary': 'Résumé anglais'
@@ -36,4 +36,10 @@ Add: Ajouter
 'This project doesn''t own this axe!': 'Ce projet ne contient pas l''axe indiqué !'
 'Delete an axe': 'Retirer un axe'
 'Update axes': 'Gérer les axes'
-'Update': Mettre à jour
+'Update': 'Mettre à jour'
+'Title:': 'Titre :'
+'File:': 'Fichier :'
+'You will add a file in the project': 'Vous êtes sur le point d''ajouter un fichier au projet'
+'Add a file': 'Ajouter un fichier'
+'Remove a file': 'Supprimer un fichier'
+'You will remove files from the project': 'Vous êtes sur le point de supprimer des fichiers du projet'
