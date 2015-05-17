@@ -128,7 +128,7 @@ class Project
      * 
      * @var ArrayCollection 
      * 
-     * @ORM\OneToMany(targetEntity="Bdtln\ProjectBundle\Entity\File", mappedBy="project", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="Bdtln\ProjectBundle\Entity\AttachedFile", mappedBy="project", cascade={"persist", "remove"})
      */
     private $files;
     
@@ -341,11 +341,11 @@ class Project
     /**
      * Add file
      *
-     * @param \Bdtln\ProjectBundle\Entity\File $file
+     * @param \Bdtln\ProjectBundle\Entity\AttachedFile $file
      *
      * @return Project
      */
-    public function addFile(\Bdtln\ProjectBundle\Entity\File $file)
+    public function addFile(\Bdtln\ProjectBundle\Entity\AttachedFile $file)
     {
         $this->files[] = $file;
         $file->setProject($this);
@@ -356,9 +356,9 @@ class Project
     /**
      * Remove file
      *
-     * @param \Bdtln\ProjectBundle\Entity\File $file
+     * @param \Bdtln\ProjectBundle\Entity\AttachedFile $file
      */
-    public function removeFile(\Bdtln\ProjectBundle\Entity\File $file)
+    public function removeFile(\Bdtln\ProjectBundle\Entity\AttachedFile $file)
     {
         $this->files->removeElement($file);
     }
@@ -372,6 +372,18 @@ class Project
     {
         return $this->files;
     }
+    
+    /**
+     * hasFile check if a file belong to this project
+     * @param \Bdtln\ProjectBundle\Entity\AttachedFile $file the file
+     * @return boolean
+     */
+    public function hasFile(\Bdtln\ProjectBundle\Entity\AttachedFile $file)
+    {
+        return in_array($file, $this->files->toArray());
+    }
+    
+    
 
     /**
      * Set frenchTitle

@@ -3,14 +3,16 @@
 namespace Bdtln\ProjectBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * File
+ * AttachedFile
  *
- * @ORM\Table(name="file")
- * @ORM\Entity(repositoryClass="Bdtln\ProjectBundle\Entity\FileRepository")
+ * @ORM\Table(name="attached_file")
+ * @ORM\Entity(repositoryClass="Bdtln\ProjectBundle\Entity\AttachedFileRepository")
  */
-class File
+class AttachedFile
 {
     /**
      * @var integer
@@ -49,6 +51,17 @@ class File
      * @ORM\JoinColumn(nullable=false);
      */
     private $project;
+    
+    /**
+     *
+     * @var File
+     * @Assert\File(
+     * mimeTypes={"application/zip", "application/octet-stream", "application/x-rar-compressed", "application/x-gzip"},
+     * mimeTypesMessage = "Only zip, rar, gz granted"
+     * )
+     */
+    private $file;
+    
     
     /**
      * Get id
@@ -125,6 +138,64 @@ class File
     public function setProject(\Bdtln\ProjectBundle\Entity\Project $project) {
         $this->project = $project;
         return $this;
+    }
+    
+    
+        public function getFile()
+    {
+        return $this->file;
+    }
+    
+    
+    public function setFile( File $file ) {
+        $this->file = $file;
+        return $this;
+    }
+    
+    
+    
+    /**
+     * upload upload a file onto server
+     * 
+     */
+    public function upload($title)
+    {
+        //If there is no file
+        if ($this->file === null)
+            return;
+        
+        $extension = $this->file->guessExtension();
+        if ( !$extension )
+            $extension = '.bin';
+        
+        $this->path = time().'.'.$extension;
+        $this->title = $title;
+        $this->file->move($this->getUploadRootDir(), $this->path);        
+    }
+    
+    /**
+     * getUploadDir give the path to photo directory
+     * @return string path for browser to photos
+     */
+    public function getUploadDir() {
+        return 'uploads/attached_files';
+    }
+    
+    /**
+     * getUploadRootDir five the path to photo directory
+     * @return string path for our code to photos
+     */
+    public function getUploadRootDir() {
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+    
+    /**
+     * deleteFile delete a file
+     * @param string $url url of file
+     */
+    public function deleteFile() {
+        if ( $this->path != null )
+            unlink($this->getUploadRootDir().'/'.$this->path);
     }
     
     
