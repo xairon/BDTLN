@@ -88,6 +88,10 @@ services:
             - [ setAnnotationReader, [ @annotation_reader ] ]
             - [ setDefaultLocale, [ en ] ]
             - [ setTranslationFallback, [ true ] ]
+    twig.extension.intl:
+        class: Twig_Extensions_Extension_Intl
+        tags:
+            - { name: twig.extension }        
             
 fos_user:
     db_driver:  orm
