@@ -58,7 +58,7 @@ Execute following commands :
 + php app/console doctrine:schema:update --force
 + php app/console doctrine:fixtures:load
 
-Now, open DTLN/web/tinymce/plugins/jbimages/config.php and set the $config['img_path'] variable.
+Now, open BDTLN/web/tinymce/plugins/jbimages/config.php and set the $config['img_path'] variable.
 
 
 Two users are already created, a simple user and a super admin.
