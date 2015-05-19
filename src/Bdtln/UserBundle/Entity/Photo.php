@@ -128,7 +128,12 @@ class Photo
         if ($this->file === null)
             return;
         
+        $extension = $this->file->guessExtension();
+        if ( !$extension )
+            $extension = '.bin';
+        
         $this->url = ($photoName == null) ? time() : $photoName;
+        $this->url .= '.'.$extension;
         $this->alt = $firstName. " ".$lastName;
         $this->file->move($this->getUploadRootDir(), $this->url);        
     }

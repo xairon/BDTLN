@@ -1,0 +1,26 @@
+{# src/Bdtln/UserBundle/Resources/views/User/display_users.html.twig #}
+{#
+    Here we ca see all users
+#}
+
+{% extends "BdtlnUserBundle::layout.html.twig" %}
+
+
+{% block fos_user_content %}
+   
+    {% for user in users %}
+        {# Display one user #}
+        <div>
+            {# Display photo #}
+            {% if user.photo != null %}
+                <img width="100px" alt="{{ user.photo.alt }}" src="{{ asset(user.photo.uploadDir ~ '/'~ user.photo.url) }}" />
+            {% endif %}
+
+            <p><a href="{{ path('fos_user_profile_show', {'username': user.username}) }}">{{ user.firstName ~ ' ' ~ user.lastName }}</a></p>
+            {# Display biography #}
+            {{ (app.request.locale == 'fr') ? (user.frenchBiography != null) ? user.frenchBiography : "" : (user.englishBiography != null) ? user.englishBiography : '' }}
+            
+        </div>
+    {% endfor %}
+    
+{% endblock %}

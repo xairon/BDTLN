@@ -13,6 +13,10 @@
     
     <p>{{ 'profile.show.dateregister'|trans }}: {{ user.dateRegister|localizeddate('long', 'none', app.request.locale) }}</p>
     
+    {% if user.enabled == false %}
+        <p>{{ 'Disabled since' | trans }} {{ user.dateLeaving|localizeddate('long', 'none', app.request.locale)}}</p>
+    {% endif %}
+    
     {% if user.category is not null %}
         {% if app.request.locale == 'fr' %}
             <p>{{ 'profile.show.category'|trans }}: {{ user.category.frenchTitle }}</p>

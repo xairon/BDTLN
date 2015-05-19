@@ -2,15 +2,19 @@
 bdtln_user_add_category:
     path:   /add-category
     defaults:   { _controller: BdtlnUserBundle:User:add_category }
-    
+#Edit a category    
 bdtln_user_edit_category:
     path: /edit-category/{id}
     defaults:   { _controller: BdtlnUserBundle:User:edit_category }
-    
+#Display a list with all categories
 bdtln_user_display_all_categories:
     path:   /display-cagegories
     defaults:   { _controller: BdtlnUserBundle:User:display_all_categories }
-    
+#Delete a category
 bdtln_user_delete_category:
     path:   /delete-category/{id}
     defaults:   { _controller: BdtlnUserBundle:User:delete_category }
+#Display a list with all users
+bdtln_user_display_all_users:
+    path:   /display_users/
+    defaults:   { _controller: BdtlnUserBundle:User:display_users }

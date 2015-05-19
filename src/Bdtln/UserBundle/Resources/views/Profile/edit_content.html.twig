@@ -28,6 +28,14 @@
         {% endfor %}
     </select>
     
+    {# root can disable the account #}
+    {% if is_granted('ROLE_SUPER_ADMIN') %}
+        {% if user.enabled == true %}
+            <br /><label for="disable_account">Disable account</label><input type="checkbox" name="disable_account" value="yes" />
+        {% else %}
+            <br /><label for="enable_account">Enable account</label><input type="checkbox" name="enable_account" value="yes"/>
+        {% endif %}
+    {% endif %}
     
     <div>
         <input type="submit" value="{{ 'profile.edit.submit'|trans }}" />
