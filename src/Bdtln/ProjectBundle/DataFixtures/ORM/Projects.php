@@ -11,7 +11,7 @@ namespace Bdtln\ProjectBundle\DataFixtures\ORM\Projects;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Bdtln\ProjectBundle\Entity\Project;
-use \Bdtln\ProjectBundle\Entity\File;
+use Bdtln\ProjectBundle\Entity\AttachedFile;
 use Bdtln\AxeBundle\Entity\Axe;
 
 
@@ -43,11 +43,11 @@ class Projects implements FixtureInterface {
             $projectWithFiles->setFrenchSummary("C'est un deuxième projet");
             $projectWithFiles->setFrenchTitle("Un second projet");
            
-            $file1 = new File();
+            $file1 = new AttachedFile();
             $file1->setPath("pictures/my_first_file.zip");
             $file1->setTitle("My file");
  
-            $file2 = new File();
+            $file2 = new AttachedFile();
             $file2->setPath("pictures/my_second_file.zip");
             $file2->setTitle("My second file");
             
