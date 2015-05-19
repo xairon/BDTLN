@@ -121,6 +121,16 @@ class UserController extends Controller{
     }
     
     
+    /**
+     * display_users display a list of all users
+     */
+    public function display_usersAction() {
+        $allUser = $this->getDoctrine()->getManager()->getRepository('BdtlnUserBundle:User')->findAll();
+        
+        
+        return $this->render('BdtlnUserBundle:User:display_users.html.twig', array('users' => $allUser));
+    }
+    
     
     
 }

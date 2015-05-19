@@ -3,12 +3,26 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/var/www/html/autres/BDTLN/src/Bdtln/AxeBundle/Form/AxeType.php</file>
-            <file>file:/var/www/html/autres/BDTLN/src/Bdtln/ProjectBundle/Controller/ProjectController.php</file>
-            <file>file:/var/www/html/autres/BDTLN/src/Bdtln/ProjectBundle/Entity/Project.php</file>
-            <file>file:/var/www/html/autres/BDTLN/src/Bdtln/ProjectBundle/Form/ProjectType.php</file>
-            <file>file:/var/www/html/autres/BDTLN/src/Bdtln/AxeBundle/Entity/Axe.php</file>
+            <file>file:/var/www/html/autres/BDTLN/src/Bdtln/AxeBundle/Resources/translations/messages.fr.yml</file>
+            <file>file:/var/www/html/autres/BDTLN/src/Bdtln/ProjectBundle/Entity/AttachedFile.php</file>
+            <file>file:/var/www/html/autres/BDTLN/src/Bdtln/ProjectBundle/Resources/views/Project/delete_file.html.twig</file>
+            <file>file:/var/www/html/autres/BDTLN/src/Bdtln/ProjectBundle/Resources/views/Project/update_participants.html.twig</file>
+            <file>file:/var/www/html/autres/BDTLN/src/Bdtln/ProjectBundle/DataFixtures/ORM/Projects.php</file>
+            <file>file:/var/www/html/autres/BDTLN/src/Bdtln/ProjectBundle/Resources/views/Project/update_project.html.twig</file>
+            <file>file:/var/www/html/autres/BDTLN/src/Bdtln/AxeBundle/Resources/views/Axe/update_managers.html.twig</file>
+            <file>file:/var/www/html/autres/BDTLN/src/Bdtln/ProjectBundle/Resources/views/menus/attached_files.html.twig</file>
+            <file>file:/var/www/html/autres/BDTLN/src/Bdtln/UserBundle/Entity/Photo.php</file>
+            <file>file:/var/www/html/autres/BDTLN/src/Bdtln/ProjectBundle/Resources/views/Project/delete_project.html.twig</file>
             <file>file:/var/www/html/autres/BDTLN/src/Bdtln/ProjectBundle/Resources/views/Project/add_project.html.twig</file>
+            <file>file:/var/www/html/autres/BDTLN/src/Bdtln/ProjectBundle/Entity/ProjectRepository.php</file>
+            <file>file:/var/www/html/autres/BDTLN/src/Bdtln/ProjectBundle/Controller/ProjectController.php</file>
+            <file>file:/var/www/html/autres/BDTLN/src/Bdtln/ProjectBundle/Resources/views/Project/add_file.html.twig</file>
+            <file>file:/var/www/html/autres/BDTLN/src/Bdtln/ProjectBundle/Resources/translations/messages.fr.yml</file>
+            <file>file:/var/www/html/autres/BDTLN/src/Bdtln/ProjectBundle/Entity/Project.php</file>
+            <file>file:/var/www/html/autres/BDTLN/src/Bdtln/ProjectBundle/Entity/AttachedFileRepository.php</file>
+            <file>file:/var/www/html/autres/BDTLN/src/Bdtln/ProjectBundle/Resources/views/Project/display_project.html.twig</file>
+            <file>file:/var/www/html/autres/BDTLN/src/Bdtln/ProjectBundle/Form/AttachedFileType.php</file>
+            <file>file:/var/www/html/autres/BDTLN/src/Bdtln/AxeBundle/Resources/views/Axe/display_axe.html.twig</file>
         </group>
     </open-files>
 </project-private>

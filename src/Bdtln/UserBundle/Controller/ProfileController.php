@@ -73,19 +73,16 @@ class ProfileController extends Controller
         if ( $this->get('request')->getMethod() == "POST" ) {
             $givenCategory = $categoryRepository->findOneOrNullById(intval($_POST['category']));
             if ($form->isValid() && $givenCategory != null) {
-                //If a photo is uploaded
-                if ( $user->getPhoto() != null ) {
                     //If the user has already a photo
                     $oldPhoto = $userRepository->findOneById($user->getId())->getPhoto();
+                //If a photo is uploaded
+                if ( $user->getPhoto() != null ) {
+
                     
                     //If delete_photo isn't checked
                     if ( empty($_POST['delete_photo'])) {
-                        $photoName = null;
-                        //If there was already a photo, get the name
-                        if ( $oldPhoto != null)
-                            $photoName = $oldPhoto->getUrl();
                         //Upload new photo
-                        $user->getPhoto()->upload($user->getFirstName(), $user->getLastName(), $photoName);
+                        $user->getPhoto()->upload($user->getFirstName(), $user->getLastName(), $user->getId());
                     } else { //else, delete photo on server and on database
                         $entityManager->remove($user->getPhoto());
                         $user->getPhoto()->deleteFile();
@@ -94,8 +91,18 @@ class ProfileController extends Controller
                 }
                 
                 $user->setCategory($givenCategory);
-                if ( empty($_POST['delete_photo']) )
+                //If user doesn't post any photo, he keep the old photo
+                if ( empty($_POST['delete_photo']) && $oldPhoto != null)
                     $entityManager->persist($user->getPhoto());
+                
+                //If root disable the account
+                if ( in_array('ROLE_SUPER_ADMIN', $this->getUser()->getRoles()) && !empty($_POST['disable_account']) ) {
+                    $user->setEnabled(false);
+                    $user->setDateLeaving(new \DateTime);
+                } else if (in_array('ROLE_SUPER_ADMIN', $this->getUser()->getRoles()) && !empty($_POST['enable_account'])) {
+                    $user->setEnabled(true);
+                    $user->setDateLeaving(null);
+                }
                 
                 $entityManager->persist($user);
                 $entityManager->flush();

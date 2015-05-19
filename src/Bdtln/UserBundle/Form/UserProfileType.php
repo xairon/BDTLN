@@ -18,18 +18,12 @@ class UserProfileType extends AbstractType
     {
         $builder
                 ->add('email', 'email', array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'))
-                ->add('plainPassword', 'repeated', array(
-                'type' => 'password',
-                'options' => array('translation_domain' => 'FOSUserBundle'),
-                'first_options' => array('label' => 'form.password'),
-                'second_options' => array('label' => 'form.password_confirmation'),
-                'invalid_message' => 'fos_user.password.mismatch',
-            ))
+                
                 //Translations for label below are in Bdtln/UserBundle/Resources/translations/
             ->add('firstName', 'text', array('label' => "form.firstname", 'translation_domain' => 'FOSUserBundle'))
             ->add('lastName', 'text', array('label' => "form.lastname", 'translation_domain' => 'FOSUserBundle'))
-            ->add('frenchBiography', 'textarea', array('label' => 'form.frenchbiography', 'translation_domain' => 'FOSUserBundle') )
-            ->add('englishBiography', 'textarea', array('label' => 'form.englishbiography', 'translation_domain' => 'FOSUserBundle') )
+            ->add('frenchBiography', 'textarea', array('label' => 'form.frenchbiography', 'translation_domain' => 'FOSUserBundle', 'required' => false) )
+            ->add('englishBiography', 'textarea', array('label' => 'form.englishbiography', 'translation_domain' => 'FOSUserBundle', 'required' => false) )
             ->add('photo', new PhotoType(), array('label' => "Photo", "required" => false))
                 
         ;
