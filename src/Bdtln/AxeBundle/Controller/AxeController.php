@@ -239,14 +239,14 @@ class AxeController extends Controller
                 $entityManager->flush();
                 return $this->redirect( $this->generateUrl('bdtln_axe_homepage') );
             } else { //If $_POST['delete'] = "no" redirect on the axe's page
-                return $this->redirect( $this->generateUrl('bdtln_axe_display_axe', array('slug' => $axe->getSlug())) );
+                return $this->redirect( $this->generateUrl('bdtln_axe_display_axe', array('axe' => $axe)) );
             }
             
         }
         
         $session->set('token', sha1(time()));
         
-        return $this->render('BdtlnAxeBundle:Axe:delete_axe.html.twig', array('slug' => $axe->getSlug()));
+        return $this->render('BdtlnAxeBundle:Axe:delete_axe.html.twig', array('axe' => $axe));
     }
     
     

@@ -15,7 +15,9 @@
 				<fieldset>
 
 					<!-- Form Name -->
-                                        <legend> {{ "Add a manager into the axe" | trans }}</legend>
+                                        <legend>
+                                            {{ "Add a manager into the axe" | trans }} {{ (app.request.locale == "en") ? axe.englishTitle : axe.frenchTitle }}
+                                        </legend>
 
                                         {#The sessions flashbag like an error written in controller will be displayed here#}
                                         {% for information_add in app.session.flashbag.get('informations_add')%}
@@ -59,7 +61,9 @@
 				<fieldset>
 
 					<!-- Form Name -->
-					<legend>{{ "Put off an administrator of this axe" | trans }}</legend>
+					<legend>
+                                            {{ "Put off an administrator of the axe" | trans }} {{ (app.request.locale == "en") ? axe.englishTitle : axe.frenchTitle }}
+                                        </legend>
 
                                         {% for information_delete in app.session.flashBag.get('informations_delete') %}
                                             {{ information_delete | trans }}

@@ -1,8 +1,8 @@
-'You will add an axe in project': 'Vous allez ajouter un axe dans ce projet'
+'You will add an axe in project': 'Vous allez ajouter un axe dans le projet'
 'Choose an axe': 'Choisissez un axe'
 'This project contains already all axes': 'Ce projet contient déjà tous les axes'
 'Main axe': 'Axe principal'
-'Do you want delete this project ?': 'Voulez-vous vraiment supprimer ce projet ?'
+'Do you want delete the project': 'Voulez-vous vraiment supprimer le projet'
 'Yes': Oui
 'No': Non
 'Add': Ajouter
@@ -11,9 +11,9 @@
 'Manage the participants': 'Gérer les participants'
 'Manage the administrators': 'Gérer les administrateurs'
 'Delete the project': 'Supprimer le projet'
-'Add a user as administrator': 'Ajouter un utilisateur comme administrateur'
+'Add a user as administrator in': 'Ajouter un utilisateur comme administrateur dans'
 'Add an administrator': 'Ajouter un administrateur'
-'Delete an administrator from this project': 'Supprimer un administrateur de ce projet'
+'Delete an administrator from the project': 'Supprimer un administrateur du projet'
 'Delete an administrator': 'Supprimer un administrateur'
 'Delete': Supprimer
 'Add a participant to the project': 'Ajouter un participant au projet'
