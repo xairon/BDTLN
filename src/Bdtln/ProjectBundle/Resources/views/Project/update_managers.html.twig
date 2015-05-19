@@ -16,7 +16,7 @@
 				<fieldset>
 
 					<!-- Form Name -->
-					<legend>{{ "Add a user as administrator" | trans }}</legend>
+					<legend>{{ "Add a user as administrator in" | trans }} {{ (app.request.locale == 'fr') ? project.frenchTitle : project.englishTitle }}</legend>
 
                                         {#The sessions flashbag like an error written in controller will be displayed here#}
                                         {% for information_add in app.session.flashbag.get('informations_add')%}
@@ -60,7 +60,7 @@
 				<fieldset>
 
 					<!-- Form Name -->
-					<legend>{{ "Delete an administrator from this project" | trans }}</legend>
+					<legend>{{ "Delete an administrator from the project" | trans }} {{ (app.request.locale == 'fr') ? project.frenchTitle : project.englishTitle }}</legend>
 
                                         {% for information_delete in app.session.flashBag.get('informations_delete') %}
                                             {{ information_delete | trans }}

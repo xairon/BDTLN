@@ -41,33 +41,39 @@
     <form action="{{ path('bdtln_axe_add_axe') }}" method="POST" {{ form_enctype(form) }}>
         {{ form_errors(form) | trans }}
         <div>
-            {{ form_label(form.englishTitle, 'Titre anglais') }}
+            {% set englishTitle = 'English title' | trans %}
+            {{ form_label(form.englishTitle, englishTitle) }}
             {{ form_errors(form.englishTitle) }}
             {{ form_widget(form.englishTitle) }}
         </div>
         <div>
-            {{ form_label(form.frenchTitle, 'Titre français') }}
+            {% set frenchTitle = 'French title' | trans %}
+            {{ form_label(form.frenchTitle, frenchTitle) }}
             {{ form_errors(form.frenchTitle) }}
             {{ form_widget(form.frenchTitle) }}
         </div>
         <div>
-            {{ form_label(form.englishSummary, 'Résumé anglais') }}
+            {% set englishSummary = 'English summary' | trans %}
+            {{ form_label(form.englishSummary, englishSummary) }}
             {{ form_errors(form.englishSummary) }}
             {{ form_widget(form.englishSummary) }}
         </div>
         <div>
-            {{ form_label(form.frenchSummary, 'Résumé français') }}
+            {% set frenchSummary = 'French summary' | trans %}
+            {{ form_label(form.frenchSummary, frenchSummary) }}
             {{ form_errors(form.frenchSummary) }}
             {{ form_widget(form.frenchSummary) }}
         </div>
         <div>
-            {{ form_label(form.englishDescription, 'Description anglaise') }}
+            {% set englishDescription = 'English description' | trans %}
+            {{ form_label(form.englishDescription, englishDescription) }}
             {{ form_errors(form.englishDescription) }}
             {{ form_widget(form.englishDescription) }}
         </div>
         
         <div>
-            {{ form_label(form.frenchDescription, 'Description française') }}
+            {% set frenchDescription = 'French description' | trans %}
+            {{ form_label(form.frenchDescription, frenchDescription) }}
             {{ form_errors(form.frenchDescription) }}
             {{ form_widget(form.frenchDescription) }}
         </div>

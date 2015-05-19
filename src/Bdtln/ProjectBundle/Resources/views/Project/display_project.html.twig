@@ -23,7 +23,7 @@
     <div class="row clearfix">
     	<div class="col-md-8 column" id="article">
             <!-- The title of the project -->
-            <h2 class="text-center">{{ project.frenchTitle }}</h2>
+            <h2 class="text-center">{{ (app.request.locale == 'fr') ? project.frenchTitle : project.englishTitle }}</h2>
             
             <!-- The description of the project -->
             <div class="lead">

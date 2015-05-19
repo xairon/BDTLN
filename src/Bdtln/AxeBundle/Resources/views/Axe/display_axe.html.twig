@@ -15,18 +15,20 @@
     {% endif %}
     <div class="row clearfix" >
 		<div class="col-md-10 column" id="axe">
-                    <h3>{{ axe.englishTitle}}</h3>
-                    <hr>
-			
-                    <div class="lead">       
+                    <div class="lead">     
+                        {# Display page in english #}
                         {% if app.request.locale == "en" %}
                             {% if axe.englishDescription is not null %}
+                                <h3>{{ axe.englishTitle}}</h3>
+                                <hr>
                                 {{ axe.englishDescription | purify | raw }}
                             {% else %}
                                 {{ 'There is no description in english, but maybe there is in french.' }}
                             {% endif %}
                         {% else %} {#if locale = fr#}
                             {% if axe.frenchDescription is not null %}
+                                <h3>{{ axe.frenchTitle}}</h3>
+                                <hr>
                                 {{ axe.frenchDescription | purify | raw }}
                             {% else %}
                                 {{ "Il n'y a pas de description en français, mais peut-être qu'il y en a une en anglais." }}

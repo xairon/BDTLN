@@ -16,8 +16,11 @@
     {% endfor %}
     
     
-    <form method="POST" action="{{ path('bdtln_axe_delete_axe', {'slug': slug}) }}" >
-        <p>{% trans %}Voulez-vous supprimer cet axe ? Les projets appartenant à cet axe seront supprimés.{% endtrans %}</p><br />
+    <form method="POST" action="{{ path('bdtln_axe_delete_axe', {'slug': axe.slug}) }}" >
+        <p>{{ 'Are you sure to want delete the axe' | trans }}
+           {{ (app.request.locale == "en") ? axe.englishTitle : axe.frenchTitle }} ?
+            {{ 'All projects witch belong to it will be deleted.' | trans }}
+        </p><br />
         
         <label>{{ "Yes" | trans }}</label><input type="radio" name="delete" value="yes" />
         <label>{{ "No" | trans }}</label><input type="radio" name="delete" value="no" />

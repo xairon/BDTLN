@@ -1,14 +1,15 @@
 'Add an axe': Ajouter un axe
-'Are you sure to want delete this axe ? All projects witch belong to it will be deleted.': 'Voulez-vous supprimer cet axe ? Les projets appartenant à cet axe seront supprimés.'
+'Are you sure to want delete the axe': 'Voulez-vous supprimer l''axe'
+'All projects witch belong to it will be deleted.': 'Tous les projets qui lui appartiennent seront supprimés'
 'Yes': Oui
 'No': Non
 Add: Ajouter
 'Update the axe': Mettre l'axe à jour
 'Manage the administrators': Gérer les administrateurs
 'Delete the axe': Supprimer l'axe
-'Add a manager into the axe': Ajouter un administrateur à cet axe
+'Add a manager into the axe': Ajouter un administrateur à l'axe
 'Add an administrator': 'Ajouter un administrateur'
-'Put off an administrator of this axe': Retirer un administrateur de cet axe'
+'Put off an administrator of the axe': Retirer un administrateur de l'axe
 'Delete an administrator': Supprimer un administrateur
 'At least one description must be filled !': Au moins une description doit être remplie !
 'The axe couldn''t be saved !': L'axe n'a pas pu être enregistré !
@@ -25,5 +26,6 @@ The super administrator can''t be deleted !': Le super administrateur ne peut pa
 'The english summary should be longer than 20 characters': Le résumé anglais doit faire plus de 20 caractères
 'The english summary not be longer than 255 characters': Le résumé anglais ne doit pas faire plus de 255 caractères
 'Update': Mettre à jour
-
+'French description': Description française
+'Update axe': 'Modifier l''axe'
 
