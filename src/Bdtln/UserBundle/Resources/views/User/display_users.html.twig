@@ -19,7 +19,7 @@
             <p><a href="{{ path('fos_user_profile_show', {'username': user.username}) }}">{{ user.firstName ~ ' ' ~ user.lastName }}</a></p>
             {# Display biography #}
             {{ (app.request.locale == 'fr') ? (user.frenchBiography != null) ? user.frenchBiography : "" : (user.englishBiography != null) ? user.englishBiography : '' }}
-            
+            <HR>
         </div>
     {% endfor %}
     

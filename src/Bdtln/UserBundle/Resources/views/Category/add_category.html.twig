@@ -7,31 +7,31 @@
 
 
 {% block fos_user_content %}
-   
-    {{ "You will add a category" | trans }}
-    
-    <form method="POST" action="{{ path('bdtln_user_add_category') }}">
-        {{ form_errors(form) }}
-        <div>
-            {% set englishTitle = "English title" | trans %}
+    <div id="form"> 
+        {{ "You will add a category" | trans }}
+        
+        <form method="POST" action="{{ path('bdtln_user_add_category') }}">
+            {{ form_errors(form) }}
+            <div>
+                {% set englishTitle = "English title" | trans %}
+                
+                {{ form_label(form.englishTitle, englishTitle) }}
+                {{ form_errors(form.englishTitle) }}
+                {{ form_widget(form.englishTitle) }}
+            </div>
+            <div>
+                {% set frenchTitle = "French title" | trans %}
+                {{ form_label(form.frenchTitle, frenchTitle) }}
+                {{ form_errors(form.frenchTitle) }}
+                {{ form_widget(form.frenchTitle) }}
+            </div>
             
-            {{ form_label(form.englishTitle, englishTitle) }}
-            {{ form_errors(form.englishTitle) }}
-            {{ form_widget(form.englishTitle) }}
-        </div>
-        <div>
-            {% set frenchTitle = "French title" | trans %}
-            {{ form_label(form.frenchTitle, frenchTitle) }}
-            {{ form_errors(form.frenchTitle) }}
-            {{ form_widget(form.frenchTitle) }}
-        </div>
-        
-        {{ form_rest(form) }}
-        
-        <input type="submit" value="{{ "Add" | trans }}" />
-    </form>
-    
-    
+            {{ form_rest(form) }}
+            
+            <input type="submit" class="btn btn-primary" value="{{ "Add" | trans }}" />
+        </form>
+    </div>
+    <button id="back" name="back" class="btn btn-primary" onClick="history.back()">{{ "Back" | trans }}</button> 
     
     
     
