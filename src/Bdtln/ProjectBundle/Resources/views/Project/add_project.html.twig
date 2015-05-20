@@ -38,56 +38,62 @@
 
     <form action="{{ path('bdtln_project_add_project') }}" method="POST" {{ form_enctype(form) }} id="form-add-project">
         {{ form_errors(form) }}
-        <div>
-            {% set englishTitle = "English title" | trans %}
+        <div class="col-md-6 column" >
+            <div>
+                {% set englishTitle = "English title" | trans %}
+                
+                {{ form_label(form.englishTitle, englishTitle) }}
+                {{ form_errors(form.englishTitle) }}
+                {{ form_widget(form.englishTitle) }}
+            </div>
+            <div>
+                {% set englishSummary = "English summary" | trans %}
+                {{ form_label(form.englishSummary, englishSummary) }}
+                {{ form_errors(form.englishSummary) }}
+                {{ form_widget(form.englishSummary) }}
+            </div>
+            <div>
+                {% set englishDescription = "English description" | trans %}
+                {{ form_label(form.englishDescription, englishDescription) }}
+                {{ form_errors(form.englishDescription) }}
+                {{ form_widget(form.englishDescription) }}
+            </div>
+        </div>
+        <div class="col-md-6 column" >
+            <div>
+                {% set frenchTitle = "French title" | trans %}
+                {{ form_label(form.frenchTitle, frenchTitle) }}
+                {{ form_errors(form.frenchTitle) }}
+                {{ form_widget(form.frenchTitle) }}
+            </div>
             
-            {{ form_label(form.englishTitle, englishTitle) }}
-            {{ form_errors(form.englishTitle) }}
-            {{ form_widget(form.englishTitle) }}
+            <div>
+                {% set frenchSummary = "French summary" | trans %}
+                {{ form_label(form.frenchSummary, frenchSummary) }}
+                {{ form_errors(form.frenchSummary) }}
+                {{ form_widget(form.frenchSummary) }}
+            </div>
+           
+            
+            <div>
+                {% set frenchDescription = "French descripion" | trans %}
+                {{ form_label(form.frenchDescription, frenchDescription) }}
+                {{ form_errors(form.frenchDescription) }}
+                {{ form_widget(form.frenchDescription) }}
+            </div>
         </div>
-        <div>
-            {% set frenchTitle = "French title" | trans %}
-            {{ form_label(form.frenchTitle, frenchTitle) }}
-            {{ form_errors(form.frenchTitle) }}
-            {{ form_widget(form.frenchTitle) }}
-        </div>
-        <div>
-            {% set englishSummary = "English summary" | trans %}
-            {{ form_label(form.englishSummary, englishSummary) }}
-            {{ form_errors(form.englishSummary) }}
-            {{ form_widget(form.englishSummary) }}
-        </div>
-        <div>
-            {% set frenchSummary = "French summary" | trans %}
-            {{ form_label(form.frenchSummary, frenchSummary) }}
-            {{ form_errors(form.frenchSummary) }}
-            {{ form_widget(form.frenchSummary) }}
-        </div>
-        <div>
-            {% set englishDescription = "English description" | trans %}
-            {{ form_label(form.englishDescription, englishDescription) }}
-            {{ form_errors(form.englishDescription) }}
-            {{ form_widget(form.englishDescription) }}
-        </div>
-        
-        <div>
-            {% set frenchDescription = "French descripion" | trans %}
-            {{ form_label(form.frenchDescription, frenchDescription) }}
-            {{ form_errors(form.frenchDescription) }}
-            {{ form_widget(form.frenchDescription) }}
-        </div>
-        <div>
-            {% set beginningDate = "Beginning date" | trans %}
-            {{ form_label(form.beginningDate, beginningDate) }}
-            {{ form_errors(form.beginningDate) }}
-            {{ form_widget(form.beginningDate) }}
-        </div>
-        <div>
-            {% set endingDate = "Ending date" | trans %}
-            {{ form_label(form.endingDate, endingDate) }}
-            {{ form_errors(form.endingDate) }}
-            {{ form_widget(form.endingDate) }}
-        </div>
+            <div>
+                {% set beginningDate = "Beginning date" | trans %}
+                {{ form_label(form.beginningDate, beginningDate) }}
+                {{ form_errors(form.beginningDate) }}
+                {{ form_widget(form.beginningDate) }}
+            </div>
+            <div>
+                {% set endingDate = "Ending date" | trans %}
+                {{ form_label(form.endingDate, endingDate) }}
+                {{ form_errors(form.endingDate) }}
+                {{ form_widget(form.endingDate) }}
+            </div>
         
         <label for="axe">{{ "Main axe" | trans }}</label>
         <select name="axe">
@@ -99,6 +105,8 @@
         
         {{ form_rest(form) }}
         
-        <input type="submit" value="Submit" />
+        <button id="submit" name="submit" class="btn btn-primary">{{ "Add" | trans }}</button>
     </form>
+
+    <button id="back" name="back" class="btn btn-primary" onClick="history.back()">{{ "Back" | trans }}</button> 
 {% endblock %}
