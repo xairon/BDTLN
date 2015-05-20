@@ -28,13 +28,13 @@
                                 
                                 {# Display the title and summary according to the locale #}
                                 {% if app.request.locale == "en" %}
-                                    <a href="{{ path('bdtln_project_display', {'slug': project.slug}) }}">{{ project.englishTitle }}</a>
+                                   <h4> <a href="{{ path('bdtln_project_display', {'slug': project.slug}) }}">{{ project.englishTitle }}</a></h4>
                                     <p>{{ project.englishSummary }}</p>
                                 {% else %} {#if locale = fr#}
-                                    <a href="{{ path('bdtln_project_display', {'slug': project.slug}) }}">{{ project.frenchTitle }}</a>
+                                    <h4><a href="{{ path('bdtln_project_display', {'slug': project.slug}) }}">{{ project.frenchTitle }}</a></h4>
                                     <p>{{ project.frenchSummary }}</p>
                                 {% endif %}
-                                
+                                <hr>
                             {% endfor%}
                         {% endif %}
                     </ul>

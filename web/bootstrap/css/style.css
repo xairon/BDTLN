@@ -3,6 +3,12 @@ body
 	background : #FFFFFF url("../img/background.png") center ;
 	background-attachment:fixed;
 }
+body a
+{
+	font-weight: bold;
+	font-size: 12px;
+	margin-left: 3px
+}
 #page
 {
 	background: #FFFFFF ;
@@ -22,6 +28,10 @@ body
 	color: #d9c8b1;
 	border-color: #56595e;
 	border: none;
+}
+#barre_de_menu a
+{
+	font-weight: none;
 }
 #barre_de_menu a:hover
 {
@@ -132,6 +142,7 @@ body
 #drop a
 {
 	color: #FFFFFF;
+	font-weight: none;
 }
 #drop a:hover
 {
@@ -145,7 +156,7 @@ body
 }	
 #back
 {
-	margin-top: 50px;
+	margin-top: 400px;
 }
 #button
 {
@@ -161,15 +172,14 @@ body
 }
 #fiche
 {
-	background-color: #EFEFEF ; 
+	
 	padding: 10px;
-	width: 45%;
-	padding: 10px; 
+	width: 80%;
 	font-size : 20px ;
 	font-style: bold ;
 	margin-bottom: 15px ;
 }
-#fiche p 
+#profil p 
 {
 	font-size: 16px;
 	font-style: none;
@@ -181,4 +191,26 @@ body
 	padding: 10px;
 	width: 30%;
 	padding: 10px; 	
+}
+
+#profil
+{
+	background-color: #EFEFEF ;
+	float: left;
+	text-align: left;
+	padding: 10px;
+	width: 90%;
+	font-size : 20px ;
+	font-style: bold ;
+	margin-bottom: 15px ;
+}
+#bio 
+{
+	background-color: #EFEFEF ;
+	font-size : 20px ;
+	font-style: bold ; 
+	padding: 10px;
+	text-align: left;
+
+
 }
