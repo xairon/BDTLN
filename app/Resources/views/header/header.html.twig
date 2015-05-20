@@ -6,7 +6,7 @@
 <div class="row clearfix">
 		<div class="col-md-12 column" id="en_tete">
 			<div class="row clearfix">
-				<div class="col-md-8 column text-right">
+				<div class="col-md-8 column text-left">
 					<img src="{{ asset("bootstrap/img/logo.png") }}">
 					<h3>
 						Bases de données et traitement du langage naturel
@@ -16,12 +16,14 @@
 				<div class="col-md-1 column">
 				</div>
 
-				<div class="col-md-1 column">
+				<div class="col-md-1 column" id="drapeaux">
+					<a href="javascript:changeLanguageToFrench();"><img src="{{ asset("bootstrap/img/français.png") }}"></a>
+					<a href="javascript:changeLanguageToEnglish();"><img src="{{ asset("bootstrap/img/anglais.png") }}"/></a>
 				</div>
 			</div>
 		</div>
 	</div>
-            <div class="row clearfix">
+    <div class="row clearfix">
 		<div class="col-md-12 column">	
 				<nav class="navbar navbar-default" role="navigation" id ="barre_de_menu">
 				<div class="navbar-header">
@@ -30,41 +32,44 @@
 				
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li>
-							<a  class="navbar-brand" href="{{ path('bdtln_axe_homepage') }}">{{ "Axes/Projects" | trans }}</a>
+						<li class="dropdown" class="navbar-brand">
+							 <a href="{{ path('bdtln_axe_homepage') }}" class="dropdown-toggle"  id ='drop'data-toggle="dropdown">{{ "Axes/Projects" | trans }}<strong class="caret" id='drop-puce' ></strong></a>
+							<ul class="dropdown-menu" id ='drop'>
+								<li>
+									<a class="navbar-brand" href="{{ path('bdtln_axe_homepage') }}">{{ "Liste des Axes/Projets" | trans }}</a>
+								</li>
+								<li>
+									<a class="navbar-brand" href="{{ path('bdtln_axe_add_axe') }}">{{ "Add an axe" | trans }}</a>
+								</li>
+								<li>
+									<a class="navbar-brand" href="{{ path('bdtln_project_add_project') }}">{{ "Add a project" | trans }}</a>
+								</li>
+							</ul>
 						</li>
-
 						<li>
 							<a  class="navbar-brand" href="{{ path('bdtln_user_display_all_users') }}">{{ "Researchers pages" | trans }}</a>
 						</li>
-                                                <li>
-                                                    <a class="navbar-brand" href="{{ path('bdtln_project_add_project') }}">{{ "Add a project" | trans }}</a>
-                                                </li>
-                                                <li>
-                                                    <a class="navbar-brand" href="{{ path('bdtln_axe_add_axe') }}">{{ "Add an axe" | trans }}</a>
-                                                </li>
-                                                
-                                                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                                                    <li>
-                                                        <a class="navbar-brand" href="{{ path('fos_user_profile_show', {'username': app.user.username}) }}">{{ app.user.username }} - </a><a class="navbar-brand" href="{{ path('fos_user_security_logout') }}">{{ "Log out" | trans }}</a>
-                                                    </li>
-                                                {% else %}
-                                                    <li>
-                                                        <a class="navbar-brand" href="{{ path('fos_user_security_login') }}">{{ "Sign in" | trans }}</a>
-                                                    </li>
-                                                {% endif %}
-                                                <li>
-                                                    <a class="navbar-brand" href="{{ path('fos_user_registration_register') }}">{{ 'Add member' | trans }}</a>
-                                                </li>
-                                                 <li>
-                                                    <a class="navbar-brand" href="{{ path('bdtln_user_display_all_categories') }}">{{ 'Display categories' | trans }}</a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:changeLanguageToFrench();" class="navbar-brand">FR</a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:changeLanguageToEnglish();" class="navbar-brand">EN</a>
-                                                </li>
+                        
+                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                            <li>
+                                <a class="navbar-brand" href="{{ path('fos_user_profile_show', {'username': app.user.username}) }}">{{ app.user.username }}</a><a class="navbar-brand" href="{{ path('fos_user_security_logout') }}">{{ "Log out" | trans }}</a>
+                            </li>
+                        {% else %}
+                            <li>
+                                <a class="navbar-brand" href="{{ path('fos_user_security_login') }}">{{ "Sign in" | trans }}</a>
+                            </li>
+                        {% endif %}
+                        <li class="dropdown" class="navbar-brand">
+							 <a href="#" class="dropdown-toggle"  id ='drop'data-toggle="dropdown">{{ "Administration" | trans }}<strong class="caret" id='drop-puce' ></strong></a>
+							<ul class="dropdown-menu" id ='drop'>
+								<li>
+									<a class="navbar-brand" href="{{ path('fos_user_registration_register') }}">{{ 'Add member' | trans }}</a>
+								</li>
+								<li>
+									<a class="navbar-brand" href="{{ path('bdtln_user_display_all_categories') }}">{{ 'Display categories' | trans }}</a>
+								</li>
+							</ul>
+						</li>
 					</ul>
 				</div>	
 			</nav>
