@@ -7,38 +7,40 @@
 
 
 {% block project_body %}
-    
-    {#The sessions flashbag like an error written in controller will be displayed here#}
-    {% for information in app.session.flashbag.get('information')%}
-    <p>
-        {{ information }}
-    </p>
-    {% endfor %}
-    
-    
-    <form method="POST" action="{{ path('bdtln_project_delete_project', {'slug': project.slug}) }}" >
+    <div id="form">
+        {#The sessions flashbag like an error written in controller will be displayed here#}
+        {% for information in app.session.flashbag.get('information')%}
         <p>
-            {{ "Do you want delete the project" | trans }}
-            {% if app.request.locale == 'fr' %}
-                {{ project.frenchTitle }}
-            {% else %}
-                {{ project.englishTitle }}
-            {% endif %}
-            ?
-        </p><br />
+            {{ information }}
+        </p>
+        {% endfor %}
         
-        <label>{{ "Yes" | trans }}</label><input type="radio" name="delete" value="yes" />
-        <label>{{ "No" | trans }}</label><input type="radio" name="delete" value="no" />
-        <div class="control-group">
+        
+        <form method="POST" action="{{ path('bdtln_project_delete_project', {'slug': project.slug}) }}" >
+            <p>
+                {{ "Do you want delete the project" | trans }}
+                {% if app.request.locale == 'fr' %}
+                    {{ project.frenchTitle }}
+                {% else %}
+                    {{ project.englishTitle }}
+                {% endif %}
+                ?
+            </p><br />
             
-            <input type="hidden" name="token" value="{{ app.session.get('token') }}" />
-            <label class="control-label" for="submit"></label>
-            <div class="controls">
-                <button id="submit" name="submit" class="btn btn-primary">{{ "Delete" | trans }}</button>
+            <label>{{ "Yes" | trans }}</label><input type="radio" name="delete" value="yes" />
+            <label>{{ "No" | trans }}</label><input type="radio" name="delete" value="no" />
+            <div class="control-group">
+                
+                <input type="hidden" name="token" value="{{ app.session.get('token') }}" />
+                <label class="control-label" for="submit"></label>
+                <div class="controls">
+                    <button id="submit" name="submit" class="btn btn-primary">{{ "Delete" | trans }}</button>
+                </div>
             </div>
-        </div>
-        
-    </form>
+            
+        </form>
+    </div>
+    <button id="back" name="back" class="btn btn-primary" onClick="history.back()">{{ "Back" | trans }}</button> 
     
     
     

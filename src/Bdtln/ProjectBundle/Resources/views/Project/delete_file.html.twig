@@ -6,6 +6,7 @@
 {% extends "BdtlnProjectBundle::layout_project.html.twig" %}
 
 {% block project_body %}
+<div id="form">
     {{ 'You will remove files from the project' | trans }}
     {# Display the project's title #}
     {% if app.request.locale == 'fr' %}
@@ -14,7 +15,7 @@
         {{ englishTitle }}
     {% endif %}
     
-<br />
+    <br />
     {#The sessions flashbag like an error wrote in controller will be displayed here#}
     {% for information in app.session.flashbag.get('information')%}
     <p>
@@ -33,7 +34,7 @@
     {% else %}
         {{ 'There is no file in this project' }}
     {% endif %}
-    
+</div>    
     
     
     

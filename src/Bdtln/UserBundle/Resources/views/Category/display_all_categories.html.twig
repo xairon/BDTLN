@@ -6,7 +6,7 @@
 {% extends "BdtlnUserBundle::layout.html.twig" %}
 
 {% block fos_user_content %}
-
+<div id="form">
     <a href="{{ path('bdtln_user_add_category') }}">{{ 'Add a category' | trans }}</a>
     {# display all categories #}
     {% if categories is defined and categories is not null %}
@@ -17,7 +17,7 @@
                     <a href="{{ path('bdtln_user_delete_category', {'id': category.id}) }}">{{ 'Delete' | trans }}</a>
             </div>
         {% endfor %}
-        
+</div>        
     {% endif %}
     
     

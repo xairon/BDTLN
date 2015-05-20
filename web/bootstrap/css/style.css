@@ -106,9 +106,79 @@ body
 #text-banniere
 {
     color: black;
+    text-align: center;
 }
 
 #current-photo
 {
     width: 100px;
+}
+#drapeaux
+{
+	float: right;
+}
+#drop
+{
+	float: left;
+  padding: 15px 15px;
+  font-size: 18px;
+  line-height: 20px;
+  	background-color: #56595e;
+	color: #FFFFFF;
+	border-color: #66696e;
+
+
+}
+#drop a
+{
+	color: #FFFFFF;
+}
+#drop a:hover
+{
+	background-color: #598fcb;
+	color: #FFFFFF;
+	border-color: #598fcb ;
+}
+#drop-puce
+{
+	color: #FFFFFF;
+}	
+#back
+{
+	margin-top: 50px;
+}
+#button
+{
+	margin-top: 10px;
+}
+#form
+{
+	text-align: center;
+	background-color: #EFEFEF ; 
+	padding: 10px;
+	width: 38%; 
+	margin-left: 31%;
+}
+#fiche
+{
+	background-color: #EFEFEF ; 
+	padding: 10px;
+	width: 45%;
+	padding: 10px; 
+	font-size : 20px ;
+	font-style: bold ;
+	margin-bottom: 15px ;
+}
+#fiche p 
+{
+	font-size: 16px;
+	font-style: none;
+	margin-left: 15px; 
+}
+#fiche2
+{
+	background-color: #EFEFEF ; 
+	padding: 10px;
+	width: 30%;
+	padding: 10px; 	
 }
