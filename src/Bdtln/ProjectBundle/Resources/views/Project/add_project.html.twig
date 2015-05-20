@@ -58,6 +58,12 @@
                 {{ form_errors(form.englishDescription) }}
                 {{ form_widget(form.englishDescription) }}
             </div>
+             <div>
+                {% set beginningDate = "Beginning date" | trans %}
+                {{ form_label(form.beginningDate, beginningDate) }}
+                {{ form_errors(form.beginningDate) }}
+                {{ form_widget(form.beginningDate) }}
+            </div>
         </div>
         <div class="col-md-6 column" >
             <div>
@@ -80,20 +86,15 @@
                 {{ form_label(form.frenchDescription, frenchDescription) }}
                 {{ form_errors(form.frenchDescription) }}
                 {{ form_widget(form.frenchDescription) }}
-            </div>
-        </div>
-            <div>
-                {% set beginningDate = "Beginning date" | trans %}
-                {{ form_label(form.beginningDate, beginningDate) }}
-                {{ form_errors(form.beginningDate) }}
-                {{ form_widget(form.beginningDate) }}
-            </div>
+            </div> 
             <div>
                 {% set endingDate = "Ending date" | trans %}
                 {{ form_label(form.endingDate, endingDate) }}
                 {{ form_errors(form.endingDate) }}
                 {{ form_widget(form.endingDate) }}
             </div>
+        </div>
+           
         
         <label for="axe">{{ "Main axe" | trans }}</label>
         <select name="axe">
