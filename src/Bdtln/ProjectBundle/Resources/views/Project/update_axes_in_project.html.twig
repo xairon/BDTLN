@@ -41,7 +41,7 @@
                 <input type="hidden" value="add_axe" name="add_axe" />
                 <label class="control-label" for="submit"></label>
                 <div class="controls">
-                    <button id="submit" name="submit" class="btn btn-primary">{{ "Update" | trans }}</button>
+                    <button id="submit" name="submit" class="btn btn-primary">{{ "Add" | trans }}</button>
                 </div>
             </div>
             
@@ -68,9 +68,9 @@
             </select><br />
             <input type="hidden" value="{{app.session.get('token_delete') }}" name="token_delete" /><br />
             <input type="hidden" value="delete_axe" name="delete_axe" />
-            <input type="submit" value="Submit"/>
+            <button id="submit" name="submit" class="btn btn-primary">{{ "Delete" | trans }}</button>
         </form>
-            
+          <button id="back" name="back" class="btn btn-primary" onClick="history.back()">{{ "Back" | trans }}</button>  
     </div>
     
     

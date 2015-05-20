@@ -1,27 +1,33 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-<div class="fos_user_user_show">
-    <p>{{ 'profile.show.firstname'|trans }}: {{ user.firstName }}</p>
+<div class="fos_user_user_show" id="fiche">
+    {% if user.photo != null %}
+        <img width="100px" alt="{{ user.photo.alt }}" src="{{ asset(user.photo.uploadDir ~ '/'~ user.photo.url) }}" />
+    {% endif %}
+    </br>
+    {{ 'profile.show.firstname'|trans }}: <p>{{ user.firstName }}</p>
     
-    <p>{{ 'profile.show.lastname'|trans }}: {{ user.lastName }}</p>
+    {{ 'profile.show.lastname'|trans }}: <p>{{ user.lastName }}</p>
     
-    <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+    {{ 'profile.show.email'|trans }}: <p>{{ user.email }}</p>
     
-    <p>{{ 'profile.show.frenchbiography'|trans }}: {{ user.frenchBiography }}</p>
+    {{ 'profile.show.frenchbiography'|trans }}: <p>{{ user.frenchBiography }}</p>
     
-    <p>{{ 'profile.show.englishbiography'|trans }}: {{ user.englishBiography }}</p>
+    {{ 'profile.show.englishbiography'|trans }}: <p>{{ user.englishBiography }}</p>
     
-    <p>{{ 'profile.show.dateregister'|trans }}: {{ user.dateRegister|localizeddate('long', 'none', app.request.locale) }}</p>
+    {{ 'profile.show.dateregister'|trans }}: <p>{{ user.dateRegister|localizeddate('long', 'none', app.request.locale) }}</p>
     
     {% if user.enabled == false %}
-        <p>{{ 'Disabled since' | trans }} {{ user.dateLeaving|localizeddate('long', 'none', app.request.locale)}}</p>
+        {{ 'Disabled since' | trans }} <p>{{ user.dateLeaving|localizeddate('long', 'none', app.request.locale)}}</p>
     {% endif %}
     
     {% if user.category is not null %}
         {% if app.request.locale == 'fr' %}
-            <p>{{ 'profile.show.category'|trans }}: {{ user.category.frenchTitle }}</p>
+            {{ 'profile.show.category'|trans }}:<p> {{ user.category.frenchTitle }}</p>
         {% else %}
-            <p>{{ 'profile.show.category'|trans }}: {{ user.category.englishTitle }}</p>
+            {{ 'profile.show.category'|trans }}: <p>{{ user.category.englishTitle }}</p>
         {% endif %}
     {% endif %}
+    
 </div>
+<button id="back" name="back" class="btn btn-primary" onClick="history.back()">{{ "Back" | trans }}</button>

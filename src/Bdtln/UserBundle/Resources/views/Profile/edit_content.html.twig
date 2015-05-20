@@ -1,6 +1,6 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-<form action="{{ path('fos_user_profile_edit', {'username': user.username}) }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
+<form id="fiche2" action="{{ path('fos_user_profile_edit', {'username': user.username}) }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
     {{ form_widget(form) }}
     
     {% if user.photo is not null %}
@@ -38,6 +38,7 @@
     {% endif %}
     
     <div>
-        <input type="submit" value="{{ 'profile.edit.submit'|trans }}" />
+        <input type="submit" class="btn btn-primary" value="{{ 'profile.edit.submit'|trans }}" />
     </div>
 </form>
+ <button id="back" name="back" class="btn btn-primary" onClick="history.back()">{{ "Back" | trans }}</button>

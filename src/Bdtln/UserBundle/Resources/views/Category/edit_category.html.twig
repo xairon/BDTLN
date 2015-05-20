@@ -7,7 +7,7 @@
 
 
 {% block fos_user_content %}
-   
+   <div id="form">
     {{ "You will update a category" | trans }}
     
     <form method="POST" action="{{ path('bdtln_user_edit_category', {'id': id}) }}">
@@ -25,13 +25,13 @@
             {{ form_errors(form.frenchTitle) }}
             {{ form_widget(form.frenchTitle) }}
         </div>
-        
+      
         {{ form_rest(form) }}
         
-        <input type="submit" value="{{ "Update" | trans }}" />
+        <input type="submit" class="btn btn-primary" value="{{ "Update" | trans }}" />
     </form>
-    
-    
+     </div> 
+    <button id="back" name="back" class="btn btn-primary" onClick="history.back()">{{ "Back" | trans }}</button> 
     
     
     
