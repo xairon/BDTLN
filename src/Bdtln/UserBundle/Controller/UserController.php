@@ -108,6 +108,7 @@ class UserController extends Controller{
                 $entityManager->getRepository('BdtlnUserBundle:User')->setCategoryNull($category->getId());
                 $entityManager->remove($category);
                 $entityManager->flush();
+                return $this->redirect( $this->generateUrl('bdtln_user_display_all_categories') );
             } else {
                 return $this->redirect( $this->generateUrl('bdtln_user_display_all_categories') );
             }
