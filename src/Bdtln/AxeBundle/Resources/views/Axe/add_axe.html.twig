@@ -6,7 +6,7 @@
 {% extends "BdtlnAxeBundle::layout_axe.html.twig" %}
 
 {% block scripts %}
-    <script type="text/javascript" src="{{ asset('tinymce/tinymce.min.js') }}"></script>
+   <script type="text/javascript" src="{{ asset('tinymce/tinymce.min.js') }}"></script>
 	<script type="text/javascript">
 		tinymce.init({
 			selector: "textarea",
@@ -22,15 +22,13 @@
     toolbar2: "print preview media | forecolor backcolor emoticons jbimages"
 			
 		});
-</script>
+    </script>
     {{ parent() }}
 {% endblock %}
 
 
 {% block axe_body %}
     
-    
-    <p>{{ "Add an axe" | trans }}</p>
     
     {#The sessions flashbag like an error written in controller will be displayed here#}
     {% for information in app.session.flashbag.get('information')%}
@@ -99,9 +97,5 @@
     <button id="back" name="back" class="btn btn-primary" onClick="history.back()">{{ "Back" | trans }}</button> 
     
     
-<script type="text/javascript">
-    var editorFrench = CKEDITOR.replace( 'bdtln_axebundle_axe_frenchDescription' );
-    var editorEnglish = CKEDITOR.replace( 'bdtln_axebundle_axe_englishDescription' );
-//    CKFinder.setupCKEditor( editor, 'ckfinder/' );
-</script>
+
 {% endblock %}
