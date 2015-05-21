@@ -95,8 +95,8 @@ class ProfileController extends Controller
                 if ( empty($_POST['delete_photo']) && $oldPhoto != null)
                     $entityManager->persist($user->getPhoto());
                 
-                //If root disable the account
-                if ( in_array('ROLE_SUPER_ADMIN', $this->getUser()->getRoles()) && !empty($_POST['disable_account']) ) {
+                //If root disable the account (he can't disable account of a root)
+                if ( in_array('ROLE_SUPER_ADMIN', $this->getUser()->getRoles()) && !empty($_POST['disable_account']) && !in_array('ROLE_SUPER_ADMIN', $user->getRoles()) ) {
                     $user->setEnabled(false);
                     $user->setDateLeaving(new \DateTime);
                 } else if (in_array('ROLE_SUPER_ADMIN', $this->getUser()->getRoles()) && !empty($_POST['enable_account'])) {

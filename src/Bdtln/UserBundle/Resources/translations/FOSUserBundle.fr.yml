@@ -5,7 +5,10 @@ form.frenchbiography: 'Biographie française :'
 form.englishbiography: 'Biographie anglaise :'
 form.categoryadded: 'Catégorie ajoutée'
 form.categoryupdated: 'Catégorie modifiée'
-security.login.email: 'Email :'
+form.category: 'Catégorie'
+form.enableaccount: 'Activer le compte'
+form.disableaccount: 'Désactiver le compte'
+
 profile.show.firstname: Prénom
 profile.show.lastname: Nom
 profile.show.frenchbiography: 'Biographie française'
@@ -13,7 +16,11 @@ profile.show.englishbiography: 'Biographie anglaise'
 profile.show.dateregister: 'Date d''arrivée'
 profile.show.category: Catégorie
 profile.edit.submit: Soumettre
+profile.edit.deletephoto: Supprimer ma photo
+profile.edit.photo: Photo
 profile.show.email: Email
+
 security.login.password: Mot de passe
 security.login.remember_me: Se souvenir de moi
 security.login.submit: Soumettre
+security.login.email: 'Email :'

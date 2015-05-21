@@ -230,6 +230,7 @@ body a
 	margin-top: 15px;
 }
 
+//Put a red border on pages add/update project
 .info-error
 {
     border: #d11331 solid 1px;

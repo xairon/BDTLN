@@ -7,45 +7,48 @@
 {{form_errors(form) }}
  <div class="col-md-6 column"id="bloc">   
     {# Display email #}
+    
     {% set email = 'Email' | trans %}
     {{ form_label(form.email, email) }}
     {{ form_errors(form.email) }}
     {{ form_widget(form.email) }}
-    <br />
+    <br /><br />
 
-
+        {# Display current photo if there is it#}
        {% if user.photo is not null %}
-        current photo :
+        {{ 'Current photo' | trans }} :
         <img id="current-photo" src="{{asset(user.photo.uploadDir ~ '/' ~ user.photo.url)}}" alt="{{ 'Photo of ' ~ user.photo.alt }}"/>
         <br />
-        <label>Just delete my photo</label><input type="checkbox" name="delete_photo" value="yes"/>
+        <label>{{ 'profile.edit.deletephoto' | trans }}</label><input type="checkbox" name="delete_photo" value="yes"/>
         <br />
     {% endif %}
+    
+    {{ form_label(form.photo) }}
+    {{ form_errors(form.photo) }}
+    {{ form_widget(form.photo) }}
+    <br /><br />
     {# Display french biography #}
-    {% set frenchBiography = 'French biography' | trans %}
-    {{ form_label(form.frenchBiography, frenchBiography) }}
+    {{ form_label(form.frenchBiography, 'form.frenchbiography') }}
     {{ form_errors(form.frenchBiography) }}
     {{ form_widget(form.frenchBiography) }}
     <br /> 
 </div>
 <div class="col-md-6 column"id="bloc">
     {# Display first name #}
-    {% set firstName = 'First name' | trans %}
-    {{ form_label(form.firstName, firstName) }}
+    {{ form_label(form.firstName, 'form.firstname') }}
     {{ form_errors(form.firstName) }}
     {{ form_widget(form.firstName) }}
-    <br />
+    <br /><br />
 
     {# Display last name #}
-    {% set lastName = 'Last name' | trans %}
-    {{ form_label(form.lastName, lastName) }}
+    {{ form_label(form.lastName, 'form.lastname') }}
     {{ form_errors(form.lastName) }}
     {{ form_widget(form.lastName) }}
-    <br />
+    <br /><br />
 
 
      <select required="required" name="category" id='categorie'>
-            <option value="" >Category</option>
+            <option value="" >{{ 'form.category' | trans }}</option>
             {% for category in categories %}
                 <option value="{{ category.id }}" 
                         {% if category == user.category %}
@@ -59,13 +62,12 @@
                     {% endif %}
                 </option>
             {% endfor %}
-        </select>
+        </select><br /><br />
     {# Display english biography #}
-    {% set englishBiography = 'English biography' | trans %}
-    {{ form_label(form.englishBiography, englishBiography) }}
+    {{ form_label(form.englishBiography, 'form.englishbiography') }}
     {{ form_errors(form.englishBiography) }}
     {{ form_widget(form.englishBiography) }}
-    <br />
+    <br /><br />
 </div>
     
 
@@ -75,12 +77,12 @@
     {# root can disable the account #}
     {% if is_granted('ROLE_SUPER_ADMIN') %}
         {% if user.enabled == true %}
-            <br /><label for="disable_account">Disable account</label><input type="checkbox" name="disable_account" value="yes" />
+            <br /><label for="disable_account">{{ 'form.disableaccount' | trans }}</label><input type="checkbox" name="disable_account" value="yes" />
         {% else %}
-            <br /><label for="enable_account">Enable account</label><input type="checkbox" name="enable_account" value="yes"/>
+            <br /><label for="enable_account">{{ 'form.enableaccount' | trans }}</label><input type="checkbox" name="enable_account" value="yes"/>
         {% endif %}
     {% endif %}
-    
+    {{ form_rest(form) }}
     <div>
         <input type="submit" class="btn btn-primary" value="{{ 'profile.edit.submit'|trans }}" />
     </div>

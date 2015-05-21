@@ -33,7 +33,12 @@
     </div>
     <div class="col-md-12 column" >
         <div class="col-md-6 column" id="bio" >
-            {{ 'profile.show.englishbiography'|trans }}: <p>{{ user.englishBiography }}</p>
+            {# Display biography #}
+            {% if app.request.locale == 'fr' %}
+                {{ 'profile.show.frenchbiography'|trans }}: <p>{{ user.frenchBiography }}</p>
+            {% else %}
+                {{ 'profile.show.englishbiography'|trans }}: <p>{{ user.englishBiography }}</p>
+            {% endif %}
         </div>
         <div class="col-md-6 column">
             
