@@ -29,7 +29,7 @@
                 <label>{{ file.title }}</label><input type="checkbox" name="delete_file[]" value="{{ file.id }}" /><br />
             {% endfor %}
                 <input type="hidden" name="token" value="{{ app.session.get('token') }}" />
-            <input type="submit" value="{{ 'Delete' | trans }}" />
+            <button id="submit" name="submit" class="btn btn-primary">{{ "Delete" | trans }}</button>
         </form>
     {% else %}
         {{ 'There is no file in this project' }}
