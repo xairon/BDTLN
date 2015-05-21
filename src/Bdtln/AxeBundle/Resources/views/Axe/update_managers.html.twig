@@ -38,6 +38,7 @@
 					    </select>
 					  </div>
 					</div>
+                                            
                                         <input type="hidden" value="{{app.session.get('token_add_manager') }}" name="token_add_manager" /><br />
                                         <input type="hidden" value="submit_add" name="submit_add" />
 
@@ -52,7 +53,7 @@
                                 </form>
 		</div>
         <!-- Delete a participant -->
-		<div class="col-md-6 column">
+		<div class="column">
 			<form action="{{ path('bdtln_axe_update_managers', {'slug': axe.slug}) }}" class="form-horizontal" id="formulaire" method="POST">
 				<fieldset>
 

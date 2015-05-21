@@ -373,7 +373,7 @@ class ProjectController extends Controller
             } else if ( !empty($_POST['submit_delete']) ) {//If he want delete a manager
                 
                 if ( in_array("ROLE_SUPER_ADMIN", $postedManager->getRoles())) { //If postedManager is SUPER_ADMIN
-                    $this->get('session')->getFlashBag()->add('informations_delete', 'The root can\'t be deleted !');
+                    $this->get('session')->getFlashBag()->add('informations_delete', 'The root can\'t be deleted!');
                     return $this->redirect( $this->generateUrl('bdtln_project_update_managers', array('slug' => $project->getSlug())) );
                 }
                 else if ( count($managers) > 1 ) {
