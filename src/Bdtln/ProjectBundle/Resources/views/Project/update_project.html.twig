@@ -38,11 +38,17 @@
     </h2>
     
     {#The sessions flashbag like an error wrote in controller will be displayed here#}
-    {% for information in app.session.flashbag.get('information')%}
-    <p>
-        {{ information | trans }}
-    </p>
-    {% endfor %}
+    {% set informations = app.session.flashbag.get('information') %}
+    {% if informations is not null %}
+        <div class="info-error center-block">
+            {#The sessions flashbag like an error wrote in controller will be displayed here#}
+            {% for information in informations%}
+                <p class="text-danger text-center">
+                    {{ information | trans }}
+                </p>
+            {% endfor %}
+        </div>
+    {% endif %}
     <form action="{{ path('bdtln_project_update_project', {'slug': project.slug}) }}" method="POST" {{ form_enctype(form) }}>
         {{ form_errors(form) }}
         <div class="col-md-6 column" >

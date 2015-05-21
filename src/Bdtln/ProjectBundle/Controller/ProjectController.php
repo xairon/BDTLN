@@ -63,7 +63,7 @@ class ProjectController extends Controller
             //Loading of the form
             $projectForm->bind($request);
             //If all the inputs are valids, and wanted axe is greater than 0, save in database
-            if ( $projectForm->isValid() && intval($_POST['axe']) > 0 && $project->getBeginningDate() < $project->getEndingDate() ) {
+            if ( $projectForm->isValid() && intval($_POST['axe']) > 0 && ( $project->getEndingDate() == null || $project->getBeginningDate() < $project->getEndingDate()) ) {
                 
                 //Compare idAxe with all axes
                 for ( $i = 0; $i < count($axes); $i++ ) {
@@ -88,8 +88,10 @@ class ProjectController extends Controller
                 $this->get('session')->getFlashBag()->add('information', 'The project couldn\'t be saved!');
             }
             if ( intval($idAxe) == 0 )
-            $this->get('session')->getFlashBag()->add('information', 'Please add an axe!');
-
+                $this->get('session')->getFlashBag()->add('information', 'Please add an axe!');
+            if ( $project->getEndingDate() != null && $project->getBeginningDate() > $project->getEndingDate() ) {
+                $this->get('session')->getFlashBag()->add('information', 'The ending date should be greater than the beginning date');
+            }
         }
         
         return $this->render('BdtlnProjectBundle:Project:add_project.html.twig', array('form' => $projectForm->createView(), 'axes' => $axes));

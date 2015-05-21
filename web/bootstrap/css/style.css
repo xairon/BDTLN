@@ -229,3 +229,10 @@ body a
 {
 	margin-top: 15px;
 }
+
+.info-error
+{
+    border: #d11331 solid 1px;
+    border-radius: 5px;
+    max-width: 600px;
+}
