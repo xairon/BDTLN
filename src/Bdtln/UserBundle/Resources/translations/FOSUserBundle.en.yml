@@ -6,6 +6,9 @@ form:
     englishbiography: 'English biography:'
     categoryadded: 'Category added'
     categoryupdated: 'Category updated'
+    category: 'Category'
+    enableaccount: 'Enable account'
+    disableaccount: 'Disable account'
     
 security:
     login:
@@ -19,4 +22,7 @@ profile:
         englishbiography: 'English bigraphy'
         dateregister: 'Date register'
         category: 'Category'
+    edit:
+        deletephoto: 'Delete my photo'
+        photo: 'Photo'
     

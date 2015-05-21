@@ -24,7 +24,7 @@ class UserProfileType extends AbstractType
             ->add('lastName', 'text', array('label' => "form.lastname", 'translation_domain' => 'FOSUserBundle'))
             ->add('frenchBiography', 'textarea', array('label' => 'form.frenchbiography', 'translation_domain' => 'FOSUserBundle', 'required' => false) )
             ->add('englishBiography', 'textarea', array('label' => 'form.englishbiography', 'translation_domain' => 'FOSUserBundle', 'required' => false) )
-            ->add('photo', new PhotoType(), array('label' => "Photo", "required" => false))
+            ->add('photo', new PhotoType(), array('label' => "profile.edit.photo", 'translation_domain' => 'FOSUserBundle', "required" => false))
                 
         ;
     }
