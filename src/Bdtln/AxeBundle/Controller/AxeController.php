@@ -36,7 +36,7 @@ class AxeController extends Controller
     public function display_axeAction( Axe $axe ) {
         $user = $this->getUser();
         $managers = $axe->getManagers();
-        $isAdmin = ( $user != null && (in_array("ROLE_SUPER_ADMIN", $user->getRoles()) || in_array($user, $managers) ) ) ? true : false;
+        $isAdmin = ( $user != null && (in_array("ROLE_SUPER_ADMIN", $user->getRoles()) || in_array($user, $managers->toArray()) ) ) ? true : false;
         
         return $this->render('BdtlnAxeBundle:Axe:display_axe.html.twig', array('axe' => $axe, 'isAdmin' => $isAdmin));
     }
