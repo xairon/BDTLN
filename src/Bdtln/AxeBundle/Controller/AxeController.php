@@ -239,7 +239,7 @@ class AxeController extends Controller
                 $entityManager->flush();
                 return $this->redirect( $this->generateUrl('bdtln_axe_homepage') );
             } else { //If $_POST['delete'] = "no" redirect on the axe's page
-                return $this->redirect( $this->generateUrl('bdtln_axe_display_axe', array('axe' => $axe)) );
+                return $this->redirect( $this->generateUrl('bdtln_axe_display_axe', array('axe' => $axe, 'slug' => $axe->getSlug())) );
             }
             
         }
