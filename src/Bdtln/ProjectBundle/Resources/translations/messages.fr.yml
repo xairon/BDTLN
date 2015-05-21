@@ -43,3 +43,7 @@
 'Add a file': 'Ajouter un fichier'
 'Remove a file': 'Supprimer un fichier'
 'You will remove files from the project': 'Vous êtes sur le point de supprimer des fichiers du projet'
+'At least one description should be filled!': Au moins une description doit être remplie !
+'The project couldn''t be saved!': Le projet n'a pas pu être enregistré !
+'The ending date should be greater than the beginning date': La date de fin devrait être supérieure à la date de début
+'Please add an axe!': Veuillez ajouter un axe !
