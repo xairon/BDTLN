@@ -10,8 +10,8 @@
 
     
     
-        <div class="row clearfix" >
-		<div class="col-md-10 column">
+        
+		<div class="col-md-6 column">
 			<form action="{{ path('bdtln_project_update_managers', {'slug': project.slug}) }}" class="form-horizontal" id="formulaire" method="POST">
 				<fieldset>
 
@@ -50,12 +50,10 @@
 				</fieldset>
                                 </form>
 		</div>
-		<div class="col-md-2 column">
-		</div>
-	</div>
+	
         <!-- Delete a participant -->
-        <div class="row clearfix" >
-		<div class="col-md-10 column">
+        
+		<div class="col-md-6 column">
 			<form action="{{ path('bdtln_project_update_managers', {'slug': project.slug}) }}" class="form-horizontal" id="formulaire" method="POST">
 				<fieldset>
 
@@ -92,12 +90,10 @@
 					</div>
 				</fieldset>
 
-				<button id="back" name="back" class="btn btn-primary" onClick="history.back()">{{ "Back" | trans }}</button>
+				
 			</form>
 		</div>
-		<div class="col-md-2 column">
-		</div>
-	</div>
-    
-
+	<div class="col-md-12 column">
+    	<button id="back" name="back" class="btn btn-primary" onClick="history.back()">{{ "Back" | trans }}</button>
+    </div>
 {% endblock %}
