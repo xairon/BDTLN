@@ -14,6 +14,8 @@ You have to get a webserver. If you're using Linux, execute the following comman
 
 It will install apache, php5, mysql, and the integration modules.
 
+Note : To upload big files in projects, you have to set parameters *post_max_size* and *upload_max_filesize* in php.ini
+
 ####On Windows
 The easier way is installing [Wampserver](http://wampserver.com)
 
