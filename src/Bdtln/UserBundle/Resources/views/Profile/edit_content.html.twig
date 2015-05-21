@@ -1,32 +1,76 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 <form id="fiche2" action="{{ path('fos_user_profile_edit', {'username': user.username}) }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
-    {{ form_widget(form) }}
-    
-    {% if user.photo is not null %}
+    {# Form displaying #}
+
+{# Errors displaying #}
+{{form_errors(form) }}
+ <div class="col-md-6 column"id="bloc">   
+    {# Display email #}
+    {% set email = 'Email' | trans %}
+    {{ form_label(form.email, email) }}
+    {{ form_errors(form.email) }}
+    {{ form_widget(form.email) }}
+    <br />
+
+
+       {% if user.photo is not null %}
         current photo :
         <img id="current-photo" src="{{asset(user.photo.uploadDir ~ '/' ~ user.photo.url)}}" alt="{{ 'Photo of ' ~ user.photo.alt }}"/>
         <br />
         <label>Just delete my photo</label><input type="checkbox" name="delete_photo" value="yes"/>
         <br />
     {% endif %}
-    
-    <select required="required" name="category">
-        <option value="" >Category</option>
-        {% for category in categories %}
-            <option value="{{ category.id }}" 
-                    {% if category == user.category %}
-                        {{ 'selected="selected"' }}
+    {# Display french biography #}
+    {% set frenchBiography = 'French biography' | trans %}
+    {{ form_label(form.frenchBiography, frenchBiography) }}
+    {{ form_errors(form.frenchBiography) }}
+    {{ form_widget(form.frenchBiography) }}
+    <br /> 
+</div>
+<div class="col-md-6 column"id="bloc">
+    {# Display first name #}
+    {% set firstName = 'First name' | trans %}
+    {{ form_label(form.firstName, firstName) }}
+    {{ form_errors(form.firstName) }}
+    {{ form_widget(form.firstName) }}
+    <br />
+
+    {# Display last name #}
+    {% set lastName = 'Last name' | trans %}
+    {{ form_label(form.lastName, lastName) }}
+    {{ form_errors(form.lastName) }}
+    {{ form_widget(form.lastName) }}
+    <br />
+
+
+     <select required="required" name="category" id='categorie'>
+            <option value="" >Category</option>
+            {% for category in categories %}
+                <option value="{{ category.id }}" 
+                        {% if category == user.category %}
+                            {{ 'selected="selected"' }}
+                        {% endif %}
+                        >
+                    {% if app.request.locale == 'fr' %}
+                        {{ category.frenchTitle }}
+                    {% else %}
+                        {{ category.englishTitle }}
                     {% endif %}
-                    >
-                {% if app.request.locale == 'fr' %}
-                    {{ category.frenchTitle }}
-                {% else %}
-                    {{ category.englishTitle }}
-                {% endif %}
-            </option>
-        {% endfor %}
-    </select>
+                </option>
+            {% endfor %}
+        </select>
+    {# Display english biography #}
+    {% set englishBiography = 'English biography' | trans %}
+    {{ form_label(form.englishBiography, englishBiography) }}
+    {{ form_errors(form.englishBiography) }}
+    {{ form_widget(form.englishBiography) }}
+    <br />
+</div>
+    
+
+    
+   
     
     {# root can disable the account #}
     {% if is_granted('ROLE_SUPER_ADMIN') %}
