@@ -17,8 +17,8 @@ class AxeType extends AbstractType
         $builder
             ->add('frenchTitle', 'text')
             ->add('englishTitle', 'text')
-            ->add('englishDescription', 'textarea')
-            ->add('frenchDescription', 'textarea')
+            ->add('englishDescription', 'textarea', array('required' => false))
+            ->add('frenchDescription', 'textarea', array('required' => false))
             ->add('frenchSummary', 'text')
             ->add('englishSummary', 'text')
         ;
