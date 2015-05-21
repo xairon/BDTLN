@@ -7,7 +7,7 @@
 
 {% block project_body %}
     
-    <div>
+    <div class="col-md-12 column">
         {{ "You will add an axe in project" | trans }} <strong>{{ project.englishTitle }}</strong>
         <br />
         {{ "Choose an axe" | trans }}
@@ -26,30 +26,28 @@
                     {{ "This project contains already all axes" | trans }}
                 </p>
             {% endif %}
-            <h3>{{ "Add an axe" | trans }}
-            <form method="POST" action="{{ path('bdtln_project_update_axes_in_project', {'slug': project.slug}) }}">
-            <select name="axe">
-                <option value="">--------------</option>
-               {#Display all the axes if the proeject don't belong to all axes#}     
-                {% for axe in axesNotInProject %}
-                    <option value="{{ axe.id }}">{{axe.englishTitle}}</option>
-                {% endfor %}
-            </select><br />
-            
-            <div class="control-group">
-                <input type="hidden" value="{{app.session.get('token_add') }}" name="token_add" /><br />
-                <input type="hidden" value="add_axe" name="add_axe" />
-                <label class="control-label" for="submit"></label>
-                <div class="controls">
-                    <button id="submit" name="submit" class="btn btn-primary">{{ "Add" | trans }}</button>
-                </div>
+
+            <div class="col-md-6 column" >
+                    <h3>{{ "Add an axe" | trans }}
+                    <form method="POST" action="{{ path('bdtln_project_update_axes_in_project', {'slug': project.slug}) }}">
+                    <select name="axe">
+                        <option value="">--------------</option>
+                       {#Display all the axes if the proeject don't belong to all axes#}     
+                        {% for axe in axesNotInProject %}
+                            <option value="{{ axe.id }}">{{axe.englishTitle}}</option>
+                        {% endfor %}
+                    </select><br />
+                    
+                    <div class="control-group">
+                        <input type="hidden" value="{{app.session.get('token_add') }}" name="token_add" /><br />
+                        <input type="hidden" value="add_axe" name="add_axe" />
+                        <label class="control-label" for="submit"></label>
+                        <div class="controls">
+                            <button id="submit" name="submit" class="btn btn-primary">{{ "Add" | trans }}</button>
+                        </div>
+                    </div>                      
+                </form> 
             </div>
-            
-            
-            
-        </form>
-            
-            
             {# If an error or an information was initialized in the controller, we display
               it here #}
             {% for information_delete in app.session.flashbag.get('information_delete')%}
@@ -57,24 +55,23 @@
                     {{ information_delete | trans }}
                 </p>
             {% endfor %}
-                        <h3>{{ "Delete an axe" | trans }}
-        <form method="POST" action="{{ path('bdtln_project_update_axes_in_project', {'slug': project.slug}) }}">
-            <select name="axe">
-                <option value="">--------------</option>
-               {#Display all the axes if the proeject don't belong to all axes#}     
-                {% for axe in axesInProject %}
-                    <option value="{{ axe.id }}">{{axe.englishTitle}}</option>
-                {% endfor %}
-            </select><br />
-            <input type="hidden" value="{{app.session.get('token_delete') }}" name="token_delete" /><br />
-            <input type="hidden" value="delete_axe" name="delete_axe" />
-            <button id="submit" name="submit" class="btn btn-primary">{{ "Delete" | trans }}</button>
-        </form>
-          <button id="back" name="back" class="btn btn-primary" onClick="history.back()">{{ "Back" | trans }}</button>  
-    </div>
-    
-    
-    
+            <div class="col-md-6 column" >
+                <h3>{{ "Delete an axe" | trans }}
+                <form method="POST" action="{{ path('bdtln_project_update_axes_in_project', {'slug': project.slug}) }}">
+                    <select name="axe">
+                        <option value="">--------------</option>
+                       {#Display all the axes if the proeject don't belong to all axes#}     
+                        {% for axe in axesInProject %}
+                            <option value="{{ axe.id }}">{{axe.englishTitle}}</option>
+                        {% endfor %}
+                    </select><br />
+                    <input type="hidden" value="{{app.session.get('token_delete') }}" name="token_delete" /><br />
+                    <input type="hidden" value="delete_axe" name="delete_axe" />
+                    <button id="submit" name="submit" class="btn btn-primary">{{ "Delete" | trans }}</button>
+                </form>
+            </div>
+            <button id="back" name="back" class="btn btn-primary" onClick="history.back()">{{ "Back" | trans }}</button>  
+    </div>   
     
     
 {% endblock %}

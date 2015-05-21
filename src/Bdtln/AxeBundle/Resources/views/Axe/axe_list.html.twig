@@ -12,14 +12,14 @@
             <div class="row clearfix" >
             
                 <div class="col-md-10 column" id="axe">
-                    <h3>
+                    
                     {% if app.request.locale == "en" %}
-                        <a href="{{ path('bdtln_axe_display_axe', {'slug': axe.slug}) }}">{{ axe.englishTitle }}</a>
+                        <a href="{{ path('bdtln_axe_display_axe', {'slug': axe.slug}) }}"><h3>{{ axe.englishTitle }}</h3></a>
                 {% else %} {#if locale = fr#}
-                    <a href="{{ path('bdtln_axe_display_axe', {'slug': axe.slug}) }}">{{ axe.frenchTitle }}</a>
+                    <a href="{{ path('bdtln_axe_display_axe', {'slug': axe.slug}) }}"><h3>{{ axe.frenchTitle }}</h3></a>
                 {% endif %}
                     
-                    </h3>
+                    
                     <hr>
                     <ul>
                         {% set projects = axe.projects %}
@@ -28,10 +28,10 @@
                                 
                                 {# Display the title and summary according to the locale #}
                                 {% if app.request.locale == "en" %}
-                                   <h4> <a href="{{ path('bdtln_project_display', {'slug': project.slug}) }}">{{ project.englishTitle }}</a></h4>
+                                    <a href="{{ path('bdtln_project_display', {'slug': project.slug}) }}"><h4>{{ project.englishTitle }}</h4></a>
                                     <p>{{ project.englishSummary }}</p>
                                 {% else %} {#if locale = fr#}
-                                    <h4><a href="{{ path('bdtln_project_display', {'slug': project.slug}) }}">{{ project.frenchTitle }}</a></h4>
+                                    <a href="{{ path('bdtln_project_display', {'slug': project.slug}) }}"><h4>{{ project.frenchTitle }}</h4></a>
                                     <p>{{ project.frenchSummary }}</p>
                                 {% endif %}
                                 <hr>
