@@ -9,6 +9,7 @@ body a
 	font-size: 12px;
 	margin-left: 3px
 }
+
 #page
 {
 	background: #FFFFFF ;
@@ -190,7 +191,9 @@ body a
 	background-color: #EFEFEF ; 
 	padding: 10px;
 	width: 30%;
-	padding: 10px; 	
+	padding: 10px;
+	margin-left: 35% ;
+	text-align: center ; 	
 }
 
 #profil
@@ -213,4 +216,9 @@ body a
 	text-align: left;
 
 
+}
+#titre
+{
+	text-align: center;
+	margin-bottom: 50px;
 }
