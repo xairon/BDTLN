@@ -56,7 +56,7 @@ class AttachedFile
      *
      * @var File
      * @Assert\File(
-     * mimeTypes={"application/zip", "application/octet-stream", "application/x-rar-compressed", "application/x-gzip"},
+     * mimeTypes={"application/zip", "application/octet-stream", "application/x-rar-compressed", "application/x-rar", "application/x-gzip"},
      * mimeTypesMessage = "Only zip, rar, gz granted"
      * )
      */
@@ -166,7 +166,7 @@ class AttachedFile
         
         $extension = $this->file->guessExtension();
         if ( !$extension )
-            $extension = '.bin';
+            $extension = 'bin';
         
         $this->path = time().'.'.$extension;
         $this->title = $title;

@@ -7,6 +7,13 @@
 
 {% block project_body %}
 <div id="form">
+    {#The sessions flashbag like an error wrote in controller will be displayed here#}
+    {% for information in app.session.flashbag.get('information')%}
+    <p>
+        {{ information | trans}}
+    </p>
+    {% endfor %}
+    
     {{ 'You will remove files from the project' | trans }}
     {# Display the project's title #}
     {% if app.request.locale == 'fr' %}
@@ -16,12 +23,6 @@
     {% endif %}
     
     <br />
-    {#The sessions flashbag like an error wrote in controller will be displayed here#}
-    {% for information in app.session.flashbag.get('information')%}
-    <p>
-        {{ information | trans}}
-    </p>
-    {% endfor %}
     
     {% if files is not null and files | length > 0%}
         <form method="POST" action="{{ path('bdtln_project_delete_file', {'slug': slug}) }}">
