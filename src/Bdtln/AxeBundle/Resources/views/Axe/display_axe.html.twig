@@ -5,7 +5,12 @@
 
 {% extends "BdtlnAxeBundle::layout_axe.html.twig" %}
 
+{% block description %}
+{{ "The axe " ~ axe.englishTitle ~ ". " ~ parent() }}
+{% endblock %}
+
 {% block axe_body %}
+
     
     {# If the current user is SUPER ADMIN or admin of this axe, he can see the links below #}
     {% if isAdmin == true %}
