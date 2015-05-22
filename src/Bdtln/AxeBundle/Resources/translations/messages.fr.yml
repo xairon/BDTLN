@@ -1,22 +1,22 @@
-'Add an axe': Ajouter un axe
-'Are you sure to want delete the axe': 'Voulez-vous supprimer l''axe'
+'Add an axis': Ajouter un axe
+'Are you sure to want delete the axis': 'Voulez-vous supprimer l''axe'
 'All projects witch belong to it will be deleted.': 'Tous les projets qui lui appartiennent seront supprimés'
 'Yes': Oui
 'No': Non
 'Add': Ajouter
-'Update the axe': Mettre l'axe à jour
+'Update the axis': Mettre l'axe à jour
 'Manage the administrators': Gérer les administrateurs
-'Delete the axe': Supprimer l'axe
-'Add a manager into the axe': Ajouter un administrateur à l'axe
+'Delete the axis': Supprimer l'axe
+'Add a manager into the axis': Ajouter un administrateur à l'axe
 'Add an administrator': 'Ajouter un administrateur'
-'Put off an administrator of the axe': Retirer un administrateur de l'axe
+'Put off an administrator of the axis': Retirer un administrateur de l'axe
 'Delete an administrator': Supprimer un administrateur
 'The two descriptions must be filled!': Les deux descriptions doivent être remplies !
-'The axe couldn''t be saved !': L'axe n'a pas pu être enregistré !
-'Axe not found': Axe non trouvé
+'The axis couldn''t be saved !': L'axe n'a pas pu être enregistré !
+'Axis not found': Axe non trouvé
 'The people was not found': La personne n'a pas été trouvée
-The super administrator can''t be deleted !': Le super administrateur ne peut pas être supprimé !
-'The axe must have at least one manager!': L'axe doit avoir au moins un administrateur !
+'The super administrator can''t be deleted !': Le super administrateur ne peut pas être supprimé !
+'The axis must have at least one manager!': L'axe doit avoir au moins un administrateur !
 'The french title should be longer than 2 characters': Le titre français doit faire plus de 2 caractères
 'The french title not be longer than 255 characters': Le titre français doit faire moins de 255 caractères
 'The english title should be longer than 2 characters': Le titre anglais doit faire plus de 2 caractères
@@ -27,8 +27,8 @@ The super administrator can''t be deleted !': Le super administrateur ne peut pa
 'The english summary not be longer than 255 characters': Le résumé anglais ne doit pas faire plus de 255 caractères
 'Update': Mettre à jour
 'French description': Description française
-'Update axe': 'Modifier l''axe'
-'The axe couldn''t be saved!': L'axe n'a pas pu être enregistré
+'Update axis': 'Modifier l''axe'
+'The axis couldn''t be saved!': L'axe n'a pas pu être enregistré
 'The super administrator can''t be deleted!': Le super administrateur ne peut pas être supprimé !
 'Back': Retour
 '<ul><li>The english title should be longer than 2 characters</li></ul>': <ul><li>Le titre anglais doit faire plus de 2 caractères</li></ul>
