@@ -22,8 +22,12 @@ class UserProfileType extends AbstractType
                 //Translations for label below are in Bdtln/UserBundle/Resources/translations/
             ->add('firstName', 'text', array('label' => "form.firstname", 'translation_domain' => 'FOSUserBundle'))
             ->add('lastName', 'text', array('label' => "form.lastname", 'translation_domain' => 'FOSUserBundle'))
-            ->add('frenchBiography', 'textarea', array('label' => 'form.frenchbiography', 'translation_domain' => 'FOSUserBundle', 'required' => false) )
-            ->add('englishBiography', 'textarea', array('label' => 'form.englishbiography', 'translation_domain' => 'FOSUserBundle', 'required' => false) )
+            ->add('frenchBiography', 'textarea',
+                    array('label' => 'form.frenchbiography', 'translation_domain' => 'FOSUserBundle', 'required' => false,
+                        'attr' => array ('class' => 'bio-textarea')) )
+            ->add('englishBiography', 'textarea',
+                    array('label' => 'form.englishbiography', 'translation_domain' => 'FOSUserBundle', 'required' => false,
+                        'attr' => array ('class' => 'bio-textarea') ))
             ->add('photo', new PhotoType(), array('label' => "profile.edit.photo", 'translation_domain' => 'FOSUserBundle', "required" => false))
                 
         ;
