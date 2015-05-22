@@ -47,7 +47,7 @@ class Project
      * @Assert\Length(
      *      min = "2",
      *      max = "255",
-     *      minMessage = "The englih title should be longer than {{ limit }} characters",
+     *      minMessage = "The english title should be longer than {{ limit }} characters",
      *      maxMessage = "The english title not be longer than {{ limit }} characters"
      * )
      */

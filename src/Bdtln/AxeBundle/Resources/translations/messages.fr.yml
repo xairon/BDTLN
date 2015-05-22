@@ -3,7 +3,7 @@
 'All projects witch belong to it will be deleted.': 'Tous les projets qui lui appartiennent seront supprimés'
 'Yes': Oui
 'No': Non
-Add: Ajouter
+'Add': Ajouter
 'Update the axe': Mettre l'axe à jour
 'Manage the administrators': Gérer les administrateurs
 'Delete the axe': Supprimer l'axe
@@ -11,7 +11,7 @@ Add: Ajouter
 'Add an administrator': 'Ajouter un administrateur'
 'Put off an administrator of the axe': Retirer un administrateur de l'axe
 'Delete an administrator': Supprimer un administrateur
-'he two descriptions must be filled!': Au moins une description doit être remplie !
+'The two descriptions must be filled!': Les deux descriptions doivent être remplies !
 'The axe couldn''t be saved !': L'axe n'a pas pu être enregistré !
 'Axe not found': Axe non trouvé
 'The people was not found': La personne n'a pas été trouvée
@@ -31,3 +31,11 @@ The super administrator can''t be deleted !': Le super administrateur ne peut pa
 'The axe couldn''t be saved!': L'axe n'a pas pu être enregistré
 'The super administrator can''t be deleted!': Le super administrateur ne peut pas être supprimé !
 'Back': Retour
+'<ul><li>The english title should be longer than 2 characters</li></ul>': <ul><li>Le titre anglais doit faire plus de 2 caractères</li></ul>
+'<ul><li>The english summary should be longer than 20 characters</li></ul>': <ul><li>Le résumé anglais doit faire plus de 20 caractères</li></ul>
+'<ul><li>The french title should be longer than 2 characters</li></ul>': <ul><li>Le titre français doit faire plus de 2 caractères</li></ul>
+'<ul><li>The french summary should be longer than 20 characters</li></ul>': <ul><li>Le résumé français doit faire plus de 20 caractères</li></ul>
+
+
+
+

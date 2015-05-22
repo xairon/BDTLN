@@ -210,21 +210,21 @@ class ProjectController extends Controller
             //Loading of the form
             $projectForm->bind($request);
             //If all the inputs are valids, save in database
-            if ( $projectForm->isValid() && $project->getBeginningDate() < $project->getEndingDate() ) {
-                
-                //if at least one description is not empty
-                if (!empty($project->getFrenchDescription()) || !empty($project->getEnglishDescription())) {
-                    $entityManager->persist($project);
+            if ( $projectForm->isValid() && ( empty($project->getEndingDate()) || $project->getBeginningDate() < $project->getEndingDate()) && !empty($project->getEnglishDescription()) || !empty($project->getFrenchDescription()) ) {
+                   $entityManager->persist($project);
                     $entityManager->flush();
                     //Redirect on the page of updated project
                     return $this->redirect( $this->generateUrl('bdtln_project_display', array('slug' => $project->getSlug())) );
-                } else { //If all descriptions are empty
-                    $this->get('session')->getFlashBag()->add('information', 'Au moins une description doit être remplie !');
-                    return $this->render('BdtlnProjectBundle:Project:update_project.html.twig', array('form' => $projectForm->createView(), 'axes' => $axes));
-                }    
-                     
             } else { //If the form is invalid
                 $this->get('session')->getFlashBag()->add('information', 'Le projet n\'a pas pu être enregistré !');
+                //If all descriptions are empty
+                if ( empty($project->getEnglishDescription()) && empty($project->getFrenchDescription()) ) { 
+                    $this->get('session')->getFlashBag()->add('information', 'At least one description must be filled!');
+                }
+                if ( !empty($project->getEndingDate()) && $project->getEndingDate() < $project->getBeginningDate() ) {
+                    $this->get('session')->getFlashBag()->add('information', 'The ending date should be greater than the beginning date');
+                }
+                return $this->render('BdtlnProjectBundle:Project:update_project.html.twig', array('form' => $projectForm->createView(), 'project' => $project));
             }
 
         }
