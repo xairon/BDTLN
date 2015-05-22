@@ -30,7 +30,7 @@ class Category
      *      min = "2",
      *      max = "80",
      *      minMessage = "The french title should be longer than {{ limit }} characters",
-     *      maxMessage = "The french title not be longer than {{ limit }} characters"
+     *      maxMessage = "The french title should not be longer than {{ limit }} characters"
      * )
      */
     private $frenchTitle;
@@ -43,7 +43,7 @@ class Category
      *      min = "2",
      *      max = "80",
      *      minMessage = "The english title should be longer than {{ limit }} characters",
-     *      maxMessage = "The english title not be longer than {{ limit }} characters"
+     *      maxMessage = "The english title should not be longer than {{ limit }} characters"
      * )
      */
     private $englishTitle;

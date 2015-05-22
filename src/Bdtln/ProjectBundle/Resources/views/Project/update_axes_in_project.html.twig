@@ -1,6 +1,6 @@
 {# src/Bdtln/ProjectBundle/Resources/views/Project/add_axe_in_project.html.twig #}
 {#
-    Here an administrator will can add an axe in a project
+    Here an administrator will can add an axis in a project
 #}
 
 {% extends "BdtlnProjectBundle::layout_project.html.twig" %}
@@ -8,9 +8,9 @@
 {% block project_body %}
     
     <div class="col-md-12 column">
-        {{ "You will add an axe in project" | trans }} <strong>{{ project.englishTitle }}</strong>
+        {{ "You will add an axis in project" | trans }} <strong>{{ project.englishTitle }}</strong>
         <br />
-        {{ "Choose an axe" | trans }}
+        {{ "Choose an axis" | trans }}
         <br />
             {# If an error or an information was initialized in the controller, we display
               it here #}
@@ -20,15 +20,15 @@
                 </p>
             {% endfor %}
             
-            {#If this project belong to all axes, we cant display any axe here#}
+            {#If this project belong to all axis, we cant display any axis here#}
             {% if axesNotInProject is empty %}
                 <p>
-                    {{ "This project contains all axes" | trans }}
+                    {{ "This project contains all axis" | trans }}
                 </p>
             {% endif %}
 
             <div class="col-md-6 column" >
-                    <h3>{{ "Add an axe" | trans }}
+                    <h3>{{ "Add an axis" | trans }}
                     <form method="POST" action="{{ path('bdtln_project_update_axes_in_project', {'slug': project.slug}) }}">
                     <select name="axe">
                         <option value="">--------------</option>
@@ -56,7 +56,7 @@
                 </p>
             {% endfor %}
             <div class="col-md-6 column" >
-                <h3>{{ "Delete an axe" | trans }}
+                <h3>{{ "Delete an axis" | trans }}
                 <form method="POST" action="{{ path('bdtln_project_update_axes_in_project', {'slug': project.slug}) }}">
                     <select name="axe">
                         <option value="">--------------</option>

@@ -33,13 +33,13 @@ class Axe
      *      min = "2",
      *      max = "255",
      *      minMessage = "The french title should be longer than {{ limit }} characters",
-     *      maxMessage = "The french title not be longer than {{ limit }} characters")
+     *      maxMessage = "The french title should not be longer than {{ limit }} characters")
      */
     private $frenchTitle;
     
     
     /**
-     * englishTtitle represent the english title of the axe
+     * englishTtitle represent the english title of the axis
      * @var string
      *
      * @ORM\Column(name="english_title", type="string", length=255, unique=true)
@@ -53,7 +53,7 @@ class Axe
     private $englishTitle;
 
     /**
-     * englishDescription represent the english axe's description, it will be displayed on the axe page
+     * englishDescription represent the english axis's description, it will be displayed on the axis page
      * 
      * @var string
      *

@@ -1,12 +1,12 @@
-'You will add an axe in project': 'Vous allez ajouter un axe dans le projet'
-'Choose an axe': 'Choisissez un axe'
-'This project contains all axes': 'Ce projet contient tous les axes'
-'Main axe': 'Axe principal'
+'You will add an axis in project': 'Vous allez ajouter un axe dans le projet'
+'Choose an axis': 'Choisissez un axe'
+'This project contains all axis': 'Ce projet contient tous les axes'
+'Main axis': 'Axe principal'
 'Do you want delete the project': 'Voulez-vous vraiment supprimer le projet'
 'Yes': Oui
 'No': Non
 'Add': Ajouter
-'Add an axe': 'Ajouter un axe'
+'Add an axi': 'Ajouter un axe'
 'Update the project': 'Modifier le projet'
 'Manage the participants': 'Gérer les participants'
 'Manage the administrators': 'Gérer les administrateurs'
@@ -29,13 +29,13 @@
 'French descripion': 'Descripion française'
 'Beginning date': 'Date de début'
 'Ending date': 'Date de fin'
-'This project already own this axe!': 'Ce projet contient déjà cet axe !'
-'The axe has been added!': 'L''axe a été ajouté !'
-'The axe has been deleted from this project!': 'L''axe a été supprimé du projet !'
-'A project must belong at least to one axe!': 'Un projet doit appartenir à au moins un axe !'
-'This project doesn''t own this axe!': 'Ce projet ne contient pas l''axe indiqué !'
-'Delete an axe': 'Retirer un axe'
-'Update axes': 'Gérer les axes'
+'This project already own this axis!': 'Ce projet contient déjà cet axe !'
+'The axis has been added!': 'L''axe a été ajouté !'
+'The axis has been deleted from this project!': 'L''axe a été supprimé du projet !'
+'A project must belong at least to one axis!': 'Un projet doit appartenir à au moins un axe !'
+'This project doesn''t own this axis!': 'Ce projet ne contient pas l''axe indiqué !'
+'Delete an axis': 'Retirer un axe'
+'Update axis': 'Gérer les axes'
 'Update': 'Mettre à jour'
 'Title:': 'Titre :'
 'File:': 'Fichier :'
@@ -46,7 +46,11 @@
 'At least one description must be filled!': Au moins une description doit être remplie !
 'The project couldn''t be saved!': Le projet n'a pas pu être enregistré !
 'The ending date should be greater than the beginning date': La date de fin devrait être supérieure à la date de début
-'Please add an axe!': Veuillez ajouter un axe !
+'Please add an axis!': Veuillez ajouter un axe !
 'The root can''t be deleted!': Le super administrateur ne peut pas être supprimé !
 'The file is added': Le fichier a été ajouté
-'Accepted extensions': Extensions acceptées 
+'Accepted extensions': Extensions acceptées
+'<ul><li>The english summary should be longer than 20 characters</li></ul>': Le résumé anglais doit faire plus de 20 caractères</li></ul>
+'<ul><li>The french summary should be longer than 20 characters</li></ul>': Le résumé français doit faire plus de 20 caractères</li></ul>
+'<ul><li>The english summary should not be longer than 255 characters</li></ul>': Le résumé anglais ne doit pas faire plus de 255 caractères</li></ul>
+'<ul><li>The french summary should not be longer than 255 characters</li></ul>': Le résumé français ne doit pas faire plus de 255 caractères</li></ul>
