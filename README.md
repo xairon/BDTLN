@@ -39,6 +39,7 @@ This project is managed on Github, so you can install [Github for Windows](https
  * Delete folder BDTLN/vendor if it exists
  * In BDTLN/app/config copy parameters.yml.dist and name the copy parameters.yml
  * Open BDTLN/app/config/parameters.yml with an editor, set your login and password for MySQL, and set the database name (BDTLN is better than symfony)
+ * Delete all files in web/upload/photos, web/upload/images and web/upload/attached_files
 
 Note for Windows :
 -----------------
