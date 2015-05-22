@@ -248,3 +248,11 @@ body a
 {
     max-width: 200px;
 }
+
+/*Put a grey border on pages add/update category*/
+.info-neutral
+{
+    border: #c41e35 solid 1px;
+    border-radius: 5px;
+    max-width: 400px;
+}

@@ -12,7 +12,7 @@
     {% if categories is defined and categories is not null %}
         {% for category in categories %}
             <div>
-                    {{category.frenchTitle}}
+                    {{ (app.request.locale == "fr") ? category.frenchTitle : category.englishTitle}}
                     <a href="{{ path('bdtln_user_edit_category', {'id': category.id}) }}">{{ 'Edit' | trans }}</a>
                     <a href="{{ path('bdtln_user_delete_category', {'id': category.id}) }}">{{ 'Delete' | trans }}</a>
             </div>
