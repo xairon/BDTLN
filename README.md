@@ -65,7 +65,7 @@ Now, open BDTLN/web/tinymce/plugins/jbimages/config.php and set the $config['img
 
 
 Two users are already created, a simple user and a super admin.
-For super admin the login is "admin@bdtln.com" and password is "admin", for user the login is "user@bdtln.com" and password is "user".
+For super admin the login is "nathalie.friburger@bdtln.com" and password is "nathalie", for user the login is "jean-yves.antoine@univ-tours.com" and password is "jean".
 
 If BDTLN folder is in www/ folder, you can open website at the following url :
 [http://localhost/BDTLN/web/app_dev.php/fr/](http://localhost/BDTLN/web/app_dev.php/fr/)

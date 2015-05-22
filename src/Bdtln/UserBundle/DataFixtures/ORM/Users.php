@@ -43,38 +43,32 @@ class Users implements FixtureInterface {
         $manager->flush();
         
         $admin = new User();
-        $admin->setUsername('admin');
-        $admin->setPlainPassword("admin");
+        $admin->setUsername('nathalie-friburger');
+        $admin->setPlainPassword("nathalie");
         $admin->setRoles(array('ROLE_SUPER_ADMIN'));
-        $admin->setEnglishBiography("Hey I am an admin");
-        $admin->setFrenchBiography("Hey, je suis un admin");
-        $admin->setEmail("admin@bdtln.com");
-        $admin->setFirstName("admin");
-        $admin->setLastName("admin");
+        $admin->setEnglishBiography("My name is Nathalie Friburger, I am teacher at François Rabelais.\n"
+                . "I like practice ping pong.");
+        $admin->setFrenchBiography("Je m'appelle Nathalie Friburger, je suis enseignante à l'université François Rabelais.\n"
+                . "J'aime jouer au ping pong");
+        $admin->setEmail("nathalie.friburger@univ-tours.fr");
+        $admin->setFirstName("Nathalie");
+        $admin->setLastName("Friburger");
         $admin->setEnabled(true);
         
         
         $user = new User();
-        $user->setUsername('user');
-        $user->setPlainPassword("user");
+        $user->setUsername('jean-yves-antoine');
+        $user->setPlainPassword("jean");
         $user->setRoles(array('ROLE_USER'));
-        $user->setEnglishBiography("Hey I am an user");
-        $user->setFrenchBiography("Hey, je suis un utilisateur");
-        $user->setEmail("user@bdtln.com");
-        $user->setFirstName("user");
-        $user->setLastName("user");
+        $user->setEnglishBiography("My name is Jean-Yves Antoine, I'm researcher and teacher. I like practice scooter.");
+        $user->setFrenchBiography("Je m'appelle Jean-Yves Antoine, je suis chercheur et enseignant. J'aime faire de la trotinette.");
+        $user->setEmail("jean-yves.antoine@univ-tours.fr");
+        $user->setFirstName("Jean-Yves");
+        $user->setLastName("Antoine");
         $user->setEnabled(true);
         
         $manager->persist($admin);
         $manager->persist($user);
-        $manager->flush();
-        
-        
-        $publication1 = new Publication();
-        $publication1->setTitle('My first publication');
-        $publication1->setContent('This is a great publication');
-        $publication1->setOwner($user);
-        $manager->persist($publication1);
         $manager->flush();
         
     }
