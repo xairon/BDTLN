@@ -72,34 +72,6 @@ class Axe
      */
     private $frenchDescription;
 
-    /**
-     * frenchSummary represent the french axe's summary, it will be displayed on the axe's list
-     * 
-     * @var string
-     *
-     * @ORM\Column(name="french_summary", type="string", length=255)
-     * @Assert\Length(
-     *      min = "20",
-     *      max = "255",
-     *      minMessage = "The french summary should be longer than {{ limit }} characters",
-     *      maxMessage = "The french summary should not be longer than {{ limit }} characters")
-     */
-    private $frenchSummary;
-
-    /**
-     * englishSummary represent the english axe's summary, it will be displayed on the axe's list
-     * 
-     * @var string
-     *
-     * @ORM\Column(name="english_summary", type="string", length=255)
-     * @Assert\Length(
-     *      min = "20",
-     *      max = "255",
-     *      minMessage = "The english summary should be longer than {{ limit }} characters",
-     *      maxMessage = "The english summary not be longer than {{ limit }} characters")
-     */
-    private $englishSummary;
-    
     
     /**
      * projects represent all the projects in the axe

@@ -19,8 +19,6 @@ class AxeType extends AbstractType
             ->add('englishTitle', 'text')
             ->add('englishDescription', 'textarea', array('required' => false))
             ->add('frenchDescription', 'textarea', array('required' => false))
-            ->add('frenchSummary', 'text')
-            ->add('englishSummary', 'text')
         ;
     }
     
