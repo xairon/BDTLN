@@ -38,12 +38,15 @@
 								<li>
 									<a class="navbar-brand" href="{{ path('bdtln_axe_homepage') }}">{{ "Liste des Axes/Projets" | trans }}</a>
 								</li>
+                                                            {# If user is root #}
+                                                            {% if is_granted("ROLE_SUPER_ADMIN") %}
 								<li>
 									<a class="navbar-brand" href="{{ path('bdtln_axe_add_axe') }}">{{ "Add an axe" | trans }}</a>
 								</li>
 								<li>
 									<a class="navbar-brand" href="{{ path('bdtln_project_add_project') }}">{{ "Add a project" | trans }}</a>
 								</li>
+                                                            {% endif %}
 							</ul>
 						</li>
 						<li>
@@ -59,7 +62,8 @@
                                 <a class="navbar-brand" href="{{ path('fos_user_security_login') }}">{{ "Sign in" | trans }}</a>
                             </li>
                         {% endif %}
-                        <li class="dropdown" class="navbar-brand">
+                        {% if is_granted("ROLE_SUPER_ADMIN") %}
+                            <li class="dropdown" class="navbar-brand">                       
 							 <a href="#" class="dropdown-toggle"  id ='drop'data-toggle="dropdown">{{ "Administration" | trans }}<strong class="caret" id='drop-puce' ></strong></a>
 							<ul class="dropdown-menu" id ='drop'>
 								<li>
@@ -70,6 +74,7 @@
 								</li>
 							</ul>
 						</li>
+                        {% endif %}
 					</ul>
 				</div>	
 			</nav>
