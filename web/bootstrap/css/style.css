@@ -243,3 +243,8 @@ body a
 }.dropdown:hover .dropdown-menu {
    display: block;
 } 
+
+.bio-textarea
+{
+    max-width: 200px;
+}
