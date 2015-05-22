@@ -3,7 +3,7 @@
 
 
 <div class="col-md-2 column" id="flux">
-    <h4>Last publications</h4>
+    <h4>{{ 'Last publications' | trans }}</h4>
     {% if lastPublications is defined and lastPublications is not null and lastPublications | length > 0 %}
         <ul>
             {% for publication in lastPublications %}
