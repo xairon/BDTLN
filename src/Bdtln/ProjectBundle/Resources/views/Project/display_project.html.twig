@@ -9,7 +9,7 @@
 
     {# If the current user is SUPER ADMIN or admin of this project, he can see the links below #}
     {% if isAdmin == true %}
-        <a href="{{ path('bdtln_project_update_axes_in_project' , {'slug': project.slug }) }}">{{ "Update axes" | trans }}</a>
+        <a href="{{ path('bdtln_project_update_axes_in_project' , {'slug': project.slug }) }}">{{ "Update axis" | trans }}</a>
         <a href="{{ path('bdtln_project_update_project' , {'slug': project.slug }) }}">{{ "Update the project" | trans }}</a>
         <a href="{{ path('bdtln_project_update_participants' , {'slug': project.slug }) }}">{{ "Manage the participants" | trans }}</a>
         <a href="{{ path('bdtln_project_update_managers', {'slug': project.slug }) }}">{{ "Manage the administrators" | trans }}</a>

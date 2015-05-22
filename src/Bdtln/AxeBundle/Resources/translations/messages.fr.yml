@@ -32,9 +32,9 @@
 'The super administrator can''t be deleted!': Le super administrateur ne peut pas être supprimé !
 'Back': Retour
 '<ul><li>The english title should be longer than 2 characters</li></ul>': <ul><li>Le titre anglais doit faire plus de 2 caractères</li></ul>
-'<ul><li>The english summary should be longer than 20 characters</li></ul>': <ul><li>Le résumé anglais doit faire plus de 20 caractères</li></ul>
 '<ul><li>The french title should be longer than 2 characters</li></ul>': <ul><li>Le titre français doit faire plus de 2 caractères</li></ul>
-'<ul><li>The french summary should be longer than 20 characters</li></ul>': <ul><li>Le résumé français doit faire plus de 20 caractères</li></ul>
+'<ul><lu>The english title should not be longer than 255 characters</li></ul>': Le titre anglais ne doit pas dépasser 255 caractères
+'<ul><lu>The french title should not be longer than 255 characters</li></ul>': Le titre français ne doit pas dépasser 255 caractères
 
 
 

@@ -33,7 +33,7 @@ class Project
      *      min = "2",
      *      max = "255",
      *      minMessage = "The french title should be longer than {{ limit }} characters",
-     *      maxMessage = "The french title not be longer than {{ limit }} characters"
+     *      maxMessage = "The french title should not be longer than {{ limit }} characters"
      * )
      */
     private $frenchTitle;
@@ -48,7 +48,7 @@ class Project
      *      min = "2",
      *      max = "255",
      *      minMessage = "The english title should be longer than {{ limit }} characters",
-     *      maxMessage = "The english title not be longer than {{ limit }} characters"
+     *      maxMessage = "The english title should not be longer than {{ limit }} characters"
      * )
      */
     private $englishTitle;
