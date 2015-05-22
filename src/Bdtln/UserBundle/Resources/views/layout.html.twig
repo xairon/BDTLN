@@ -7,7 +7,7 @@
 {% block body %}
     {# Displaying of session flashbag defined by controllers #}
     {% for key, messages in app.session.flashbag.all() %}
-        <div class="alert alert-{{ key }}">
+        <div class="center-block info-neutral alert alert-{{ key }}">
             {% for message in messages %}
                 {{ message|trans({}, 'FOSUserBundle') }}
             {% endfor %}

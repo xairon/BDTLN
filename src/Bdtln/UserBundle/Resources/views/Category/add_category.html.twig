@@ -16,13 +16,13 @@
                 {% set englishTitle = "English title" | trans %}
                 
                 {{ form_label(form.englishTitle, englishTitle) }}
-                {{ form_errors(form.englishTitle) }}
+                {{ form_errors(form.englishTitle) | trans | raw }}
                 {{ form_widget(form.englishTitle) }}
             </div>
             <div>
                 {% set frenchTitle = "French title" | trans %}
                 {{ form_label(form.frenchTitle, frenchTitle) }}
-                {{ form_errors(form.frenchTitle) }}
+                {{ form_errors(form.frenchTitle) | trans | raw }}
                 {{ form_widget(form.frenchTitle) }}
             </div>
             
