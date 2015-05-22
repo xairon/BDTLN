@@ -30,7 +30,7 @@
 {% block project_body %}
     
     {% set informations = app.session.flashbag.get('information') %}
-    {% if informations is not null %}
+    {% if informations is not null and informations|length > 0 %}
         <div class="info-error center-block">
             {#The sessions flashbag like an error wrote in controller will be displayed here#}
             {% for information in informations%}
@@ -113,5 +113,5 @@
         <button id="submit" name="submit" class="btn btn-primary">{{ "Add" | trans }}</button>
     </form>
 
-    <button id="back" name="back" class="btn btn-primary" onClick="history.back()">{{ "Back" | trans }}</button> 
+    <button id="back" name="back" class="btn btn-primary" onClick="window.location.replace('{{ path('bdtln_axe_homepage') }}')">{{ "Back" | trans }}</button> 
 {% endblock %}

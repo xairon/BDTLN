@@ -40,7 +40,7 @@
             
         </form>
     </div>
-    <button id="back" name="back" class="btn btn-primary" onClick="history.back()">{{ "Back" | trans }}</button> 
+    <button id="back" name="back" class="btn btn-primary" onClick="window.location.replace('{{ path('bdtln_project_display', {'slug': project.slug}) }}')">{{ "Back" | trans }}</button> 
     
     
     
