@@ -36,7 +36,7 @@
         {{ 'There is no file in this project' }}
     {% endif %}
 </div>    
-    
+    <button id="back" name="back" class="btn btn-primary" onClick="window.location.replace('{{ path('bdtln_project_display', {'slug': slug}) }}')">{{ "Back" | trans }}</button>  
     
     
 {% endblock %}
