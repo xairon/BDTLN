@@ -56,25 +56,25 @@
             {% set englishTitle = "English title" | trans %}
             
             {{ form_label(form.englishTitle, englishTitle) }}
-            {{ form_errors(form.englishTitle) }}
+            {{ form_errors(form.englishTitle) | trans | raw }}
             {{ form_widget(form.englishTitle) }}
         </div>
         <div>
             {% set englishSummary = "English summary" | trans %}
             {{ form_label(form.englishSummary, englishSummary) }}
-            {{ form_errors(form.englishSummary) }}
+            {{ form_errors(form.englishSummary) | trans | raw }}
             {{ form_widget(form.englishSummary) }}
         </div>
         <div>
             {% set englishDescription = "English description" | trans %}
             {{ form_label(form.englishDescription, englishDescription) }}
-            {{ form_errors(form.englishDescription) }}
+            {{ form_errors(form.englishDescription) | trans | raw }}
             {{ form_widget(form.englishDescription) }}
         </div>
         <div>
             {% set beginningDate = "Beginning date" | trans %}
             {{ form_label(form.beginningDate, beginningDate) }}
-            {{ form_errors(form.beginningDate) }}
+            {{ form_errors(form.beginningDate) | trans | raw }}
             {{ form_widget(form.beginningDate) }}
         </div>
     </div>
@@ -82,25 +82,25 @@
         <div>
             {% set frenchTitle = "French title" | trans %}
             {{ form_label(form.frenchTitle, frenchTitle) }}
-            {{ form_errors(form.frenchTitle) }}
+            {{ form_errors(form.frenchTitle) | trans | raw }}
             {{ form_widget(form.frenchTitle) }}
         </div>
         <div>
             {% set frenchSummary = "French summary" | trans %}
             {{ form_label(form.frenchSummary, frenchSummary) }}
-            {{ form_errors(form.frenchSummary) }}
+            {{ form_errors(form.frenchSummary) | trans | raw }}
             {{ form_widget(form.frenchSummary) }}
         </div>
         <div>
             {% set frenchDescription = "French descripion" | trans %}
             {{ form_label(form.frenchDescription, frenchDescription) }}
-            {{ form_errors(form.frenchDescription) }}
+            {{ form_errors(form.frenchDescription) | trans | raw }}
             {{ form_widget(form.frenchDescription) }}
         </div>
         <div>
             {% set endingDate = "Ending date" | trans %}
             {{ form_label(form.endingDate, endingDate) }}
-            {{ form_errors(form.endingDate) }}
+            {{ form_errors(form.endingDate) | trans | raw }}
             {{ form_widget(form.endingDate) }}
         </div>
     </div>

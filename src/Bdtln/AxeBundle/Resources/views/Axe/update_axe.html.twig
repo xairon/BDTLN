@@ -30,35 +30,41 @@
 {% block axe_body %}
     
     
-    <p>
+    <h2 class="text-center">
         {{ 'Update axe' | trans }} {{ (app.request.locale == "en") ? axe.englishTitle : axe.frenchTitle }}
-    </p>
+    </h2>
     
     {#The sessions flashbag like an error written in controller will be displayed here#}
-    {% for information in app.session.flashbag.get('information')%}
-    <p>
-        {{ information }}
-    </p>
-    {% endfor %}
+    {% set informations = app.session.flashbag.get('information') %}
+    {% if informations is not null and informations|length > 0 %}
+        <div class="info-error center-block">
+            {#The sessions flashbag like an error wrote in controller will be displayed here#}
+            {% for information in informations%}
+                <p class="text-danger text-center">
+                    {{ information | trans }}
+                </p>
+            {% endfor %}
+        </div>
+    {% endif %}
     <form action="{{ path('bdtln_axe_update_axe', {'slug': axe.slug}) }}" method="POST" {{ form_enctype(form) }}>
         {{ form_errors(form) }}
         <div class="col-md-6 column" >
             <div>
                 {% set englishTitle = 'English title' | trans %}
                 {{ form_label(form.englishTitle, englishTitle) }}
-                {{ form_errors(form.englishTitle) }}
+                {{ form_errors(form.englishTitle) | trans | raw }}
                 {{ form_widget(form.englishTitle) }}
             </div>
             <div>
                 {% set englishSummary = 'English summary' | trans %}
                 {{ form_label(form.englishSummary, englishSummary) }}
-                {{ form_errors(form.englishSummary) }}
+                {{ form_errors(form.englishSummary) | trans | raw }}
                 {{ form_widget(form.englishSummary) }}
             </div>
             <div>
                 {% set englishDescription = 'English description' | trans %}
                 {{ form_label(form.englishDescription, englishDescription) }}
-                {{ form_errors(form.englishDescription) }}
+                {{ form_errors(form.englishDescription) | trans | raw }}
                 {{ form_widget(form.englishDescription) }}
             </div>
         </div>
@@ -66,14 +72,14 @@
             <div>
                 {% set frenchTitle = 'French title' | trans %}
                 {{ form_label(form.frenchTitle, frenchTitle) }}
-                {{ form_errors(form.frenchTitle) }}
+                {{ form_errors(form.frenchTitle) | trans | raw }}
                 {{ form_widget(form.frenchTitle) }}
             </div>
             
             <div>
                 {% set frenchSummary = 'French summary' | trans %}
                 {{ form_label(form.frenchSummary, frenchSummary) }}
-                {{ form_errors(form.frenchSummary) }}
+                {{ form_errors(form.frenchSummary) | trans | raw }}
                 {{ form_widget(form.frenchSummary) }}
             </div>
             
@@ -81,7 +87,7 @@
             <div>
                 {% set frenchDescription = 'French description' | trans %}
                 {{ form_label(form.frenchDescription, frenchDescription) }}
-                {{ form_errors(form.frenchDescription) }}
+                {{ form_errors(form.frenchDescription) | trans | raw }}
                 {{ form_widget(form.frenchDescription) }}
             </div>
         </div>

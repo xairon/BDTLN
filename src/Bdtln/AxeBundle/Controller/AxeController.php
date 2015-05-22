@@ -69,20 +69,20 @@ class AxeController extends Controller
             //If all the inputs are valids, save in database
             if ( $axeForm->isValid() ) {
                 
-                //if the two descriptions are not empty
-                if (!empty($axe->getFrenchDescription()) && !empty($axe->getEnglishDescription())) { 
                     $axe->addManager($user); //SUPER ADMIN is always manager
                     $entityManager->persist($axe);
                     $entityManager->flush();
                     //Redirect on the page of new axe
                     return $this->redirect( $this->generateUrl('bdtln_axe_display_axe', array('slug' => $axe->getSlug())) );
-                } else { //If all descriptions are empty
-                    $this->get('session')->getFlashBag()->add('information', 'The two descriptions must be filled!');
-                    return $this->render('BdtlnaxeBundle:Axe:add_axe.html.twig', array('form' => $axeForm->createView(), 'axes' => $axes));
-                }
+                
             }       
             else { //If the form is invalid
                 $this->get('session')->getFlashBag()->add('information', 'The axe couldn\'t be saved!');
+                //If one or two descriptions are empty
+                if ( empty($axe->getEnglishDescription()) || empty($axe->getFrenchDescription())) { //If all descriptions are empty
+                    $this->get('session')->getFlashBag()->add('information', 'The two descriptions must be filled!');                    
+                }
+                return $this->render('BdtlnAxeBundle:Axe:add_axe.html.twig', array('form' => $axeForm->createView()));
             }
         }
         
@@ -113,19 +113,19 @@ class AxeController extends Controller
             //If all the inputs are valids, save in database
             if ( $axeForm->isValid() ) {
                 
-                //if at least one description is not empty
-                if (!empty($axe->getFrenchDescription()) || !empty($axe->getEnglishDescription())) { 
                     $entityManager->persist($axe);
                     $entityManager->flush();
                     //Redirect on the page of new axe
                     return $this->redirect( $this->generateUrl('bdtln_axe_display_axe', array('slug' => $axe->getSlug(), 'isAdmin' => $isAdmin)) );
-                } else { //If all descriptions are empty
-                    $this->get('session')->getFlashBag()->add('information', 'At least one description must be filled!');
-                    return $this->render('BdtlnaxeBundle:Axe:add_update.html.twig', array('form' => $axeForm->createView(), 'axes' => $axe));
-                }
+                
             }       
              else { //If the form is invalid
-                $this->get('session')->getFlashBag()->add('information', 'The axe couldn\t be saved!');
+                $this->get('session')->getFlashBag()->add('information', 'The axe couldn\'t be saved!');
+                //If at least one description is empty
+                if ( empty($axe->getEnglishDescription()) || empty($axe->getFrenchDescription()) ) {
+                    $this->get('session')->getFlashBag()->add('information', 'The two descriptions must be filled!');
+                    return $this->render('BdtlnAxeBundle:Axe:update_axe.html.twig', array('form' => $axeForm->createView(), 'axe' => $axe));
+                }
             }
         }
         

@@ -58,6 +58,7 @@ class Axe
      * @var string
      *
      * @ORM\Column(name="english_description", type="text")
+     * @Assert\NotBlank()
      */
     private $englishDescription;
     
@@ -67,6 +68,7 @@ class Axe
      * @var string
      *
      * @ORM\Column(name="french_description", type="text")
+     * @Assert\NotBlank()
      */
     private $frenchDescription;
 
