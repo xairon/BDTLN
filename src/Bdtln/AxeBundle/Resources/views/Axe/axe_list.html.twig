@@ -5,6 +5,10 @@
 
 {% extends "BdtlnAxeBundle::layout_axe.html.twig" %}
 
+{% block description %}
+{{ "The list of all projects, sorted by axe. " ~ parent() }}
+{% endblock %}
+
 {% block axe_body %}
     {# if the controlle has given the axes to us, we display all axes with all project in#}
     {% if axes is not null and axes|length > 0 %}

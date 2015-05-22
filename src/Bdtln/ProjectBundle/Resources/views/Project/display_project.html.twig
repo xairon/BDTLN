@@ -5,6 +5,10 @@
 
 {% extends "BdtlnProjectBundle::layout_project.html.twig" %}
 
+{% block description %}
+{{ "The project " ~ project.englishTitle ~ ". " ~ parent() }}
+{% endblock %}
+
 {% block project_body %}
 
     {# If the current user is SUPER ADMIN or admin of this project, he can see the links below #}

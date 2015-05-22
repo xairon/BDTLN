@@ -1,5 +1,8 @@
 {% extends "FOSUserBundle::layout.html.twig" %}
 
+{% block description %}
+{{ "Member " ~ user.firstName ~ " " ~ user.lastName ~ ". " ~ parent() }}
+{% endblock %}
 
 {% block fos_user_content %}
     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
