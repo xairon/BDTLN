@@ -55,7 +55,7 @@
                         
                         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                             <li>
-                                <a class="navbar-brand" href="{{ path('fos_user_profile_show', {'username': app.user.username}) }}">{{ app.user.username }}</a><a class="navbar-brand" href="{{ path('fos_user_security_logout') }}">{{ "Sign out" | trans }}</a>
+                                <a class="navbar-brand" href="{{ path('fos_user_profile_show', {'username': app.user.username}) }}">{{ app.user.firstName }}</a><a class="navbar-brand" href="{{ path('fos_user_security_logout') }}">{{ "Sign out" | trans }}</a>
                             </li>
                         {% else %}
                             <li>
