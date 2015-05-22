@@ -2,3 +2,15 @@
 # www.google.com/support/webmasters/bin/answer.py?hl=en&answer=156449
 
 User-agent: *
+Disallow: /fr/axe/add_axe
+Disallow: /en/axe/add_axe
+Disallow: /fr/project/add_project
+Disallow: /en/project/add_project
+Disallow: /fr/logout
+Disallow: /en/logout
+Disallow: /fr/register
+Disallow: /en/register
+Disallow: /fr/user/display-categories
+Disallow: /en/user/display-categories
+Disallow: /fr/user/add-category
+Disallow: /en/user/add-category
