@@ -9,7 +9,7 @@
     {# Display email #}
     
     {% set email = 'Email' | trans %}
-    {{ form_label(form.email, email) }}
+    {{ form_label(form.email, email) }}<br />
     {{ form_errors(form.email) }}
     {{ form_widget(form.email) }}
     <br /><br />
@@ -35,13 +35,13 @@
 </div>
 <div class="col-md-6 column"id="bloc">
     {# Display first name #}
-    {{ form_label(form.firstName, 'form.firstname') }}
+    {{ form_label(form.firstName, 'form.firstname') }}<br />
     {{ form_errors(form.firstName) }}
     {{ form_widget(form.firstName) }}
     <br /><br />
 
     {# Display last name #}
-    {{ form_label(form.lastName, 'form.lastname') }}
+    {{ form_label(form.lastName, 'form.lastname') }}<br />
     {{ form_errors(form.lastName) }}
     {{ form_widget(form.lastName) }}
     <br /><br />
@@ -87,4 +87,4 @@
         <input type="submit" class="btn btn-primary" value="{{ 'profile.edit.submit'|trans }}" />
     </div>
 </form>
- <button id="back" name="back" class="btn btn-primary" onClick="history.back()">{{ "Back" | trans }}</button>
+ <button id="back" name="back" class="btn btn-primary" onClick="window.location.replace('{{ path('fos_user_profile_show', {'username': user.username}) }}')">{{ "Back" | trans }}</button>
