@@ -17,9 +17,6 @@
         <div class="col-md-4 column" >
         {{ 'profile.show.lastname'|trans }}: <p>{{ user.lastName }}</p>
 
-        {% if user.enabled == false %}
-            {{ 'Disabled since' | trans }} <p>{{ user.dateLeaving|localizeddate('long', 'none', app.request.locale)}}</p>
-        {% endif %}
     
         {% if user.category is not null %}
             {% if app.request.locale == 'fr' %}
@@ -27,6 +24,12 @@
             {% else %}
             {{ 'profile.show.category'|trans }}: <p>{{ user.category.englishTitle }}</p>
             {% endif %}
+        {% endif %}
+        
+                {% if user.enabled == false %}
+            <div>
+                {{ 'profile.show.datedeparture' | trans }} <p>{{ user.dateLeaving|localizeddate('long', 'none', app.request.locale)}}</p>
+            </div>
         {% endif %}
         </div>
        
@@ -46,4 +49,4 @@
     </div>
        
 </div>
- <button id="back" name="back" class="btn btn-primary" onClick="history.back()">{{ "Back" | trans }}</button>
+ <button id="back" name="back" class="btn btn-primary" onClick="history.back()">{{ "profile.show.back" | trans }}</button>

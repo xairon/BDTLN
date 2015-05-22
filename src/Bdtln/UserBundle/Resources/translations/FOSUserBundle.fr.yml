@@ -18,7 +18,10 @@ profile.show.category: Catégorie
 profile.edit.submit: Soumettre
 profile.edit.deletephoto: Supprimer ma photo
 profile.edit.photo: Photo
+profile.edit.back: Retour
 profile.show.email: Email
+profile.show.back: Retour
+profile.show.datedeparture: Date de départ 
 
 security.login.password: Mot de passe
 security.login.remember_me: Se souvenir de moi

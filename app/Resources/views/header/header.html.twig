@@ -33,15 +33,15 @@
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
 						<li class="dropdown" class="navbar-brand">
-							 <a href="{{ path('bdtln_axe_homepage') }}" class="dropdown-toggle"  id ='drop'data-toggle="dropdown">{{ "Axes/Projects" | trans }}<strong class="caret" id='drop-puce' ></strong></a>
+							 <a href="{{ path('bdtln_axe_homepage') }}" class="dropdown-toggle"  id ='drop'data-toggle="dropdown">{{ "Axis/Projects" | trans }}<strong class="caret" id='drop-puce' ></strong></a>
 							<ul class="dropdown-menu" id ='drop'>
 								<li>
-									<a class="navbar-brand" href="{{ path('bdtln_axe_homepage') }}">{{ "Axes/Projects list" | trans }}</a>
+									<a class="navbar-brand" href="{{ path('bdtln_axe_homepage') }}">{{ "Axis/Projects list" | trans }}</a>
 								</li>
                                                             {# If user is root #}
                                                             {% if is_granted("ROLE_SUPER_ADMIN") %}
 								<li>
-									<a class="navbar-brand" href="{{ path('bdtln_axe_add_axe') }}">{{ "Add an axe" | trans }}</a>
+									<a class="navbar-brand" href="{{ path('bdtln_axe_add_axe') }}">{{ "Add an axis" | trans }}</a>
 								</li>
 								<li>
 									<a class="navbar-brand" href="{{ path('bdtln_project_add_project') }}">{{ "Add a project" | trans }}</a>

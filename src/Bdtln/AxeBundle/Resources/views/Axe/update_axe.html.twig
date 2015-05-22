@@ -31,7 +31,7 @@
     
     
     <h2 class="text-center">
-        {{ 'Update axe' | trans }} {{ (app.request.locale == "en") ? axe.englishTitle : axe.frenchTitle }}
+        {{ 'Update axis' | trans }} {{ (app.request.locale == "en") ? axe.englishTitle : axe.frenchTitle }}
     </h2>
     
     {#The sessions flashbag like an error written in controller will be displayed here#}
@@ -56,12 +56,6 @@
                 {{ form_widget(form.englishTitle) }}
             </div>
             <div>
-                {% set englishSummary = 'English summary' | trans %}
-                {{ form_label(form.englishSummary, englishSummary) }}
-                {{ form_errors(form.englishSummary) | trans | raw }}
-                {{ form_widget(form.englishSummary) }}
-            </div>
-            <div>
                 {% set englishDescription = 'English description' | trans %}
                 {{ form_label(form.englishDescription, englishDescription) }}
                 {{ form_errors(form.englishDescription) | trans | raw }}
@@ -76,12 +70,6 @@
                 {{ form_widget(form.frenchTitle) }}
             </div>
             
-            <div>
-                {% set frenchSummary = 'French summary' | trans %}
-                {{ form_label(form.frenchSummary, frenchSummary) }}
-                {{ form_errors(form.frenchSummary) | trans | raw }}
-                {{ form_widget(form.frenchSummary) }}
-            </div>
             
             
             <div>

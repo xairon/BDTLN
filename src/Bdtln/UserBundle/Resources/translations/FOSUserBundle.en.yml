@@ -20,9 +20,12 @@ profile:
         lastname: 'Last name'
         frenchbiography: 'French biography'
         englishbiography: 'English bigraphy'
-        dateregister: 'Date register'
+        dateregister: 'Date of arrival'
         category: 'Category'
+        back: 'Back'
+        datedeparture: 'Date of departure'
     edit:
         deletephoto: 'Delete my photo'
         photo: 'Photo'
+        back: 'Back'
     

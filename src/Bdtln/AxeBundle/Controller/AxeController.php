@@ -12,8 +12,8 @@ use JMS\SecurityExtraBundle\Annotation\Secure;
 class AxeController extends Controller
 {
     /**
-     * indexAction will display all the axes in a list with all projects in
-     * @return Response Axe/index.html.twig the list of all the axes with all projects
+     * indexAction will display all the axis in a list with all projects in
+     * @return Response Axe/index.html.twig the list of all the axis with all projects
      */
     public function indexAction()
     {
@@ -77,7 +77,7 @@ class AxeController extends Controller
                 
             }       
             else { //If the form is invalid
-                $this->get('session')->getFlashBag()->add('information', 'The axe couldn\'t be saved!');
+                $this->get('session')->getFlashBag()->add('information', 'The axis couldn\'t be saved!');
                 //If one or two descriptions are empty
                 if ( empty($axe->getEnglishDescription()) || empty($axe->getFrenchDescription())) { //If all descriptions are empty
                     $this->get('session')->getFlashBag()->add('information', 'The two descriptions must be filled!');                    
@@ -120,7 +120,7 @@ class AxeController extends Controller
                 
             }       
              else { //If the form is invalid
-                $this->get('session')->getFlashBag()->add('information', 'The axe couldn\'t be saved!');
+                $this->get('session')->getFlashBag()->add('information', 'The axis couldn\'t be saved!');
                 //If at least one description is empty
                 if ( empty($axe->getEnglishDescription()) || empty($axe->getFrenchDescription()) ) {
                     $this->get('session')->getFlashBag()->add('information', 'The two descriptions must be filled!');
@@ -149,7 +149,7 @@ class AxeController extends Controller
         $axe = $repositoryAxe->findOneWithManagers($slug);
         
         if ( $axe === null )
-            throw $this->createNotFoundException ('Axe not found');
+            throw $this->createNotFoundException ('Axis not found');
         
         $managers = $axe->getManagers()->toArray();
         $allUsers = $repositoryUser->findAll();
@@ -196,7 +196,7 @@ class AxeController extends Controller
                     $entityManager->flush();
                     return $this->redirect( $this->generateUrl('bdtln_axe_display_axe', array('slug' => $axe->getSlug())) );
                 } else {
-                    $this->get('session')->getFlashBag()->add('informations_delete', 'The axe must have at least one manager!');
+                    $this->get('session')->getFlashBag()->add('informations_delete', 'The axis must have at least one manager!');
                     return $this->redirect( $this->generateUrl('bdtln_axe_update_managers', array('slug' => $axe->getSlug())) );
                 }
             } else { //If in the submitted form there is not submit_add and not submit_delete
