@@ -37,9 +37,10 @@
 | 
 | -------------------------------------------------------------------*/
 
-	
+
+	//NOTE BY ANTHONY : BE CAREFUL TO SET THOOSE VARIABLES TO DISPLAY PICTURES IN PROJECT !
 	$config['img_path'] = '/autres/BDTLN/web/uploads/images'; // Relative to domain name
-	$config['upload_path'] = $_SERVER['DOCUMENT_ROOT'] . $config['img_path']; // Physical path. [Usually works fine like this]
+	$config['upload_path'] = '/var/www/html' . $config['img_path']; // Physical path. [Usually works fine like this]
 
 
 /*-------------------------------------------------------------------
