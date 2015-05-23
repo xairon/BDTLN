@@ -8,9 +8,14 @@
 
 {% block fos_user_content %}
    <div id="form">
-    {{ "You will update a category" | trans }}
+    {{ "You will update the category" | trans }}
+    {% if app.request.locale == 'fr' %}
+        {{ category.frenchTitle }}
+    {% else %}
+        {{ category.englishTitle }}
+    {% endif %}
     
-    <form method="POST" action="{{ path('bdtln_user_edit_category', {'id': id}) }}">
+    <form method="POST" action="{{ path('bdtln_user_edit_category', {'id': category.id}) }}">
         {{ form_errors(form) }}
         <div>
             {% set englishTitle = "English title" | trans %}

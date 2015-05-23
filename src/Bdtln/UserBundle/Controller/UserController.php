@@ -61,12 +61,12 @@ class UserController extends Controller{
                 $entityManager->persist($category);
                 $entityManager->flush();
                 $this->get('session')->getFlashBag()->add('information', 'form.categoryupdated');
-                return $this->redirect( $this->generateUrl('bdtln_user_edit_category', array('id' => $category->getId())) );
+                return $this->redirect( $this->generateUrl('bdtln_user_edit_category', array('category' => $category)) );
             }
         }
         
         
-        return $this->render("BdtlnUserBundle:Category:edit_category.html.twig", array('form' => $categoryForm->createView(), 'id' => $category->getId() ));
+        return $this->render("BdtlnUserBundle:Category:edit_category.html.twig", array('form' => $categoryForm->createView(), 'category' => $category ));
     }
     
     
@@ -88,7 +88,7 @@ class UserController extends Controller{
      * delete_category will allow to delete a category
      * @Secure(roles="ROLE_SUPER_ADMIN")
      */
-    public function delete_categoryAction(Category $category) {
+    public function delete_categoryAction($id) {
         
         $entityManager = $this->getDoctrine()->getManager();
         /*
@@ -99,6 +99,7 @@ class UserController extends Controller{
         $session = $this->get('session');
         $request = $this->get('request');
         $token = $session->get('token');
+        $category = $entityManager->getRepository('BdtlnUserBundle:Category')->findOneOrNullById($id);
         if ( $request->getMethod() == "POST") {
             //If token doesn't exist or is invalid, of $_POST['delete_category'] doesn't exist or is invalid
             if ( $token == null || $_POST['token'] != $token || $_POST['delete_category'] == null || ( $_POST['delete_category'] != "yes" && $_POST['delete_category'] != "no" ) )
@@ -117,7 +118,7 @@ class UserController extends Controller{
         
         $this->get('session')->set('token', sha1(time()));
         
-        return $this->render('BdtlnUserBundle:Category:delete_category.html.twig', array('id' => $category->getId() ) );
+        return $this->render('BdtlnUserBundle:Category:delete_category.html.twig', array('category' => $category ) );
         
     }
     

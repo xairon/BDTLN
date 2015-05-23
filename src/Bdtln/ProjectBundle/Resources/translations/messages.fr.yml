@@ -50,6 +50,7 @@
 'The root can''t be deleted!': Le super administrateur ne peut pas être supprimé !
 'The file is added': Le fichier a été ajouté
 'Accepted extensions': Extensions acceptées
+'Manage axis': Gérer les axes
 '<ul><li>The english summary should be longer than 20 characters</li></ul>': Le résumé anglais doit faire plus de 20 caractères</li></ul>
 '<ul><li>The french summary should be longer than 20 characters</li></ul>': Le résumé français doit faire plus de 20 caractères</li></ul>
 '<ul><li>The english summary should not be longer than 255 characters</li></ul>': Le résumé anglais ne doit pas faire plus de 255 caractères</li></ul>

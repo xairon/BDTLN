@@ -1,5 +1,5 @@
 'You will add a category': 'Vous êtes sur le point d''ajouter une catégorie'
-'You will update a category': 'Vous êtes sur le point de mofidier une catégorie'
+'You will update the category': 'Vous allez mofidier la catégorie'
 'English title': 'Titre anglais'
 'French title': 'Titre français'
 'Add': 'Ajouter'
@@ -10,6 +10,8 @@
 'Add a category': 'Ajouter une catégorie'
 'Edit profile' : 'Modifier le profil'
 'Change password': Changer le mot de passe
+'Do you want delete the category': Voulez-vous supprimer la catégorie
+'Validate': Valider
 '<ul><li>The english title should be longer than 2 characters</li></ul>' : <ul><li>Le titre anglais doit faire plus de 2 caractères</li></ul>
 '<ul><li>The french title should be longer than 2 characters</li></ul>' : <ul><li>Le titre français doit faire plus de 2 caractères</li></ul>
 '<ul><li>The french title should not be longer than 80 characters</li></ul>': <ul><li>Le titre français ne devrait pas dépasser 255 caractères</li></ul>
