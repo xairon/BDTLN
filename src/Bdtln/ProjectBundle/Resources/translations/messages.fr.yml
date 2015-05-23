@@ -1,4 +1,4 @@
-'You will add an axis in project': 'Vous allez ajouter un axe dans le projet'
+'You will manage axis in project': 'Vous allez modifier les axes du projet'
 'Choose an axis': 'Choisissez un axe'
 'This project contains all axis': 'Ce projet contient tous les axes'
 'Main axis': 'Axe principal'
@@ -51,6 +51,8 @@
 'The file is added': Le fichier a été ajouté
 'Accepted extensions': Extensions acceptées
 'Manage axis': Gérer les axes
+'The axe has been added!': L'axe a été ajouté !
+'The axe has been deleted from this project!': L'axe a été supprimé de ce projet
 '<ul><li>The english summary should be longer than 20 characters</li></ul>': Le résumé anglais doit faire plus de 20 caractères</li></ul>
 '<ul><li>The french summary should be longer than 20 characters</li></ul>': Le résumé français doit faire plus de 20 caractères</li></ul>
 '<ul><li>The english summary should not be longer than 255 characters</li></ul>': Le résumé anglais ne doit pas faire plus de 255 caractères</li></ul>
