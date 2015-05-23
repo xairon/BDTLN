@@ -44,7 +44,7 @@ security:
                 #Default_target_path is the default path where we are redirected after login
             logout:
                 path:   fos_user_security_logout
-                target: /%locale%/
+                target: /fr
             remember_me:
                 key:    %secret%
                         #secret is a parameter present in parameters.yml
