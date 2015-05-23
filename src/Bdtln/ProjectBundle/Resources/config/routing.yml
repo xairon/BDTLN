@@ -8,7 +8,7 @@ bdtln_project_display:
 
 #Add a project
 bdtln_project_add_project:
-    path: /add_project
+    path: /add_project/add
     defaults: { _controller: BdtlnProjectBundle:Project:add_project }
 
 #Add an axe into a project
