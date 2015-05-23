@@ -1,8 +1,15 @@
 {% extends "FOSUserBundle::layout.html.twig" %}
 
-{% trans_default_domain 'FOSUserBundle' %}
 
+{% trans_default_domain 'FOSUserBundle' %}
+ 
 {% block fos_user_content %}
+
+{# If user is already logged in, redirect it on homepage#}
+{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+    <meta http-equiv="refresh" content="0;URL='{{ path('bdtln_default_homepage') }}'" />
+{% endif %}
+    
 {% if error %}
     <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 {% endif %}
