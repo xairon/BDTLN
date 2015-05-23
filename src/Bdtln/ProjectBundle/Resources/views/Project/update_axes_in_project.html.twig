@@ -8,10 +8,11 @@
 {% block project_body %}
     
     <div class="col-md-12 column">
-        {{ "You will add an axis in project" | trans }} <strong>{{ project.englishTitle }}</strong>
+        {{ "You will manage axis in project" | trans }} <strong>{{(app.request.locale == 'fr') ? project.frenchTitle : project.englishTitle }}</strong>
         <br />
         {{ "Choose an axis" | trans }}
         <br />
+        
             {# If an error or an information was initialized in the controller, we display
               it here #}
             {% for information_add in app.session.flashbag.get('information_add')%}
