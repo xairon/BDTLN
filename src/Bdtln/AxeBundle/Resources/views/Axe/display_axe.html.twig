@@ -24,7 +24,7 @@
                         {# Display page in english #}
                         {% if app.request.locale == "en" %}
                             {% if axe.englishDescription is not null %}
-                                <h3>{{ axe.englishTitle}}</h3>
+                                <h3 class="text-center">{{ axe.englishTitle}}</h3>
                                 <hr>
                                 {{ axe.englishDescription | purify | raw }}
                             {% else %}
@@ -32,7 +32,7 @@
                             {% endif %}
                         {% else %} {#if locale = fr#}
                             {% if axe.frenchDescription is not null %}
-                                <h3>{{ axe.frenchTitle}}</h3>
+                                <h3 class="text-center">{{ axe.frenchTitle}}</h3>
                                 <hr>
                                 {{ axe.frenchDescription | purify | raw }}
                             {% else %}
