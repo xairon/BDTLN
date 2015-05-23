@@ -106,7 +106,7 @@
         <select name="axe">
             <option value="" selected="selected">--------</option>
             {% for axe in axes %}
-                <option value="{{ axe.id }}">{{ axe.frenchTitle }}</option>
+                <option value="{{ axe.id }}">{{ (app.request.locale == "fr") ? axe.frenchTitle : axe.englishTitle }}</option>
             {% endfor %}
         </select><br />
         

@@ -256,3 +256,14 @@ body a
     border-radius: 5px;
     max-width: 400px;
 }
+
+.link-menu
+{
+    color: white;
+}
+
+.link-menu:hover
+{
+    color: white;
+    text-decoration: underline;
+}

@@ -6,7 +6,7 @@
         <h4>Participants</h4>
         <ul>
             {% for participant in participants %}
-                <li><a href="{{ path('fos_user_profile_show', {'username': participant.username}) }}">{{ participant.firstName }} {{ participant.lastName }}</a></li>
+                <li><a class="link-menu" href="{{ path('fos_user_profile_show', {'username': participant.username}) }}">{{ participant.firstName }} {{ participant.lastName }}</a></li>
              {% endfor %}
             </ul>
     </div>
