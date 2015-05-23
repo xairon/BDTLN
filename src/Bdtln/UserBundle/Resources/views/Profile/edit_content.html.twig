@@ -28,9 +28,9 @@
     {{ form_widget(form.photo) }}
     <br /><br />
     {# Display french biography #}
-    {{ form_label(form.frenchBiography, 'form.frenchbiography') }}
+    {{ form_label(form.frenchBiography) }}
     {{ form_errors(form.frenchBiography) }}
-    {{ form_widget(form.frenchBiography) }}
+    {{ form_widget(form.frenchBiography, {'attr': {'rows': '10'} }) }}
     <br /> 
 </div>
 <div class="col-md-6 column"id="bloc">
@@ -66,7 +66,7 @@
     {# Display english biography #}
     {{ form_label(form.englishBiography, 'form.englishbiography') }}
     {{ form_errors(form.englishBiography) }}
-    {{ form_widget(form.englishBiography) }}
+    {{ form_widget(form.englishBiography, {'attr': {'rows': '10'} }) }}
     <br /><br />
 </div>
     
