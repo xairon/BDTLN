@@ -267,3 +267,18 @@ body a
     color: white;
     text-decoration: underline;
 }
+
+
+@media (min-width: 800px) {
+    #bio
+    {
+        display: inline-block;
+    }
+}
+
+@media (max-width: 800px) {
+    #bio
+    {
+        display: inline-block;
+    }
+}
