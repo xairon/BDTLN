@@ -12,7 +12,7 @@ bdtln_axe_display_axe:
         
 #Add an axe
 bdtln_axe_add_axe:
-    path:   /add_axe
+    path:   /add_axe/add
     defaults:   { _controller: BdtlnAxeBundle:Axe:add_axe }
     requirements:
         slug:   ([a-zA-Z0-9-_])+
