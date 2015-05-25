@@ -100,3 +100,6 @@ fos_user:
     #The firewall name that we use for those users
     user_class: Bdtln\UserBundle\Entity\User
     #The entity class that we use
+    change_password:
+        form:
+            type: bdtln_user_change_password
