@@ -44,7 +44,7 @@ class Users implements FixtureInterface {
         
         $admin = new User();
         $admin->setUsername('nathalie-friburger');
-        $admin->setPlainPassword("nathalie");
+        $admin->setPlainPassword("CHANGEME");
         $admin->setRoles(array('ROLE_SUPER_ADMIN'));
         $admin->setEnglishBiography("My name is Nathalie Friburger, I am teacher at François Rabelais.\n"
                 . "I like practice ping pong.");
@@ -58,7 +58,7 @@ class Users implements FixtureInterface {
         
         $user = new User();
         $user->setUsername('jean-yves-antoine');
-        $user->setPlainPassword("jean");
+        $user->setPlainPassword("CHANGEME");
         $user->setRoles(array('ROLE_USER'));
         $user->setEnglishBiography("My name is Jean-Yves Antoine, I'm researcher and teacher. I like practice scooter.");
         $user->setFrenchBiography("Je m'appelle Jean-Yves Antoine, je suis chercheur et enseignant. J'aime faire de la trotinette.");
